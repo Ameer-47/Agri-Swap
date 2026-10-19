@@ -2,20 +2,27 @@ import sys
 import json
 import os
 
-# Suppress verbose TF and oneDNN logs
+# Suppress verbose TF and oneDNN logs & restrict thread pool for Render
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["TF_NUM_INTRAOP_THREADS"] = "1"
+os.environ["TF_NUM_INTEROP_THREADS"] = "1"
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.environ.get("RESNET50_MODEL_PATH", os.path.join(base_dir, "resnet50_fruit_vegetable_best.keras"))
 class_names_path = os.environ.get("RESNET50_CLASSES_PATH", os.path.join(base_dir, "resnet50_class_names.json"))
 
 if not os.path.exists(model_path):
-    print(json.dumps({
-        "error": f"ResNet50 model weights file was not found at '{model_path}'.",
-        "instruction": "Set RESNET50_MODEL_PATH to the model weights location or download 'resnet50_fruit_vegetable_best.keras' into ML/image_recognition/."
-    }))
-    sys.exit(1)
+    try:
+        from ML.image_recognition.download_model import ensure_model_downloaded
+        ensure_model_downloaded(model_path)
+    except Exception as dl_err:
+        print(json.dumps({
+            "error": f"ResNet50 model weights file not found and auto-download failed: {dl_err}",
+            "instruction": "Set RESNET50_MODEL_PATH or run 'python scripts/download_model.py'."
+        }))
+        sys.exit(1)
 
 import numpy as np
 from PIL import Image, ImageOps

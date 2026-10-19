@@ -10,7 +10,10 @@ import sys
 import os
 import json
 import sqlite3
-import duckdb
+try:
+    import duckdb
+except ImportError:
+    duckdb = None
 import time
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -172,7 +175,7 @@ def execute_query(params, con_db=None, bypass_cache=False):
     ds_status, ds_detail = check_parquet_dataset_status()
     if ds_status == "error":
         raise ds_detail
-    elif ds_status in ("missing", "empty"):
+    elif ds_status in ("missing", "empty") or duckdb is None:
         is_tl = bool(params.get("timeline") in [True, "true", "True", 1, "1"])
         fallback_payload = {
             "success": False,
@@ -182,7 +185,7 @@ def execute_query(params, con_db=None, bypass_cache=False):
             "isFallbackMode": True,
             "fromPersistentStorage": False,
             "dataSource": "none",
-            "fallbackReason": f"parquet_dataset_{ds_status}",
+            "fallbackReason": "duckdb_missing" if duckdb is None else f"parquet_dataset_{ds_status}",
             "message": "Granular mandi records are unavailable in lightweight mode because the Parquet dataset is not present on disk. Pre-cached historical records are available for 18 core commodities across 14 major states."
         }
         if is_tl:
@@ -196,6 +199,8 @@ def execute_query(params, con_db=None, bypass_cache=False):
 
     date_range = str(params.get("dateRange", "30d")).lower()
     parquet_path = get_parquet_path(date_range=date_range, prefer_recent=True)
+    if duckdb is None:
+        return fallback_payload
     con = duckdb.connect()
 
     commodity = params.get("commodity")

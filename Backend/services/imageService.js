@@ -9,15 +9,68 @@ let reqCounter = 1;
 const pendingRequests = new Map();
 let lineBuffer = "";
 
+const restartTimestamps = [];
+let autoRestartDisabled = false;
+const MAX_RESTARTS_IN_WINDOW = 3;
+const RESTART_WINDOW_MS = 3 * 60 * 1000; // 3-minute rolling window
+
 const projectRoot = path.join(__dirname, "../..");
 const pythonCmd = process.env.PYTHON_CMD || (process.platform === "win32" ? "python" : "python3");
+const modelPath = process.env.RESNET50_MODEL_PATH || path.join(projectRoot, "ML/image_recognition/resnet50_fruit_vegetable_best.keras");
+
+function checkModelAvailable() {
+    return fs.existsSync(modelPath) && fs.statSync(modelPath).size > 1000000;
+}
 
 function startVisionWorker() {
+    if (process.env.DISABLE_PERSISTENT_VISION === "true") {
+        console.log("ℹ️ [AGRI-SWAP] Persistent vision worker is disabled via DISABLE_PERSISTENT_VISION=true. Using on-demand inference.");
+        return;
+    }
+
+    if (autoRestartDisabled) {
+        console.log("ℹ️ [AGRI-SWAP] Persistent vision worker auto-restart is disabled due to crash protection. Using on-demand inference.");
+        return;
+    }
+
     if (workerProcess || isStarting) return;
     isStarting = true;
     isReady = false;
 
-    console.log("🌱 [AGRI-SWAP] Initializing persistent ResNet50 Food Vision worker...");
+    // Check if model file exists before spawning to prevent instant crash loops
+    if (!checkModelAvailable()) {
+        console.log("🌱 [AGRI-SWAP] ResNet50 model weights not found. Attempting download before spawning vision worker...");
+        const downloader = spawn(pythonCmd, [
+            path.join(projectRoot, "scripts/download_model.py")
+        ], {
+            cwd: projectRoot,
+            env: { ...process.env, PYTHONPATH: projectRoot }
+        });
+
+        downloader.stdout.on("data", (d) => process.stdout.write(d.toString()));
+        downloader.stderr.on("data", (d) => process.stderr.write(d.toString()));
+
+        downloader.on("close", (code) => {
+            isStarting = false;
+            if (code === 0 && checkModelAvailable()) {
+                console.log("🌱 [AGRI-SWAP] Model download completed. Starting persistent vision worker...");
+                startVisionWorker();
+            } else {
+                console.warn(`⚠️ [WARN] Model download exited with code ${code}. Vision worker paused. On-demand inference will be attempted when requested.`);
+                autoRestartDisabled = true;
+            }
+        });
+
+        downloader.on("error", (err) => {
+            console.error("⚠️ [ERROR] Failed to run model downloader:", err.message);
+            isStarting = false;
+            autoRestartDisabled = true;
+        });
+
+        return;
+    }
+
+    console.log("🌱 [AGRI-SWAP] Initializing persistent ResNet50 Food Vision worker (Render low-memory mode)...");
 
     try {
         workerProcess = spawn(pythonCmd, [
@@ -29,7 +82,12 @@ function startVisionWorker() {
             env: {
                 ...process.env,
                 PYTHONPATH: projectRoot,
-                PYTHONIOENCODING: "utf-8"
+                PYTHONIOENCODING: "utf-8",
+                OMP_NUM_THREADS: "1",
+                TF_NUM_INTRAOP_THREADS: "1",
+                TF_NUM_INTEROP_THREADS: "1",
+                TF_ENABLE_ONEDNN_OPTS: "0",
+                TF_CPP_MIN_LOG_LEVEL: "2"
             }
         });
 
@@ -74,7 +132,7 @@ function startVisionWorker() {
 
         workerProcess.stderr.on("data", (d) => {
             const errStr = d.toString("utf-8");
-            // Suppress non-fatal TF oneDNN notices
+            // Suppress non-fatal TF notices
             if (!errStr.includes("oneDNN") && !errStr.includes("cpu_feature_guard") && !errStr.includes("StreamExecutor")) {
                 // real warning or info
             }
@@ -100,13 +158,31 @@ function startVisionWorker() {
             }
             pendingRequests.clear();
 
-            // Auto-restart persistent worker so subsequent requests don't fall back to slow CLI
+            // Crash-loop protection: prune old restart records
+            const now = Date.now();
+            while (restartTimestamps.length > 0 && (now - restartTimestamps[0] > RESTART_WINDOW_MS)) {
+                restartTimestamps.shift();
+            }
+            restartTimestamps.push(now);
+
+            if (restartTimestamps.length >= MAX_RESTARTS_IN_WINDOW) {
+                autoRestartDisabled = true;
+                console.warn(`⚠️ [CRASH LOOP PROTECTION] Vision worker exited ${restartTimestamps.length} times within 3 minutes.`);
+                console.warn("   Persistent worker auto-restart is DISABLED to protect server memory on Render free tier.");
+                console.warn("   Incoming image requests will use on-demand CLI fallback execution.");
+                return;
+            }
+
+            // Exponential backoff: 5s, 10s, 20s up to 30s
+            const backoffMs = Math.min(5000 * Math.pow(2, restartTimestamps.length - 1), 30000);
+            console.log(`🌱 [AGRI-SWAP] Scheduling vision worker restart in ${backoffMs / 1000}s (attempt ${restartTimestamps.length} of ${MAX_RESTARTS_IN_WINDOW})...`);
+
             setTimeout(() => {
-                if (!workerProcess && !isStarting) {
-                    console.log("🌱 [AGRI-SWAP] Auto-restarting ResNet50 Food Vision worker...");
+                if (!workerProcess && !isStarting && !autoRestartDisabled) {
+                    console.log("🌱 [AGRI-SWAP] Executing scheduled vision worker restart...");
                     startVisionWorker();
                 }
-            }, 2000);
+            }, backoffMs);
         });
 
     } catch (err) {
@@ -115,16 +191,20 @@ function startVisionWorker() {
     }
 }
 
-// Start worker immediately on module load so model weights are warm when user reaches the page
-startVisionWorker();
+// Stagger worker start to let server boot & database init complete without RAM contention
+if (process.env.LAZY_VISION_WORKER !== "true" && process.env.DISABLE_PERSISTENT_VISION !== "true") {
+    setTimeout(() => {
+        startVisionWorker();
+    }, 4000);
+}
 
 /**
  * Predicts food from image path using persistent in-memory ResNet50 model.
  * Falls back to standalone CLI if persistent worker is unavailable.
  */
 async function predictFoodImage(imagePath) {
-    // If worker process is not alive and not starting, kick off persistent worker now
-    if (!workerProcess && !isStarting) {
+    // If worker process is not alive and not starting and auto-restart is allowed, attempt starting it
+    if (!workerProcess && !isStarting && !autoRestartDisabled && process.env.DISABLE_PERSISTENT_VISION !== "true") {
         startVisionWorker();
     }
 
@@ -212,7 +292,9 @@ function getVisionStatus() {
     return {
         ready: isReady,
         starting: isStarting,
-        workerActive: !!workerProcess
+        workerActive: !!workerProcess,
+        autoRestartDisabled: autoRestartDisabled,
+        modelAvailable: checkModelAvailable()
     };
 }
 

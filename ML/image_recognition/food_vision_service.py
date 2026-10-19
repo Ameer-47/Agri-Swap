@@ -7,7 +7,12 @@ import time
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
 
-# Configure standard streams for UTF-8 line buffering on Windows
+# Thread and memory optimizations for cloud containers & Render free tier (512 MB)
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["TF_NUM_INTRAOP_THREADS"] = "1"
+os.environ["TF_NUM_INTEROP_THREADS"] = "1"
+
+# Configure standard streams for UTF-8 line buffering on Windows/POSIX
 try:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", line_buffering=True)
@@ -27,16 +32,31 @@ def send_msg(data):
     except Exception as e:
         sys.stderr.write(f"Failed to write message: {e}\n")
 
+# Verify model file; auto-download if missing
 if not os.path.exists(model_path):
-    send_msg({
-        "status": "error",
-        "error": f"ResNet50 model weights file was not found at '{model_path}'. In production, download 'resnet50_fruit_vegetable_best.keras' into ML/image_recognition/ or configure RESNET50_MODEL_PATH."
-    })
-    sys.exit(1)
+    try:
+        from ML.image_recognition.download_model import ensure_model_downloaded
+        ensure_model_downloaded(model_path)
+    except Exception as dl_err:
+        send_msg({
+            "status": "error",
+            "error": f"ResNet50 model weights file was not found at '{model_path}' and automatic download failed: {dl_err}"
+        })
+        sys.exit(1)
 
 try:
+    import gc
     import numpy as np
     from PIL import Image, ImageOps
+    import tensorflow as tf
+
+    # Constrain TensorFlow CPU thread memory pool
+    try:
+        tf.config.threading.set_inter_op_parallelism_threads(1)
+        tf.config.threading.set_intra_op_parallelism_threads(1)
+    except Exception:
+        pass
+
     from tensorflow.keras.models import load_model
     from tensorflow.keras.applications.resnet50 import preprocess_input as resnet_preprocess_input
     from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input as mobilenet_preprocess_input
@@ -53,11 +73,13 @@ try:
     model = load_model(model_path)
     imagenet_model = MobileNetV2(weights="imagenet")
 
-    # Perform warm-up forward passes to initialize CPU execution graphs
-    dummy_input = resnet_preprocess_input(np.zeros((1, 224, 224, 3), dtype=np.float32))
-    model.predict(dummy_input, verbose=0)
-    dummy_mb = mobilenet_preprocess_input(np.zeros((1, 224, 224, 3), dtype=np.float32))
-    imagenet_model.predict(dummy_mb, verbose=0)
+    # Optional warm-up only if explicitly requested; skipped by default to conserve Render RAM
+    if os.environ.get("WARMUP_VISION") == "true":
+        dummy_input = resnet_preprocess_input(np.zeros((1, 224, 224, 3), dtype=np.float32))
+        model.predict(dummy_input, verbose=0)
+
+    # Force free import-time compilation garbage to keep memory footprint under limit
+    gc.collect()
 
     send_msg({
         "status": "ready",

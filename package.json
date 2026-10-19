@@ -2,15 +2,23 @@
   "name": "agri-swap-project",
   "version": "1.0.0",
   "scripts": {
-    "start": "node Backend/supervisor.js",
-    "dev": "node Backend/supervisor.js",
-    "server": "node Backend/supervisor.js",
+    "start": "node Backend/server.js",
+    "supervisor": "node Backend/supervisor.js",
+    "dev": "node Backend/server.js",
+    "server": "node Backend/server.js",
+    "server:supervisor": "node Backend/supervisor.js",
     "server:raw": "node Backend/server.js",
+    "build": "pip install -r requirements.txt && npm install && python scripts/download_model.py",
+    "download-model": "python scripts/download_model.py",
     "backfill": "python Backend/scripts/backfillHistoricalPrices.py",
     "frontend": "npm run dev --prefix Frontend"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "mongoose": "^9.11.0",
+    "multer": "^2.4.0",
     "parquetjs": "^0.11.2",
     "parquetjs-lite": "^0.8.7"
   }

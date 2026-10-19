@@ -85,6 +85,11 @@ Datasets/Agricultural Market Price Dataset/parquet/
 # Store externally via GitHub Releases, Git LFS, or Cloud Storage
 ML/image_recognition/resnet50_fruit_vegetable_best.keras
 ML/image_recognition/resnet50_fruit_vegetable_best.zip
+ML/image_recognition/*.keras
+ML/image_recognition/*.keras.*
+ML/image_recognition/*.tmp
+*.keras
+*.keras.download.tmp
 
 # 11. Testing & IDE scratch
 .system_generated/

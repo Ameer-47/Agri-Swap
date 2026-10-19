@@ -88,9 +88,24 @@ function isPidAlive(pid) {
 }
 
 /**
- * Gets listening PIDs on the target port via netstat (Windows-compatible).
+ * Gets listening PIDs on the target port (cross-platform Linux/POSIX and Windows).
  */
 function getPortOwners(port) {
+    if (process.platform !== "win32") {
+        try {
+            const out = execSync(`lsof -ti:${port} 2>/dev/null || fuser ${port}/tcp 2>/dev/null`, { encoding: "utf8", stdio: ["pipe", "pipe", "ignore"] });
+            const pids = new Set();
+            for (const line of out.split("\n")) {
+                const pidNum = parseInt(line.trim(), 10);
+                if (pidNum && !isNaN(pidNum) && pidNum !== process.pid) {
+                    pids.add(pidNum);
+                }
+            }
+            return Array.from(pids);
+        } catch (e) {
+            return [];
+        }
+    }
     try {
         const out = execSync(`netstat -aon | findstr :${port}`, { encoding: "utf8", stdio: ["pipe", "pipe", "ignore"] });
         const pids = new Set();
@@ -111,9 +126,17 @@ function getPortOwners(port) {
 }
 
 /**
- * Kills a process by PID on Windows.
+ * Kills a process by PID across Linux and Windows.
  */
 function killPid(pid) {
+    if (process.platform !== "win32") {
+        try {
+            process.kill(pid, "SIGKILL");
+            return true;
+        } catch (_) {
+            return false;
+        }
+    }
     try {
         execSync(`taskkill /F /PID ${pid}`, { stdio: "ignore" });
         return true;
