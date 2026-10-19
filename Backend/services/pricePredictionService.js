@@ -174,6 +174,19 @@ async function prewarmForecastCache(commodities = ["Tomato", "Onion", "Potato", 
     }
 }
 
+const SUPPORTED_LSTM_COMMODITIES = new Set([
+    "tomato",
+    "onion",
+    "potato",
+    "rice",
+    "wheat",
+    "maize",
+    "bengal gram",
+    "bengal gram (gram)(whole)",
+    "gram",
+    "mustard"
+]);
+
 /**
  * Executes the PyTorch LSTM price prediction model via Python subprocess.
  * Uses L1 memory cache -> L2 durable SQLite storage -> Python inference fallback.
@@ -197,6 +210,24 @@ function getLSTMPrediction(commodity = "Tomato", horizon = 7) {
     if (persistent) {
         PREDICTION_SERVER_CACHE.set(key, persistent);
         return Promise.resolve(persistent);
+    }
+
+    // 2b. Fast path for unsupported commodities: avoids spawning 250MB PyTorch process on Render
+    if (!SUPPORTED_LSTM_COMMODITIES.has(cleanCommodity)) {
+        const unsupportedResponse = {
+            success: true,
+            forecastAvailable: false,
+            supported: false,
+            commodity: commodity,
+            message: `Forecast unavailable for ${commodity}. Commodity is not supported by the trained LSTM model.`,
+            predicted7d: [],
+            predicted30d: [],
+            currentPrice: null,
+            previousPrice: null,
+            predictedPrice: null
+        };
+        PREDICTION_SERVER_CACHE.set(key, unsupportedResponse);
+        return Promise.resolve(unsupportedResponse);
     }
 
     // 3. Deduplicate concurrent in-flight requests

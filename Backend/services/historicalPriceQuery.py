@@ -177,21 +177,25 @@ def execute_query(params, con_db=None, bypass_cache=False):
         raise ds_detail
     elif ds_status in ("missing", "empty") or duckdb is None:
         is_tl = bool(params.get("timeline") in [True, "true", "True", 1, "1"])
+        commodity = str(params.get("commodity", "All") or "All").strip()
         fallback_payload = {
-            "success": False,
+            "success": True,
             "records": [],
             "count": 0,
             "total": 0,
+            "page": max(1, int(params.get("page", 1) or 1)) if not is_tl else 1,
+            "limit": min(100, max(1, int(params.get("limit", 10) or 10))) if not is_tl else 10,
+            "totalPages": 0,
             "isFallbackMode": True,
             "fromPersistentStorage": False,
             "dataSource": "none",
             "fallbackReason": "duckdb_missing" if duckdb is None else f"parquet_dataset_{ds_status}",
-            "message": "Granular mandi records are unavailable in lightweight mode because the Parquet dataset is not present on disk. Pre-cached historical records are available for 18 core commodities across 14 major states."
+            "message": f"Granular mandi records are unavailable in lightweight cloud mode for {commodity}. Pre-cached historical records are available in SQLite."
         }
         if is_tl:
             fallback_payload.update({
                 "timeline": True,
-                "commodity": str(params.get("commodity", "All") or "All").strip(),
+                "commodity": commodity,
                 "currentPrice": None,
                 "previousPrice": None
             })

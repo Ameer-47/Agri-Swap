@@ -819,13 +819,13 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
 
       if (controller.signal.aborted) return;
 
-      if (data && data.success) {
+      if (data && (data.success || data.isFallbackMode)) {
         TIMELINE_CACHE.set(cacheKey, data);
         setTimelineRecords(Array.isArray(data.records) ? data.records : []);
         setTimelineStats({
-          currentPrice: data.currentPrice,
-          previousPrice: data.previousPrice,
-          count: data.count
+          currentPrice: typeof data.currentPrice === "number" ? data.currentPrice : null,
+          previousPrice: typeof data.previousPrice === "number" ? data.previousPrice : null,
+          count: typeof data.count === "number" ? data.count : (Array.isArray(data.records) ? data.records.length : 0)
         });
       } else {
         throw new Error(data?.message || data?.error || "Failed to load timeline records");
@@ -891,10 +891,10 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
 
       if (controller.signal.aborted) return;
 
-      if (data && data.success) {
+      if (data && (data.success || data.isFallbackMode)) {
         LOCATION_CACHE.set(cacheKey, data);
         setTableRecords(Array.isArray(data.records) ? data.records : []);
-        setTotalTableRecords(typeof data.total === "number" ? data.total : 0);
+        setTotalTableRecords(typeof data.total === "number" ? data.total : (Array.isArray(data.records) ? data.records.length : 0));
       } else {
         throw new Error(data?.message || data?.error || "Failed to load historical price records");
       }

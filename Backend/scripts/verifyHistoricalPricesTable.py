@@ -3,7 +3,10 @@ import urllib.parse
 import json
 import sys
 
-BASE_URL = "http://localhost:5000/api/prices/historical"
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
+BASE_URL = "http://127.0.0.1:5000/api/prices/historical"
 
 def run_test(name, query_params, min_expected_total=None, expect_zero=False):
     encoded = urllib.parse.urlencode(query_params)

@@ -165,8 +165,10 @@ function executePythonHistoricalQuery(params, cacheKey) {
             try {
                 const parsed = JSON.parse(output.trim());
 
-                // If this is a fallback response, resolve cleanly without caching in L1 or SQLite
+                // If this is a fallback response, cache in L1 memory so repeated queries don't re-spawn Python
                 if (parsed && parsed.isFallbackMode) {
+                    cleanOldMemoryCache();
+                    QUERY_CACHE.set(cacheKey, parsed);
                     return resolve(parsed);
                 }
 
@@ -192,6 +194,20 @@ function executePythonHistoricalQuery(params, cacheKey) {
 }
 
 /**
+ * Checks whether the physical parquet dataset directory is available on disk.
+ */
+function isParquetDatasetAvailable() {
+    const parquetDir = process.env.PARQUET_DATASET_DIR || path.join(__dirname, "../../Datasets/Agricultural Market Price Dataset/cleaned_dataset");
+    try {
+        if (!fs.existsSync(parquetDir)) return false;
+        const stat = fs.statSync(parquetDir);
+        return stat.isDirectory();
+    } catch (_) {
+        return false;
+    }
+}
+
+/**
  * Fetches real historical price records from persistent SQLite cache or Cleaned Parquet dataset.
  *
  * @param {Object} params - Query parameters (commodity, state, district, market, dateRange, search, sortField, sortOrder, page, limit)
@@ -214,12 +230,41 @@ function fetchHistoricalPrices(params = {}) {
         return Promise.resolve(fromPersistent);
     }
 
-    // 3. Deduplicate concurrent in-flight requests
+    // 3. If Parquet dataset is not present on disk (Render lightweight mode) and not in SQLite, return clean fallback
+    if (!isParquetDatasetAvailable()) {
+        const isTimeline = params.timeline === true || params.timeline === "true" || params.timeline === 1 || params.timeline === "1";
+        const commodityName = String(params.commodity || "All").trim();
+        const fallbackPayload = {
+            success: true,
+            records: [],
+            count: 0,
+            total: 0,
+            page: Math.max(1, parseInt(params.page, 10) || 1),
+            limit: Math.min(100, Math.max(1, parseInt(params.limit, 10) || 10)),
+            totalPages: 0,
+            isFallbackMode: true,
+            fromPersistentStorage: false,
+            dataSource: "none",
+            fallbackReason: "parquet_dataset_missing",
+            message: `Granular mandi records are unavailable in lightweight cloud mode for ${commodityName}. Pre-cached records are available in SQLite.`
+        };
+        if (isTimeline) {
+            fallbackPayload.timeline = true;
+            fallbackPayload.commodity = commodityName;
+            fallbackPayload.currentPrice = null;
+            fallbackPayload.previousPrice = null;
+        }
+        cleanOldMemoryCache();
+        QUERY_CACHE.set(cacheKey, fallbackPayload);
+        return Promise.resolve(fallbackPayload);
+    }
+
+    // 4. Deduplicate concurrent in-flight requests
     if (IN_FLIGHT_REQUESTS.has(cacheKey)) {
         return IN_FLIGHT_REQUESTS.get(cacheKey);
     }
 
-    // 4. Cache miss -> run query via Python
+    // 5. Cache miss -> run query via Python
     const queryPromise = executePythonHistoricalQuery(params, cacheKey)
         .finally(() => {
             IN_FLIGHT_REQUESTS.delete(cacheKey);
