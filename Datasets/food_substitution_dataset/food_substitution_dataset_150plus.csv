@@ -1,0 +1,873 @@
+Food,Alternative,Food_Role,Cuisine,Nutrition_Similarity,Cooking_Similarity,Price_Suitability,Availability,Substitution_Ratio,Overall_Suitability
+Tomato,Pumpkin,Vegetable,Indian,0.6,0.65,0.65,High,0.25,0.702
+Tomato,Pumpkin,Vegetable,Indian,0.6,0.65,0.65,High,0.5,0.702
+Pumpkin,Tomato,Vegetable,Indian,0.6,0.65,0.65,High,0.25,0.702
+Pumpkin,Tomato,Vegetable,Indian,0.6,0.65,0.65,High,0.5,0.702
+Tomato,Carrot,Vegetable,Indian,0.67,0.7,0.68,High,0.25,0.746
+Tomato,Carrot,Vegetable,Indian,0.67,0.7,0.68,High,0.5,0.746
+Carrot,Tomato,Vegetable,Indian,0.67,0.7,0.68,High,0.25,0.746
+Carrot,Tomato,Vegetable,Indian,0.67,0.7,0.68,High,0.5,0.746
+Tomato,Capsicum,Vegetable,Indian,0.74,0.75,0.71,High,0.25,0.788
+Tomato,Capsicum,Vegetable,Indian,0.74,0.75,0.71,High,0.5,0.788
+Capsicum,Tomato,Food,Indian,0.74,0.75,0.71,High,0.25,0.788
+Capsicum,Tomato,Food,Indian,0.74,0.75,0.71,High,0.5,0.788
+Tomato,Tamarind,Vegetable,Indian,0.81,0.8,0.74,High,0.25,0.831
+Tomato,Tamarind,Vegetable,Indian,0.81,0.8,0.74,High,0.5,0.831
+Tamarind,Tomato,Food,Indian,0.81,0.8,0.74,High,0.25,0.831
+Tamarind,Tomato,Food,Indian,0.81,0.8,0.74,High,0.5,0.831
+Tomato,Raw Mango,Vegetable,Indian,0.88,0.85,0.77,High,0.25,0.875
+Tomato,Raw Mango,Vegetable,Indian,0.88,0.85,0.77,High,0.5,0.875
+Raw Mango,Tomato,Food,Indian,0.88,0.85,0.77,High,0.25,0.875
+Raw Mango,Tomato,Food,Indian,0.88,0.85,0.77,High,0.5,0.875
+Onion,Shallot,Vegetable,Indian,0.6,0.9,0.8,High,0.25,0.795
+Onion,Shallot,Vegetable,Indian,0.6,0.9,0.8,High,0.5,0.795
+Shallot,Onion,Food,Indian,0.6,0.9,0.8,High,0.25,0.795
+Shallot,Onion,Food,Indian,0.6,0.9,0.8,High,0.5,0.795
+Onion,Leek,Vegetable,Indian,0.67,0.65,0.83,High,0.25,0.763
+Onion,Leek,Vegetable,Indian,0.67,0.65,0.83,High,0.5,0.763
+Leek,Onion,Food,Indian,0.67,0.65,0.83,High,0.25,0.763
+Leek,Onion,Food,Indian,0.67,0.65,0.83,High,0.5,0.763
+Onion,Cabbage,Vegetable,Indian,0.74,0.7,0.86,High,0.25,0.806
+Onion,Cabbage,Vegetable,Indian,0.74,0.7,0.86,High,0.5,0.806
+Cabbage,Onion,Vegetable,Indian,0.74,0.7,0.86,High,0.25,0.806
+Cabbage,Onion,Vegetable,Indian,0.74,0.7,0.86,High,0.5,0.806
+Onion,Spring Onion,Vegetable,Indian,0.81,0.75,0.89,High,0.25,0.849
+Onion,Spring Onion,Vegetable,Indian,0.81,0.75,0.89,High,0.5,0.849
+Spring Onion,Onion,Food,Indian,0.81,0.75,0.89,High,0.25,0.849
+Spring Onion,Onion,Food,Indian,0.81,0.75,0.89,High,0.5,0.849
+Potato,Sweet Potato,Starch,Indian,0.88,0.8,0.92,High,0.25,0.892
+Potato,Sweet Potato,Starch,Indian,0.88,0.8,0.92,High,0.5,0.892
+Sweet Potato,Potato,Food,Indian,0.88,0.8,0.92,High,0.25,0.892
+Sweet Potato,Potato,Food,Indian,0.88,0.8,0.92,High,0.5,0.892
+Potato,Yam,Starch,Indian,0.6,0.85,0.65,High,0.25,0.752
+Potato,Yam,Starch,Indian,0.6,0.85,0.65,High,0.5,0.752
+Yam,Potato,Food,Indian,0.6,0.85,0.65,High,0.25,0.752
+Yam,Potato,Food,Indian,0.6,0.85,0.65,High,0.5,0.752
+Potato,Taro,Starch,Indian,0.67,0.9,0.68,High,0.25,0.795
+Potato,Taro,Starch,Indian,0.67,0.9,0.68,High,0.5,0.795
+Taro,Potato,Food,Indian,0.67,0.9,0.68,High,0.25,0.795
+Taro,Potato,Food,Indian,0.67,0.9,0.68,High,0.5,0.795
+Potato,Raw Banana,Starch,Indian,0.74,0.65,0.71,High,0.25,0.764
+Potato,Raw Banana,Starch,Indian,0.74,0.65,0.71,High,0.5,0.764
+Raw Banana,Potato,Food,Indian,0.74,0.65,0.71,High,0.25,0.764
+Raw Banana,Potato,Food,Indian,0.74,0.65,0.71,High,0.5,0.764
+Carrot,Pumpkin,Vegetable,Indian,0.81,0.7,0.74,High,0.25,0.806
+Carrot,Pumpkin,Vegetable,Indian,0.81,0.7,0.74,High,0.5,0.806
+Pumpkin,Carrot,Vegetable,Indian,0.81,0.7,0.74,High,0.25,0.806
+Pumpkin,Carrot,Vegetable,Indian,0.81,0.7,0.74,High,0.5,0.806
+Carrot,Sweet Potato,Vegetable,Indian,0.88,0.75,0.77,High,0.25,0.849
+Carrot,Sweet Potato,Vegetable,Indian,0.88,0.75,0.77,High,0.5,0.849
+Sweet Potato,Carrot,Food,Indian,0.88,0.75,0.77,High,0.25,0.849
+Sweet Potato,Carrot,Food,Indian,0.88,0.75,0.77,High,0.5,0.849
+Carrot,Beetroot,Vegetable,Indian,0.6,0.8,0.8,High,0.25,0.77
+Carrot,Beetroot,Vegetable,Indian,0.6,0.8,0.8,High,0.5,0.77
+Beetroot,Carrot,Food,Indian,0.6,0.8,0.8,High,0.25,0.77
+Beetroot,Carrot,Food,Indian,0.6,0.8,0.8,High,0.5,0.77
+Cabbage,Cauliflower,Vegetable,Indian,0.67,0.85,0.83,High,0.25,0.813
+Cabbage,Cauliflower,Vegetable,Indian,0.67,0.85,0.83,High,0.5,0.813
+Cauliflower,Cabbage,Vegetable,Indian,0.67,0.85,0.83,High,0.25,0.813
+Cauliflower,Cabbage,Vegetable,Indian,0.67,0.85,0.83,High,0.5,0.813
+Cabbage,Broccoli,Vegetable,Indian,0.74,0.9,0.86,High,0.25,0.856
+Cabbage,Broccoli,Vegetable,Indian,0.74,0.9,0.86,High,0.5,0.856
+Broccoli,Cabbage,Food,Indian,0.74,0.9,0.86,High,0.25,0.856
+Broccoli,Cabbage,Food,Indian,0.74,0.9,0.86,High,0.5,0.856
+Cabbage,Kale,Vegetable,Indian,0.81,0.65,0.89,High,0.25,0.824
+Cabbage,Kale,Vegetable,Indian,0.81,0.65,0.89,High,0.5,0.824
+Kale,Cabbage,Food,Indian,0.81,0.65,0.89,High,0.25,0.824
+Kale,Cabbage,Food,Indian,0.81,0.65,0.89,High,0.5,0.824
+Spinach,Amaranth Leaves,Leafy green,Indian,0.88,0.7,0.92,High,0.25,0.867
+Spinach,Amaranth Leaves,Leafy green,Indian,0.88,0.7,0.92,High,0.5,0.867
+Amaranth Leaves,Spinach,Food,Indian,0.88,0.7,0.92,High,0.25,0.867
+Amaranth Leaves,Spinach,Food,Indian,0.88,0.7,0.92,High,0.5,0.867
+Spinach,Drumstick Leaves,Leafy green,Indian,0.6,0.75,0.65,High,0.25,0.728
+Spinach,Drumstick Leaves,Leafy green,Indian,0.6,0.75,0.65,High,0.5,0.728
+Drumstick Leaves,Spinach,Food,Indian,0.6,0.75,0.65,High,0.25,0.728
+Drumstick Leaves,Spinach,Food,Indian,0.6,0.75,0.65,High,0.5,0.728
+Spinach,Fenugreek Leaves,Leafy green,Indian,0.67,0.8,0.68,High,0.25,0.77
+Spinach,Fenugreek Leaves,Leafy green,Indian,0.67,0.8,0.68,High,0.5,0.77
+Fenugreek Leaves,Spinach,Food,Indian,0.67,0.8,0.68,High,0.25,0.77
+Fenugreek Leaves,Spinach,Food,Indian,0.67,0.8,0.68,High,0.5,0.77
+Spinach,Kale,Leafy green,Indian,0.74,0.85,0.71,High,0.25,0.814
+Spinach,Kale,Leafy green,Indian,0.74,0.85,0.71,High,0.5,0.814
+Kale,Spinach,Food,Indian,0.74,0.85,0.71,High,0.25,0.814
+Kale,Spinach,Food,Indian,0.74,0.85,0.71,High,0.5,0.814
+Cauliflower,Broccoli,Vegetable,Indian,0.81,0.9,0.74,High,0.25,0.857
+Cauliflower,Broccoli,Vegetable,Indian,0.81,0.9,0.74,High,0.5,0.857
+Broccoli,Cauliflower,Food,Indian,0.81,0.9,0.74,High,0.25,0.857
+Broccoli,Cauliflower,Food,Indian,0.81,0.9,0.74,High,0.5,0.857
+Cauliflower,Cabbage,Vegetable,Indian,0.88,0.65,0.77,High,0.25,0.825
+Cauliflower,Cabbage,Vegetable,Indian,0.88,0.65,0.77,High,0.5,0.825
+Cabbage,Cauliflower,Vegetable,Indian,0.88,0.65,0.77,High,0.25,0.825
+Cabbage,Cauliflower,Vegetable,Indian,0.88,0.65,0.77,High,0.5,0.825
+Cauliflower,Turnip,Vegetable,Indian,0.6,0.7,0.8,High,0.25,0.745
+Cauliflower,Turnip,Vegetable,Indian,0.6,0.7,0.8,High,0.5,0.745
+Turnip,Cauliflower,Food,Indian,0.6,0.7,0.8,High,0.25,0.745
+Turnip,Cauliflower,Food,Indian,0.6,0.7,0.8,High,0.5,0.745
+Green Beans,Cluster Beans,Vegetable,Indian,0.67,0.75,0.83,High,0.25,0.788
+Green Beans,Cluster Beans,Vegetable,Indian,0.67,0.75,0.83,High,0.5,0.788
+Cluster Beans,Green Beans,Food,Indian,0.67,0.75,0.83,High,0.25,0.788
+Cluster Beans,Green Beans,Food,Indian,0.67,0.75,0.83,High,0.5,0.788
+Green Beans,Peas,Vegetable,Indian,0.74,0.8,0.86,High,0.25,0.831
+Green Beans,Peas,Vegetable,Indian,0.74,0.8,0.86,High,0.5,0.831
+Peas,Green Beans,Legume,Indian,0.74,0.8,0.86,High,0.25,0.831
+Peas,Green Beans,Legume,Indian,0.74,0.8,0.86,High,0.5,0.831
+Green Beans,Broad Beans,Vegetable,Indian,0.81,0.85,0.89,High,0.25,0.874
+Green Beans,Broad Beans,Vegetable,Indian,0.81,0.85,0.89,High,0.5,0.874
+Broad Beans,Green Beans,Food,Indian,0.81,0.85,0.89,High,0.25,0.874
+Broad Beans,Green Beans,Food,Indian,0.81,0.85,0.89,High,0.5,0.874
+Peas,Green Gram,Legume,Indian,0.88,0.9,0.92,High,0.25,0.917
+Peas,Green Gram,Legume,Indian,0.88,0.9,0.92,High,0.5,0.917
+Green Gram,Peas,Food,Indian,0.88,0.9,0.92,High,0.25,0.917
+Green Gram,Peas,Food,Indian,0.88,0.9,0.92,High,0.5,0.917
+Peas,Chickpeas,Legume,Indian,0.6,0.65,0.65,High,0.25,0.702
+Peas,Chickpeas,Legume,Indian,0.6,0.65,0.65,High,0.5,0.702
+Chickpeas,Peas,Legume,Indian,0.6,0.65,0.65,High,0.25,0.702
+Chickpeas,Peas,Legume,Indian,0.6,0.65,0.65,High,0.5,0.702
+Brinjal,Zucchini,Vegetable,Indian,0.67,0.7,0.68,High,0.25,0.746
+Brinjal,Zucchini,Vegetable,Indian,0.67,0.7,0.68,High,0.5,0.746
+Zucchini,Brinjal,Food,Indian,0.67,0.7,0.68,High,0.25,0.746
+Zucchini,Brinjal,Food,Indian,0.67,0.7,0.68,High,0.5,0.746
+Brinjal,Bottle Gourd,Vegetable,Indian,0.74,0.75,0.71,High,0.25,0.788
+Brinjal,Bottle Gourd,Vegetable,Indian,0.74,0.75,0.71,High,0.5,0.788
+Bottle Gourd,Brinjal,Gourd,Indian,0.74,0.75,0.71,High,0.25,0.788
+Bottle Gourd,Brinjal,Gourd,Indian,0.74,0.75,0.71,High,0.5,0.788
+Brinjal,Okra,Vegetable,Indian,0.81,0.8,0.74,High,0.25,0.831
+Brinjal,Okra,Vegetable,Indian,0.81,0.8,0.74,High,0.5,0.831
+Okra,Brinjal,Vegetable,Indian,0.81,0.8,0.74,High,0.25,0.831
+Okra,Brinjal,Vegetable,Indian,0.81,0.8,0.74,High,0.5,0.831
+Okra,Green Beans,Vegetable,Indian,0.88,0.85,0.77,High,0.25,0.875
+Okra,Green Beans,Vegetable,Indian,0.88,0.85,0.77,High,0.5,0.875
+Green Beans,Okra,Vegetable,Indian,0.88,0.85,0.77,High,0.25,0.875
+Green Beans,Okra,Vegetable,Indian,0.88,0.85,0.77,High,0.5,0.875
+Okra,Cluster Beans,Vegetable,Indian,0.6,0.9,0.8,High,0.25,0.795
+Okra,Cluster Beans,Vegetable,Indian,0.6,0.9,0.8,High,0.5,0.795
+Cluster Beans,Okra,Food,Indian,0.6,0.9,0.8,High,0.25,0.795
+Cluster Beans,Okra,Food,Indian,0.6,0.9,0.8,High,0.5,0.795
+Okra,Brinjal,Vegetable,Indian,0.67,0.65,0.83,High,0.25,0.763
+Okra,Brinjal,Vegetable,Indian,0.67,0.65,0.83,High,0.5,0.763
+Brinjal,Okra,Vegetable,Indian,0.67,0.65,0.83,High,0.25,0.763
+Brinjal,Okra,Vegetable,Indian,0.67,0.65,0.83,High,0.5,0.763
+Bottle Gourd,Ridge Gourd,Gourd,Indian,0.74,0.7,0.86,High,0.25,0.806
+Bottle Gourd,Ridge Gourd,Gourd,Indian,0.74,0.7,0.86,High,0.5,0.806
+Ridge Gourd,Bottle Gourd,Gourd,Indian,0.74,0.7,0.86,High,0.25,0.806
+Ridge Gourd,Bottle Gourd,Gourd,Indian,0.74,0.7,0.86,High,0.5,0.806
+Bottle Gourd,Ash Gourd,Gourd,Indian,0.81,0.75,0.89,High,0.25,0.849
+Bottle Gourd,Ash Gourd,Gourd,Indian,0.81,0.75,0.89,High,0.5,0.849
+Ash Gourd,Bottle Gourd,Food,Indian,0.81,0.75,0.89,High,0.25,0.849
+Ash Gourd,Bottle Gourd,Food,Indian,0.81,0.75,0.89,High,0.5,0.849
+Bitter Gourd,Ridge Gourd,Gourd,Indian,0.88,0.8,0.92,High,0.25,0.892
+Bitter Gourd,Ridge Gourd,Gourd,Indian,0.88,0.8,0.92,High,0.5,0.892
+Ridge Gourd,Bitter Gourd,Gourd,Indian,0.88,0.8,0.92,High,0.25,0.892
+Ridge Gourd,Bitter Gourd,Gourd,Indian,0.88,0.8,0.92,High,0.5,0.892
+Bitter Gourd,Snake Gourd,Gourd,Indian,0.6,0.85,0.65,High,0.25,0.752
+Bitter Gourd,Snake Gourd,Gourd,Indian,0.6,0.85,0.65,High,0.5,0.752
+Snake Gourd,Bitter Gourd,Gourd,Indian,0.6,0.85,0.65,High,0.25,0.752
+Snake Gourd,Bitter Gourd,Gourd,Indian,0.6,0.85,0.65,High,0.5,0.752
+Ridge Gourd,Snake Gourd,Gourd,Indian,0.67,0.9,0.68,High,0.25,0.795
+Ridge Gourd,Snake Gourd,Gourd,Indian,0.67,0.9,0.68,High,0.5,0.795
+Snake Gourd,Ridge Gourd,Gourd,Indian,0.67,0.9,0.68,High,0.25,0.795
+Snake Gourd,Ridge Gourd,Gourd,Indian,0.67,0.9,0.68,High,0.5,0.795
+Snake Gourd,Bottle Gourd,Gourd,Indian,0.74,0.65,0.71,High,0.25,0.764
+Snake Gourd,Bottle Gourd,Gourd,Indian,0.74,0.65,0.71,High,0.5,0.764
+Bottle Gourd,Snake Gourd,Gourd,Indian,0.74,0.65,0.71,High,0.25,0.764
+Bottle Gourd,Snake Gourd,Gourd,Indian,0.74,0.65,0.71,High,0.5,0.764
+Pumpkin,Ash Gourd,Vegetable,Indian,0.81,0.7,0.74,High,0.25,0.806
+Pumpkin,Ash Gourd,Vegetable,Indian,0.81,0.7,0.74,High,0.5,0.806
+Ash Gourd,Pumpkin,Food,Indian,0.81,0.7,0.74,High,0.25,0.806
+Ash Gourd,Pumpkin,Food,Indian,0.81,0.7,0.74,High,0.5,0.806
+Pumpkin,Sweet Potato,Vegetable,Indian,0.88,0.75,0.77,High,0.25,0.849
+Pumpkin,Sweet Potato,Vegetable,Indian,0.88,0.75,0.77,High,0.5,0.849
+Sweet Potato,Pumpkin,Food,Indian,0.88,0.75,0.77,High,0.25,0.849
+Sweet Potato,Pumpkin,Food,Indian,0.88,0.75,0.77,High,0.5,0.849
+Amaranth Leaves,Spinach,Leafy green,Indian,0.85,0.81,0.8,High,1.0,0.765
+Spinach,Amaranth Leaves,Leafy green,Indian,0.85,0.81,0.8,High,1.0,0.765
+Ash Gourd,Bottle Gourd,Gourd,Indian,0.82,0.78,0.8,High,1.0,0.738
+Bottle Gourd,Ash Gourd,Gourd,Indian,0.82,0.78,0.8,High,1.0,0.738
+Ash Gourd,Pumpkin,Gourd,Indian,0.8,0.76,0.8,High,1.0,0.72
+Pumpkin,Ash Gourd,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Beetroot,Carrot,Root vegetable,Indian,0.81,0.77,0.8,High,1.0,0.729
+Carrot,Beetroot,Root vegetable,Indian,0.81,0.77,0.8,High,1.0,0.729
+Bitter Gourd,Ridge Gourd,Gourd,Indian,0.78,0.74,0.8,High,1.0,0.702
+Ridge Gourd,Bitter Gourd,Gourd,Indian,0.78,0.74,0.8,High,1.0,0.702
+Bitter Gourd,Bottle Gourd,Gourd,Indian,0.72,0.68,0.8,High,1.0,0.648
+Bottle Gourd,Bitter Gourd,Gourd,Indian,0.72,0.68,0.8,High,1.0,0.648
+Bottle Gourd,Ridge Gourd,Gourd,Indian,0.88,0.84,0.8,High,1.0,0.792
+Ridge Gourd,Bottle Gourd,Gourd,Indian,0.88,0.84,0.8,High,1.0,0.792
+Bottle Gourd,Zucchini,Gourd,Indian,0.86,0.82,0.8,High,1.0,0.774
+Zucchini,Bottle Gourd,Gourd,Indian,0.86,0.82,0.8,High,1.0,0.774
+Bottle Gourd,Snake Gourd,Gourd,Indian,0.83,0.79,0.8,High,1.0,0.747
+Snake Gourd,Bottle Gourd,Gourd,Indian,0.83,0.79,0.8,High,1.0,0.747
+Brinjal,Zucchini,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Zucchini,Brinjal,Gourd,Indian,0.8,0.76,0.8,High,1.0,0.72
+Brinjal,Bottle Gourd,Vegetable,Indian,0.76,0.72,0.8,High,1.0,0.684
+Bottle Gourd,Brinjal,Gourd,Indian,0.76,0.72,0.8,High,1.0,0.684
+Brinjal,Potato,Vegetable,Indian,0.74,0.7,0.8,High,1.0,0.666
+Potato,Brinjal,Starch,Indian,0.74,0.7,0.8,High,1.0,0.666
+Green Beans,Broad Beans,Vegetable,Indian,0.87,0.83,0.8,High,2.0,0.783
+Broccoli,Cauliflower,Vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Cauliflower,Broccoli,Vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Broccoli,Cabbage,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cabbage,Broccoli,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cabbage,Cauliflower,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Cauliflower,Cabbage,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Cabbage,Romaine Lettuce,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Romaine Lettuce,Cabbage,Leafy green,Indian,0.78,0.74,0.8,High,1.0,0.702
+Cabbage,Kohlrabi,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Kohlrabi,Cabbage,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Tomato,Capsicum,Vegetable,Indian,0.79,0.75,0.8,High,2.0,0.711
+Capsicum,Red Bell Pepper,Vegetable,Indian,0.92,0.87,0.8,High,1.0,0.828
+Red Bell Pepper,Capsicum,Vegetable,Indian,0.92,0.87,0.8,High,1.0,0.828
+Capsicum,Yellow Bell Pepper,Vegetable,Indian,0.9,0.85,0.8,High,1.0,0.81
+Yellow Bell Pepper,Capsicum,Vegetable,Indian,0.9,0.85,0.8,High,1.0,0.81
+Carrot,Pumpkin,Root vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Pumpkin,Carrot,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Carrot,Sweet Potato,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Sweet Potato,Carrot,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Tomato,Carrot,Vegetable,Indian,0.75,0.71,0.8,High,2.0,0.675
+Cauliflower,Bottle Gourd,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Bottle Gourd,Cauliflower,Gourd,Indian,0.78,0.74,0.8,High,1.0,0.702
+Peas,Chickpeas,Legume,Indian,0.72,0.68,0.8,High,2.0,0.648
+Chickpeas,Kidney Beans,Legume,Indian,0.88,0.84,0.8,High,1.0,0.792
+Kidney Beans,Chickpeas,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Chickpeas,Black Gram,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Black Gram,Chickpeas,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Green Beans,Cluster Beans,Vegetable,Indian,0.79,0.75,0.8,High,2.0,0.711
+Okra,Cluster Beans,Vegetable,Indian,0.8,0.76,0.8,High,2.0,0.72
+Spinach,Drumstick Leaves,Leafy green,Indian,0.82,0.78,0.8,High,2.0,0.738
+Spinach,Fenugreek Leaves,Leafy green,Indian,0.77,0.73,0.8,High,2.0,0.693
+Cluster Beans,Green Beans,Vegetable,Indian,0.79,0.75,0.8,High,2.0,0.711
+Broad Beans,Green Beans,Legume,Indian,0.87,0.83,0.8,High,2.0,0.783
+Green Beans,Okra,Vegetable,Indian,0.81,0.77,0.8,High,1.0,0.729
+Okra,Green Beans,Vegetable,Indian,0.81,0.77,0.8,High,1.0,0.729
+Green Beans,Peas,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Peas,Green Beans,Legume,Indian,0.8,0.76,0.8,High,1.0,0.72
+Green Gram,Toor Dal,Legume,Indian,0.86,0.82,0.8,High,1.0,0.774
+Toor Dal,Green Gram,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Green Gram,Moong Dal,Legume,Indian,0.92,0.87,0.8,High,1.0,0.828
+Moong Dal,Green Gram,Pulse,Indian,0.92,0.87,0.8,High,1.0,0.828
+Green Gram,Chickpeas,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Chickpeas,Green Gram,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Kale,Spinach,Leafy green,Indian,0.84,0.8,0.8,High,1.0,0.756
+Spinach,Kale,Leafy green,Indian,0.84,0.8,0.8,High,1.0,0.756
+Kale,Mustard Greens,Leafy green,Indian,0.85,0.81,0.8,High,1.0,0.765
+Mustard Greens,Kale,Leafy green,Indian,0.85,0.81,0.8,High,1.0,0.765
+Leek,Spring Onion,Allium,Indian,0.86,0.82,0.8,High,1.0,0.774
+Spring Onion,Leek,Allium,Indian,0.86,0.82,0.8,High,1.0,0.774
+Onion,Leek,Allium,Indian,0.82,0.78,0.8,High,2.0,0.738
+Cluster Beans,Okra,Vegetable,Indian,0.8,0.76,0.8,High,2.0,0.72
+Okra,Zucchini,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Zucchini,Okra,Gourd,Indian,0.78,0.74,0.8,High,1.0,0.702
+Shallot,Onion,Allium,Indian,0.8,0.76,0.8,High,2.0,0.72
+Spring Onion,Onion,Allium,Indian,0.82,0.78,0.8,High,2.0,0.738
+Leek,Onion,Allium,Indian,0.82,0.78,0.8,High,2.0,0.738
+Cabbage,Onion,Vegetable,Indian,0.74,0.7,0.8,High,2.0,0.666
+Chickpeas,Peas,Legume,Indian,0.72,0.68,0.8,High,2.0,0.648
+Peas,Sweet Corn,Legume,Indian,0.82,0.78,0.8,High,1.0,0.738
+Sweet Corn,Peas,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Potato,Sweet Potato,Starch,Indian,0.85,0.81,0.8,High,1.0,0.765
+Sweet Potato,Potato,Root vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Potato,Yam,Starch,Indian,0.82,0.78,0.8,High,1.0,0.738
+Yam,Potato,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Potato,Taro,Starch,Indian,0.84,0.8,0.8,High,1.0,0.756
+Taro,Potato,Root vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Potato,Raw Banana,Starch,Indian,0.8,0.76,0.8,High,1.0,0.72
+Raw Banana,Potato,Cooking fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Pumpkin,Bottle Gourd,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Bottle Gourd,Pumpkin,Gourd,Indian,0.82,0.78,0.8,High,1.0,0.738
+Pumpkin,Sweet Potato,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Sweet Potato,Pumpkin,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Tomato,Pumpkin,Vegetable,Indian,0.7,0.66,0.8,High,2.0,0.63
+Raw Banana,Yam,Cooking fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Yam,Raw Banana,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Raw Mango,Tamarind,Cooking fruit,Indian,0.88,0.84,0.8,High,0.5,0.792
+Tamarind,Raw Mango,Flavoring,Indian,0.88,0.84,0.8,High,2.0,0.792
+Tomato,Raw Mango,Vegetable,Indian,0.88,0.84,0.8,High,2.0,0.792
+Raw Mango,Lemon,Cooking fruit,Indian,0.85,0.81,0.8,High,0.5,0.765
+Lemon,Raw Mango,Fruit,Indian,0.85,0.81,0.8,High,2.0,0.765
+Ridge Gourd,Snake Gourd,Gourd,Indian,0.9,0.85,0.8,High,1.0,0.81
+Snake Gourd,Ridge Gourd,Gourd,Indian,0.9,0.85,0.8,High,1.0,0.81
+Ridge Gourd,Zucchini,Gourd,Indian,0.86,0.82,0.8,High,1.0,0.774
+Zucchini,Ridge Gourd,Gourd,Indian,0.86,0.82,0.8,High,1.0,0.774
+Onion,Shallot,Allium,Indian,0.8,0.76,0.8,High,2.0,0.72
+Shallot,Spring Onion,Allium,Indian,0.85,0.81,0.8,High,1.0,0.765
+Spring Onion,Shallot,Allium,Indian,0.85,0.81,0.8,High,1.0,0.765
+Snake Gourd,Ash Gourd,Gourd,Indian,0.8,0.76,0.8,High,1.0,0.72
+Ash Gourd,Snake Gourd,Gourd,Indian,0.8,0.76,0.8,High,1.0,0.72
+Fenugreek Leaves,Spinach,Leafy green,Indian,0.77,0.73,0.8,High,2.0,0.693
+Spinach,Mustard Greens,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Mustard Greens,Spinach,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Onion,Spring Onion,Allium,Indian,0.82,0.78,0.8,High,2.0,0.738
+Sweet Potato,Yam,Root vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Yam,Sweet Potato,Root vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Tamarind,Raw Mango,Flavoring,Indian,0.88,0.84,0.8,High,0.5,0.792
+Raw Mango,Tamarind,Cooking fruit,Indian,0.88,0.84,0.8,High,2.0,0.792
+Tomato,Tamarind,Vegetable,Indian,0.83,0.79,0.8,High,2.0,0.747
+Tamarind,Lemon,Flavoring,Indian,0.86,0.82,0.8,High,0.5,0.774
+Lemon,Tamarind,Fruit,Indian,0.86,0.82,0.8,High,2.0,0.774
+Taro,Yam,Root vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Yam,Taro,Root vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Taro,Sweet Potato,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Sweet Potato,Taro,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Pumpkin,Tomato,Vegetable,Indian,0.7,0.66,0.8,High,2.0,0.63
+Carrot,Tomato,Root vegetable,Indian,0.75,0.71,0.8,High,2.0,0.675
+Capsicum,Tomato,Vegetable,Indian,0.79,0.75,0.8,High,2.0,0.711
+Tamarind,Tomato,Flavoring,Indian,0.83,0.79,0.8,High,2.0,0.747
+Raw Mango,Tomato,Cooking fruit,Indian,0.88,0.84,0.8,High,2.0,0.792
+Turnip,Radish,Root vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Radish,Turnip,Root vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Turnip,Kohlrabi,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Kohlrabi,Turnip,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Turnip,Carrot,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Carrot,Turnip,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Zucchini,Cucumber,Gourd,Indian,0.85,0.81,0.8,High,1.0,0.765
+Cucumber,Zucchini,Vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Apple,Pear,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Pear,Apple,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Apple,Guava,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Guava,Apple,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Apple,Papaya,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Papaya,Apple,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Banana,Papaya,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Papaya,Banana,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Banana,Sapota,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sapota,Banana,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Banana,Mango,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Mango,Banana,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Coconut,Peanuts,Nut,Indian,0.78,0.74,0.8,High,0.5,0.702
+Peanuts,Coconut,Nut,Indian,0.78,0.74,0.8,High,2.0,0.702
+Coconut,Almonds,Nut,Indian,0.8,0.76,0.8,High,0.5,0.72
+Almonds,Coconut,Nut,Indian,0.8,0.76,0.8,High,2.0,0.72
+Curd,Greek Yogurt,Dairy,Indian,0.9,0.85,0.8,High,1.0,0.81
+Greek Yogurt,Curd,Dairy,Indian,0.9,0.85,0.8,High,1.0,0.81
+Curd,Buttermilk,Dairy,Indian,0.84,0.8,0.8,High,1.0,0.756
+Buttermilk,Curd,Dairy,Indian,0.84,0.8,0.8,High,1.0,0.756
+Curd,Milk,Dairy,Indian,0.82,0.78,0.8,High,1.0,0.738
+Milk,Curd,Dairy,Indian,0.82,0.78,0.8,High,1.0,0.738
+Egg,Paneer,Protein,Indian,0.82,0.78,0.8,High,0.5,0.738
+Paneer,Egg,Dairy,Indian,0.82,0.78,0.8,High,2.0,0.738
+Egg,Tofu,Protein,Indian,0.8,0.76,0.8,High,1.0,0.72
+Tofu,Egg,Protein,Indian,0.8,0.76,0.8,High,1.0,0.72
+Egg,Egg White,Protein,Indian,0.88,0.84,0.8,High,1.0,0.792
+Egg White,Egg,Protein,Indian,0.88,0.84,0.8,High,1.0,0.792
+Garlic,Ginger,Aromatic,Indian,0.78,0.74,0.8,High,1.0,0.702
+Ginger,Garlic,Aromatic,Indian,0.78,0.74,0.8,High,1.0,0.702
+Garlic,Shallot,Aromatic,Indian,0.76,0.72,0.8,High,1.0,0.684
+Shallot,Garlic,Allium,Indian,0.76,0.72,0.8,High,1.0,0.684
+Garlic,Onion,Aromatic,Indian,0.72,0.68,0.8,High,0.5,0.648
+Onion,Garlic,Allium,Indian,0.72,0.68,0.8,High,2.0,0.648
+Ginger,Fresh Turmeric,Aromatic,Indian,0.85,0.81,0.8,High,1.0,0.765
+Fresh Turmeric,Ginger,Root,Indian,0.85,0.81,0.8,High,1.0,0.765
+Milk,Low Fat Milk,Dairy,Indian,0.92,0.87,0.8,High,1.0,0.828
+Low Fat Milk,Milk,Dairy,Indian,0.92,0.87,0.8,High,1.0,0.828
+Milk,Soy Milk,Dairy,Indian,0.84,0.8,0.8,High,1.0,0.756
+Soy Milk,Milk,Dairy alternative,Indian,0.84,0.8,0.8,High,1.0,0.756
+Moong Dal,Toor Dal,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Toor Dal,Moong Dal,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Moong Dal,Chana Dal,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Chana Dal,Moong Dal,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Moong Dal,Lentils,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Lentils,Moong Dal,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Orange,Sweet Lime,Fruit,Indian,0.9,0.85,0.8,High,1.0,0.81
+Sweet Lime,Orange,Fruit,Indian,0.9,0.85,0.8,High,1.0,0.81
+Orange,Grapefruit,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Grapefruit,Orange,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Orange,Lemon,Fruit,Indian,0.82,0.78,0.8,High,0.5,0.738
+Lemon,Orange,Fruit,Indian,0.82,0.78,0.8,High,2.0,0.738
+Paneer,Tofu,Dairy,Indian,0.86,0.82,0.8,High,1.0,0.774
+Tofu,Paneer,Protein,Indian,0.86,0.82,0.8,High,1.0,0.774
+Paneer,Egg,Dairy,Indian,0.82,0.78,0.8,High,0.5,0.738
+Egg,Paneer,Protein,Indian,0.82,0.78,0.8,High,2.0,0.738
+Paneer,Curd,Dairy,Indian,0.78,0.74,0.8,High,0.5,0.702
+Curd,Paneer,Dairy,Indian,0.78,0.74,0.8,High,2.0,0.702
+Papaya,Guava,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Guava,Papaya,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Papaya,Mango,Fruit,Indian,0.85,0.81,0.8,High,1.0,0.765
+Mango,Papaya,Fruit,Indian,0.85,0.81,0.8,High,1.0,0.765
+Papaya,Muskmelon,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Muskmelon,Papaya,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Rice,Brown Rice,Cereal,Indian,0.9,0.85,0.8,High,1.0,0.81
+Brown Rice,Rice,Cereal,Indian,0.9,0.85,0.8,High,1.0,0.81
+Rice,Basmati Rice,Cereal,Indian,0.94,0.89,0.8,High,1.0,0.846
+Basmati Rice,Rice,Cereal,Indian,0.94,0.89,0.8,High,1.0,0.846
+Rice,Millet,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Millet,Rice,Millet,Indian,0.82,0.78,0.8,High,1.0,0.738
+Rice,Poha,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Poha,Rice,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Toor Dal,Chana Dal,Pulse,Indian,0.9,0.85,0.8,High,1.0,0.81
+Chana Dal,Toor Dal,Pulse,Indian,0.9,0.85,0.8,High,1.0,0.81
+Toor Dal,Lentils,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Lentils,Toor Dal,Pulse,Indian,0.88,0.84,0.8,High,1.0,0.792
+Wheat,Whole Wheat Flour,Cereal,Indian,0.95,0.9,0.8,High,1.0,0.855
+Whole Wheat Flour,Wheat,Cereal,Indian,0.95,0.9,0.8,High,1.0,0.855
+Wheat,Dalia,Cereal,Indian,0.92,0.87,0.8,High,1.0,0.828
+Dalia,Wheat,Cereal,Indian,0.92,0.87,0.8,High,1.0,0.828
+Wheat,Barley,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Barley,Wheat,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Wheat,Millet,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Millet,Wheat,Millet,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cucumber,Bottle Gourd,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Bottle Gourd,Cucumber,Gourd,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cucumber,Ridge Gourd,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Ridge Gourd,Cucumber,Gourd,Indian,0.8,0.76,0.8,High,1.0,0.72
+Radish,Kohlrabi,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Kohlrabi,Radish,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Radish,Carrot,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Carrot,Radish,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Brussels Sprouts,Cabbage,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cabbage,Brussels Sprouts,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Brussels Sprouts,Broccoli,Vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Broccoli,Brussels Sprouts,Vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Red Cabbage,Cabbage,Vegetable,Indian,0.92,0.87,0.8,High,1.0,0.828
+Cabbage,Red Cabbage,Vegetable,Indian,0.92,0.87,0.8,High,1.0,0.828
+Red Cabbage,Beetroot,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Beetroot,Red Cabbage,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Red Bell Pepper,Yellow Bell Pepper,Vegetable,Indian,0.94,0.89,0.8,High,1.0,0.846
+Yellow Bell Pepper,Red Bell Pepper,Vegetable,Indian,0.94,0.89,0.8,High,1.0,0.846
+Red Bell Pepper,Tomato,Vegetable,Indian,0.8,0.76,0.8,High,0.5,0.72
+Tomato,Red Bell Pepper,Vegetable,Indian,0.8,0.76,0.8,High,2.0,0.72
+Sweet Corn,Baby Corn,Vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Baby Corn,Sweet Corn,Vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Baby Corn,French Beans,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+French Beans,Baby Corn,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+French Beans,Green Beans,Vegetable,Indian,0.96,0.91,0.8,High,1.0,0.864
+Green Beans,French Beans,Vegetable,Indian,0.96,0.91,0.8,High,1.0,0.864
+French Beans,Snow Peas,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Snow Peas,French Beans,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+French Beans,Cluster Beans,Vegetable,Indian,0.8,0.76,0.8,High,0.5,0.72
+Cluster Beans,French Beans,Vegetable,Indian,0.8,0.76,0.8,High,2.0,0.72
+Snow Peas,Green Beans,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Green Beans,Snow Peas,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Snow Peas,Peas,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Peas,Snow Peas,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sugar Snap Peas,Snow Peas,Vegetable,Indian,0.94,0.89,0.8,High,1.0,0.846
+Snow Peas,Sugar Snap Peas,Vegetable,Indian,0.94,0.89,0.8,High,1.0,0.846
+Sugar Snap Peas,Green Beans,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Green Beans,Sugar Snap Peas,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Asparagus,Green Beans,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Green Beans,Asparagus,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Asparagus,French Beans,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+French Beans,Asparagus,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Celery,Leek,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Leek,Celery,Allium,Indian,0.82,0.78,0.8,High,1.0,0.738
+Celery,Spring Onion,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Spring Onion,Celery,Allium,Indian,0.8,0.76,0.8,High,1.0,0.72
+Parsnip,Carrot,Root vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Carrot,Parsnip,Root vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Parsnip,Turnip,Root vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Turnip,Parsnip,Root vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Rutabaga,Turnip,Root vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Turnip,Rutabaga,Root vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Rutabaga,Potato,Root vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Potato,Rutabaga,Starch,Indian,0.82,0.78,0.8,High,1.0,0.738
+Button Mushroom,Oyster Mushroom,Vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Oyster Mushroom,Button Mushroom,Vegetable,Indian,0.88,0.84,0.8,High,1.0,0.792
+Button Mushroom,Tofu,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Tofu,Button Mushroom,Protein,Indian,0.8,0.76,0.8,High,1.0,0.72
+Button Mushroom,Paneer,Vegetable,Indian,0.78,0.74,0.8,High,0.5,0.702
+Paneer,Button Mushroom,Dairy,Indian,0.78,0.74,0.8,High,2.0,0.702
+Oyster Mushroom,Shiitake Mushroom,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Shiitake Mushroom,Oyster Mushroom,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Shiitake Mushroom,Button Mushroom,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Button Mushroom,Shiitake Mushroom,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Green Chilli,Red Chilli,Spice,Indian,0.88,0.84,0.8,High,1.0,0.792
+Red Chilli,Green Chilli,Spice,Indian,0.88,0.84,0.8,High,1.0,0.792
+Green Chilli,Capsicum,Spice,Indian,0.78,0.74,0.8,High,0.25,0.702
+Capsicum,Green Chilli,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Red Chilli,Capsicum,Spice,Indian,0.78,0.74,0.8,High,0.25,0.702
+Capsicum,Red Chilli,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Jalapeno,Capsicum,Spice,Indian,0.85,0.81,0.8,High,1.0,0.765
+Capsicum,Jalapeno,Vegetable,Indian,0.85,0.81,0.8,High,1.0,0.765
+Jalapeno,Green Chilli,Spice,Indian,0.82,0.78,0.8,High,0.5,0.738
+Green Chilli,Jalapeno,Spice,Indian,0.82,0.78,0.8,High,2.0,0.738
+Artichoke,Asparagus,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Asparagus,Artichoke,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Artichoke,Cauliflower,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Cauliflower,Artichoke,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Bamboo Shoots,Baby Corn,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Baby Corn,Bamboo Shoots,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Bamboo Shoots,Water Chestnut,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Water Chestnut,Bamboo Shoots,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Water Chestnut,Lotus Root,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Lotus Root,Water Chestnut,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Water Chestnut,Potato,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Potato,Water Chestnut,Starch,Indian,0.78,0.74,0.8,High,1.0,0.702
+Lotus Root,Taro,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Taro,Lotus Root,Root vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Mustard Greens,Collard Greens,Leafy green,Indian,0.88,0.84,0.8,High,1.0,0.792
+Collard Greens,Mustard Greens,Leafy green,Indian,0.88,0.84,0.8,High,1.0,0.792
+Collard Greens,Spinach,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Spinach,Collard Greens,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Collard Greens,Kale,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Kale,Collard Greens,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Swiss Chard,Spinach,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Spinach,Swiss Chard,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Swiss Chard,Beet Greens,Leafy green,Indian,0.88,0.84,0.8,High,1.0,0.792
+Beet Greens,Swiss Chard,Leafy green,Indian,0.88,0.84,0.8,High,1.0,0.792
+Beet Greens,Spinach,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Spinach,Beet Greens,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Turnip Greens,Mustard Greens,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Mustard Greens,Turnip Greens,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Turnip Greens,Spinach,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Spinach,Turnip Greens,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Romaine Lettuce,Iceberg Lettuce,Leafy green,Indian,0.9,0.85,0.8,High,1.0,0.81
+Iceberg Lettuce,Romaine Lettuce,Leafy green,Indian,0.9,0.85,0.8,High,1.0,0.81
+Iceberg Lettuce,Cabbage,Leafy green,Indian,0.78,0.74,0.8,High,1.0,0.702
+Cabbage,Iceberg Lettuce,Vegetable,Indian,0.78,0.74,0.8,High,1.0,0.702
+Arugula,Watercress,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Watercress,Arugula,Leafy green,Indian,0.86,0.82,0.8,High,1.0,0.774
+Arugula,Spinach,Leafy green,Indian,0.8,0.76,0.8,High,1.0,0.72
+Spinach,Arugula,Leafy green,Indian,0.8,0.76,0.8,High,1.0,0.72
+Watercress,Spinach,Leafy green,Indian,0.8,0.76,0.8,High,1.0,0.72
+Spinach,Watercress,Leafy green,Indian,0.8,0.76,0.8,High,1.0,0.72
+Bok Choy,Cabbage,Leafy green,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cabbage,Bok Choy,Vegetable,Indian,0.84,0.8,0.8,High,1.0,0.756
+Bok Choy,Spinach,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Spinach,Bok Choy,Leafy green,Indian,0.82,0.78,0.8,High,1.0,0.738
+Parsley,Coriander Leaves,Herb,Indian,0.88,0.84,0.8,High,1.0,0.792
+Coriander Leaves,Parsley,Herb,Indian,0.88,0.84,0.8,High,1.0,0.792
+Parsley,Celery,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Celery,Parsley,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Coriander Leaves,Mint Leaves,Herb,Indian,0.84,0.8,0.8,High,1.0,0.756
+Mint Leaves,Coriander Leaves,Herb,Indian,0.84,0.8,0.8,High,1.0,0.756
+Coriander Leaves,Curry Leaves,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Curry Leaves,Coriander Leaves,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Mint Leaves,Basil,Herb,Indian,0.82,0.78,0.8,High,1.0,0.738
+Basil,Mint Leaves,Herb,Indian,0.82,0.78,0.8,High,1.0,0.738
+Basil,Coriander Leaves,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Coriander Leaves,Basil,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Dill Leaves,Fennel,Herb,Indian,0.86,0.82,0.8,High,1.0,0.774
+Fennel,Dill Leaves,Vegetable,Indian,0.86,0.82,0.8,High,1.0,0.774
+Dill Leaves,Coriander Leaves,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Coriander Leaves,Dill Leaves,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Fennel,Celery,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Celery,Fennel,Vegetable,Indian,0.82,0.78,0.8,High,1.0,0.738
+Curry Leaves,Lemongrass,Herb,Indian,0.78,0.74,0.8,High,1.0,0.702
+Lemongrass,Curry Leaves,Herb,Indian,0.78,0.74,0.8,High,1.0,0.702
+Lemongrass,Ginger,Herb,Indian,0.8,0.76,0.8,High,0.5,0.72
+Ginger,Lemongrass,Aromatic,Indian,0.8,0.76,0.8,High,2.0,0.72
+Lemongrass,Mint Leaves,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Mint Leaves,Lemongrass,Herb,Indian,0.8,0.76,0.8,High,1.0,0.72
+Kidney Beans,Black Gram,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Black Gram,Kidney Beans,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Kidney Beans,Cowpeas,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cowpeas,Kidney Beans,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Lentils,Chana Dal,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Chana Dal,Lentils,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Black Gram,Lentils,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Lentils,Black Gram,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Black Gram,Toor Dal,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Toor Dal,Black Gram,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cowpeas,Chickpeas,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Chickpeas,Cowpeas,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cowpeas,Black-Eyed Beans,Pulse,Indian,0.95,0.9,0.8,High,1.0,0.855
+Black-Eyed Beans,Cowpeas,Legume,Indian,0.95,0.9,0.8,High,1.0,0.855
+Soybeans,Soy Chunks,Pulse,Indian,0.88,0.84,0.8,High,0.5,0.792
+Soy Chunks,Soybeans,Protein,Indian,0.88,0.84,0.8,High,2.0,0.792
+Soybeans,Chickpeas,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Chickpeas,Soybeans,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Soybeans,Kidney Beans,Pulse,Indian,0.82,0.78,0.8,High,1.0,0.738
+Kidney Beans,Soybeans,Pulse,Indian,0.82,0.78,0.8,High,1.0,0.738
+Black Chickpeas,Chickpeas,Legume,Indian,0.94,0.89,0.8,High,1.0,0.846
+Chickpeas,Black Chickpeas,Legume,Indian,0.94,0.89,0.8,High,1.0,0.846
+Black Chickpeas,Kidney Beans,Legume,Indian,0.86,0.82,0.8,High,1.0,0.774
+Kidney Beans,Black Chickpeas,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+White Peas,Peas,Legume,Indian,0.9,0.85,0.8,High,1.0,0.81
+Peas,White Peas,Legume,Indian,0.9,0.85,0.8,High,1.0,0.81
+White Peas,Chickpeas,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Chickpeas,White Peas,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Pinto Beans,Kidney Beans,Legume,Indian,0.92,0.87,0.8,High,1.0,0.828
+Kidney Beans,Pinto Beans,Pulse,Indian,0.92,0.87,0.8,High,1.0,0.828
+Pinto Beans,Black Gram,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Black Gram,Pinto Beans,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Navy Beans,Lima Beans,Legume,Indian,0.88,0.84,0.8,High,1.0,0.792
+Lima Beans,Navy Beans,Legume,Indian,0.88,0.84,0.8,High,1.0,0.792
+Navy Beans,Cowpeas,Legume,Indian,0.86,0.82,0.8,High,1.0,0.774
+Cowpeas,Navy Beans,Pulse,Indian,0.86,0.82,0.8,High,1.0,0.774
+Lima Beans,Broad Beans,Legume,Indian,0.86,0.82,0.8,High,1.0,0.774
+Broad Beans,Lima Beans,Legume,Indian,0.86,0.82,0.8,High,1.0,0.774
+Black-Eyed Beans,Kidney Beans,Legume,Indian,0.84,0.8,0.8,High,1.0,0.756
+Kidney Beans,Black-Eyed Beans,Pulse,Indian,0.84,0.8,0.8,High,1.0,0.756
+Soy Chunks,Soybeans,Protein,Indian,0.88,0.84,0.8,High,0.5,0.792
+Soybeans,Soy Chunks,Pulse,Indian,0.88,0.84,0.8,High,2.0,0.792
+Soy Chunks,Paneer,Protein,Indian,0.82,0.78,0.8,High,0.5,0.738
+Paneer,Soy Chunks,Dairy,Indian,0.82,0.78,0.8,High,2.0,0.738
+Soy Chunks,Tofu,Protein,Indian,0.84,0.8,0.8,High,1.0,0.756
+Tofu,Soy Chunks,Protein,Indian,0.84,0.8,0.8,High,1.0,0.756
+Whole Moong,Green Gram,Pulse,Indian,0.98,0.93,0.8,High,1.0,0.882
+Green Gram,Whole Moong,Legume,Indian,0.98,0.93,0.8,High,1.0,0.882
+Whole Moong,Moong Dal,Pulse,Indian,0.92,0.87,0.8,High,1.0,0.828
+Moong Dal,Whole Moong,Pulse,Indian,0.92,0.87,0.8,High,1.0,0.828
+Green Pigeon Peas,Peas,Legume,Indian,0.88,0.84,0.8,High,1.0,0.792
+Peas,Green Pigeon Peas,Legume,Indian,0.88,0.84,0.8,High,1.0,0.792
+Green Pigeon Peas,Broad Beans,Legume,Indian,0.84,0.8,0.8,High,0.5,0.756
+Broad Beans,Green Pigeon Peas,Legume,Indian,0.84,0.8,0.8,High,2.0,0.756
+Brown Rice,Quinoa,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Quinoa,Brown Rice,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Brown Rice,Millet,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Millet,Brown Rice,Millet,Indian,0.84,0.8,0.8,High,1.0,0.756
+Basmati Rice,Brown Rice,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Brown Rice,Basmati Rice,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Poha,Murmura,Cereal,Indian,0.84,0.8,0.8,High,0.5,0.756
+Murmura,Poha,Cereal,Indian,0.84,0.8,0.8,High,2.0,0.756
+Poha,Oats,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Oats,Poha,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Murmura,Poha,Cereal,Indian,0.84,0.8,0.8,High,0.5,0.756
+Poha,Murmura,Cereal,Indian,0.84,0.8,0.8,High,2.0,0.756
+Murmura,Rice,Cereal,Indian,0.82,0.78,0.8,High,0.5,0.738
+Rice,Murmura,Cereal,Indian,0.82,0.78,0.8,High,2.0,0.738
+Whole Wheat Flour,Semolina,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Semolina,Whole Wheat Flour,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Whole Wheat Flour,Dalia,Cereal,Indian,0.9,0.85,0.8,High,1.0,0.81
+Dalia,Whole Wheat Flour,Cereal,Indian,0.9,0.85,0.8,High,1.0,0.81
+Dalia,Oats,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Oats,Dalia,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Dalia,Barley,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Barley,Dalia,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Semolina,Corn Flour,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Corn Flour,Semolina,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Semolina,Dalia,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Dalia,Semolina,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Oats,Barley,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Barley,Oats,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Oats,Millet,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Millet,Oats,Millet,Indian,0.84,0.8,0.8,High,1.0,0.756
+Oat Flour,Oats,Cereal,Indian,0.96,0.91,0.8,High,1.0,0.864
+Oats,Oat Flour,Cereal,Indian,0.96,0.91,0.8,High,1.0,0.864
+Oat Flour,Whole Wheat Flour,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Whole Wheat Flour,Oat Flour,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Sorghum,Millet,Millet,Indian,0.9,0.85,0.8,High,1.0,0.81
+Millet,Sorghum,Millet,Indian,0.9,0.85,0.8,High,1.0,0.81
+Sorghum,Wheat,Millet,Indian,0.84,0.8,0.8,High,1.0,0.756
+Wheat,Sorghum,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sorghum,Corn Flour,Millet,Indian,0.82,0.78,0.8,High,1.0,0.738
+Corn Flour,Sorghum,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Quinoa,Buckwheat,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Buckwheat,Quinoa,Cereal,Indian,0.86,0.82,0.8,High,1.0,0.774
+Quinoa,Millet,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Millet,Quinoa,Millet,Indian,0.84,0.8,0.8,High,1.0,0.756
+Buckwheat,Millet,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Millet,Buckwheat,Millet,Indian,0.84,0.8,0.8,High,1.0,0.756
+Corn Flour,Whole Wheat Flour,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Whole Wheat Flour,Corn Flour,Cereal,Indian,0.82,0.78,0.8,High,1.0,0.738
+Sago,Rice,Starch,Indian,0.84,0.8,0.8,High,1.0,0.756
+Rice,Sago,Cereal,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sago,Potato,Starch,Indian,0.8,0.76,0.8,High,1.0,0.72
+Potato,Sago,Starch,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cornstarch,Corn Flour,Starch,Indian,0.88,0.84,0.8,High,1.0,0.792
+Corn Flour,Cornstarch,Cereal,Indian,0.88,0.84,0.8,High,1.0,0.792
+Cornstarch,Semolina,Starch,Indian,0.8,0.76,0.8,High,1.0,0.72
+Semolina,Cornstarch,Cereal,Indian,0.8,0.76,0.8,High,1.0,0.72
+Guava,Pear,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Pear,Guava,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Pomegranate,Grapes,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Grapes,Pomegranate,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Pomegranate,Apple,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Apple,Pomegranate,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Watermelon,Muskmelon,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Muskmelon,Watermelon,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Watermelon,Cucumber,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cucumber,Watermelon,Vegetable,Indian,0.8,0.76,0.8,High,1.0,0.72
+Watermelon,Coconut Water,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Coconut Water,Watermelon,Beverage,Indian,0.84,0.8,0.8,High,1.0,0.756
+Pineapple,Mango,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Mango,Pineapple,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Pineapple,Orange,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Orange,Pineapple,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Grapes,Plum,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Plum,Grapes,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Grapes,Lychee,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Lychee,Grapes,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Lemon,Lime,Fruit,Indian,0.95,0.9,0.8,High,1.0,0.855
+Lime,Lemon,Fruit,Indian,0.95,0.9,0.8,High,1.0,0.855
+Lemon,Orange,Fruit,Indian,0.82,0.78,0.8,High,0.5,0.738
+Orange,Lemon,Fruit,Indian,0.82,0.78,0.8,High,2.0,0.738
+Lemon,Raw Mango,Fruit,Indian,0.85,0.81,0.8,High,0.5,0.765
+Raw Mango,Lemon,Cooking fruit,Indian,0.85,0.81,0.8,High,2.0,0.765
+Lime,Raw Mango,Fruit,Indian,0.85,0.81,0.8,High,0.5,0.765
+Raw Mango,Lime,Cooking fruit,Indian,0.85,0.81,0.8,High,2.0,0.765
+Sweet Lime,Lemon,Fruit,Indian,0.82,0.78,0.8,High,0.5,0.738
+Lemon,Sweet Lime,Fruit,Indian,0.82,0.78,0.8,High,2.0,0.738
+Grapefruit,Sweet Lime,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Sweet Lime,Grapefruit,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Plum,Peach,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Peach,Plum,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Plum,Apricot,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Apricot,Plum,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Plum,Cherries,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cherries,Plum,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Peach,Apricot,Fruit,Indian,0.9,0.85,0.8,High,1.0,0.81
+Apricot,Peach,Fruit,Indian,0.9,0.85,0.8,High,1.0,0.81
+Peach,Pear,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Pear,Peach,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Fig,Dates,Fruit,Indian,0.85,0.81,0.8,High,1.0,0.765
+Dates,Fig,Fruit,Indian,0.85,0.81,0.8,High,1.0,0.765
+Fig,Plum,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Plum,Fig,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Dates,Tamarind,Fruit,Indian,0.8,0.76,0.8,High,0.5,0.72
+Tamarind,Dates,Flavoring,Indian,0.8,0.76,0.8,High,2.0,0.72
+Strawberry,Blueberries,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Blueberries,Strawberry,Fruit,Indian,0.88,0.84,0.8,High,1.0,0.792
+Strawberry,Grapes,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Grapes,Strawberry,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Blueberries,Blackberries,Fruit,Indian,0.9,0.85,0.8,High,1.0,0.81
+Blackberries,Blueberries,Fruit,Indian,0.9,0.85,0.8,High,1.0,0.81
+Blackberries,Strawberry,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Strawberry,Blackberries,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Lychee,Pear,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Pear,Lychee,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Sapota,Custard Apple,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Custard Apple,Sapota,Fruit,Indian,0.86,0.82,0.8,High,1.0,0.774
+Custard Apple,Banana,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Banana,Custard Apple,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Jackfruit,Raw Banana,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Raw Banana,Jackfruit,Cooking fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Jackfruit,Potato,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Potato,Jackfruit,Starch,Indian,0.8,0.76,0.8,High,1.0,0.72
+Amla,Lemon,Fruit,Indian,0.84,0.8,0.8,High,0.5,0.756
+Lemon,Amla,Fruit,Indian,0.84,0.8,0.8,High,2.0,0.756
+Amla,Tamarind,Fruit,Indian,0.82,0.78,0.8,High,0.5,0.738
+Tamarind,Amla,Flavoring,Indian,0.82,0.78,0.8,High,2.0,0.738
+Coconut Water,Sweet Lime,Beverage,Indian,0.8,0.76,0.8,High,1.0,0.72
+Sweet Lime,Coconut Water,Fruit,Indian,0.8,0.76,0.8,High,1.0,0.72
+Kiwi,Orange,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Orange,Kiwi,Fruit,Indian,0.84,0.8,0.8,High,1.0,0.756
+Kiwi,Guava,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Guava,Kiwi,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cherries,Grapes,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Grapes,Cherries,Fruit,Indian,0.82,0.78,0.8,High,1.0,0.738
+Low Fat Milk,Skim Milk,Dairy,Indian,0.94,0.89,0.8,High,1.0,0.846
+Skim Milk,Low Fat Milk,Dairy,Indian,0.94,0.89,0.8,High,1.0,0.846
+Low Fat Milk,Soy Milk,Dairy,Indian,0.86,0.82,0.8,High,1.0,0.774
+Soy Milk,Low Fat Milk,Dairy alternative,Indian,0.86,0.82,0.8,High,1.0,0.774
+Skim Milk,Milk,Dairy,Indian,0.88,0.84,0.8,High,1.0,0.792
+Milk,Skim Milk,Dairy,Indian,0.88,0.84,0.8,High,1.0,0.792
+Skim Milk,Soy Milk,Dairy,Indian,0.86,0.82,0.8,High,1.0,0.774
+Soy Milk,Skim Milk,Dairy alternative,Indian,0.86,0.82,0.8,High,1.0,0.774
+Greek Yogurt,Cottage Cheese,Dairy,Indian,0.84,0.8,0.8,High,0.5,0.756
+Cottage Cheese,Greek Yogurt,Dairy,Indian,0.84,0.8,0.8,High,2.0,0.756
+Buttermilk,Low Fat Milk,Dairy,Indian,0.82,0.78,0.8,High,1.0,0.738
+Low Fat Milk,Buttermilk,Dairy,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cottage Cheese,Paneer,Dairy,Indian,0.96,0.91,0.8,High,1.0,0.864
+Paneer,Cottage Cheese,Dairy,Indian,0.96,0.91,0.8,High,1.0,0.864
+Cottage Cheese,Tofu,Dairy,Indian,0.86,0.82,0.8,High,1.0,0.774
+Tofu,Cottage Cheese,Protein,Indian,0.86,0.82,0.8,High,1.0,0.774
+Butter,Ghee,Dairy,Indian,0.92,0.87,0.8,High,1.0,0.828
+Ghee,Butter,Dairy,Indian,0.92,0.87,0.8,High,1.0,0.828
+Butter,Peanut Butter,Dairy,Indian,0.78,0.74,0.8,High,0.5,0.702
+Peanut Butter,Butter,Spread,Indian,0.78,0.74,0.8,High,2.0,0.702
+Ghee,Mustard Oil,Dairy,Indian,0.8,0.76,0.8,High,1.0,0.72
+Mustard Oil,Ghee,Oil,Indian,0.8,0.76,0.8,High,1.0,0.72
+Ghee,Coconut Oil,Dairy,Indian,0.82,0.78,0.8,High,1.0,0.738
+Coconut Oil,Ghee,Oil,Indian,0.82,0.78,0.8,High,1.0,0.738
+Tofu,Tofu Silken,Protein,Indian,0.92,0.87,0.8,High,1.0,0.828
+Tofu Silken,Tofu,Protein,Indian,0.92,0.87,0.8,High,1.0,0.828
+Tofu Silken,Paneer,Protein,Indian,0.84,0.8,0.8,High,1.0,0.756
+Paneer,Tofu Silken,Dairy,Indian,0.84,0.8,0.8,High,1.0,0.756
+Soy Milk,Almond Milk,Dairy alternative,Indian,0.88,0.84,0.8,High,1.0,0.792
+Almond Milk,Soy Milk,Dairy alternative,Indian,0.88,0.84,0.8,High,1.0,0.792
+Almond Milk,Milk,Dairy alternative,Indian,0.82,0.78,0.8,High,1.0,0.738
+Milk,Almond Milk,Dairy,Indian,0.82,0.78,0.8,High,1.0,0.738
+Egg White,Tofu,Protein,Indian,0.8,0.76,0.8,High,0.5,0.72
+Tofu,Egg White,Protein,Indian,0.8,0.76,0.8,High,2.0,0.72
+Peanuts,Almonds,Nut,Indian,0.82,0.78,0.8,High,0.5,0.738
+Almonds,Peanuts,Nut,Indian,0.82,0.78,0.8,High,2.0,0.738
+Peanuts,Cashews,Nut,Indian,0.8,0.76,0.8,High,0.5,0.72
+Cashews,Peanuts,Nut,Indian,0.8,0.76,0.8,High,2.0,0.72
+Peanuts,Sunflower Seeds,Nut,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sunflower Seeds,Peanuts,Seed,Indian,0.84,0.8,0.8,High,1.0,0.756
+Almonds,Walnuts,Nut,Indian,0.88,0.84,0.8,High,1.0,0.792
+Walnuts,Almonds,Nut,Indian,0.88,0.84,0.8,High,1.0,0.792
+Almonds,Cashews,Nut,Indian,0.88,0.84,0.8,High,1.0,0.792
+Cashews,Almonds,Nut,Indian,0.88,0.84,0.8,High,1.0,0.792
+Almonds,Peanuts,Nut,Indian,0.82,0.78,0.8,High,0.5,0.738
+Peanuts,Almonds,Nut,Indian,0.82,0.78,0.8,High,2.0,0.738
+Almonds,Pistachios,Nut,Indian,0.86,0.82,0.8,High,1.0,0.774
+Pistachios,Almonds,Nut,Indian,0.86,0.82,0.8,High,1.0,0.774
+Walnuts,Cashews,Nut,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cashews,Walnuts,Nut,Indian,0.84,0.8,0.8,High,1.0,0.756
+Walnuts,Flax Seeds,Nut,Indian,0.82,0.78,0.8,High,0.5,0.738
+Flax Seeds,Walnuts,Seed,Indian,0.82,0.78,0.8,High,2.0,0.738
+Cashews,Pistachios,Nut,Indian,0.88,0.84,0.8,High,1.0,0.792
+Pistachios,Cashews,Nut,Indian,0.88,0.84,0.8,High,1.0,0.792
+Cashews,Peanuts,Nut,Indian,0.8,0.76,0.8,High,0.5,0.72
+Peanuts,Cashews,Nut,Indian,0.8,0.76,0.8,High,2.0,0.72
+Pistachios,Walnuts,Nut,Indian,0.84,0.8,0.8,High,1.0,0.756
+Walnuts,Pistachios,Nut,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sesame Seeds,Flax Seeds,Seed,Indian,0.86,0.82,0.8,High,1.0,0.774
+Flax Seeds,Sesame Seeds,Seed,Indian,0.86,0.82,0.8,High,1.0,0.774
+Sesame Seeds,Sunflower Seeds,Seed,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sunflower Seeds,Sesame Seeds,Seed,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sesame Seeds,Chia Seeds,Seed,Indian,0.82,0.78,0.8,High,1.0,0.738
+Chia Seeds,Sesame Seeds,Seed,Indian,0.82,0.78,0.8,High,1.0,0.738
+Flax Seeds,Chia Seeds,Seed,Indian,0.9,0.85,0.8,High,1.0,0.81
+Chia Seeds,Flax Seeds,Seed,Indian,0.9,0.85,0.8,High,1.0,0.81
+Flax Seeds,Walnuts,Seed,Indian,0.82,0.78,0.8,High,0.5,0.738
+Walnuts,Flax Seeds,Nut,Indian,0.82,0.78,0.8,High,2.0,0.738
+Sunflower Seeds,Pumpkin Seeds,Seed,Indian,0.92,0.87,0.8,High,1.0,0.828
+Pumpkin Seeds,Sunflower Seeds,Seed,Indian,0.92,0.87,0.8,High,1.0,0.828
+Pumpkin Seeds,Watermelon Seeds,Seed,Indian,0.94,0.89,0.8,High,1.0,0.846
+Watermelon Seeds,Pumpkin Seeds,Seed,Indian,0.94,0.89,0.8,High,1.0,0.846
+Pumpkin Seeds,Almonds,Seed,Indian,0.82,0.78,0.8,High,0.5,0.738
+Almonds,Pumpkin Seeds,Nut,Indian,0.82,0.78,0.8,High,2.0,0.738
+Watermelon Seeds,Sunflower Seeds,Seed,Indian,0.9,0.85,0.8,High,1.0,0.81
+Sunflower Seeds,Watermelon Seeds,Seed,Indian,0.9,0.85,0.8,High,1.0,0.81
+Mustard Oil,Groundnut Oil,Oil,Indian,0.9,0.85,0.8,High,1.0,0.81
+Groundnut Oil,Mustard Oil,Oil,Indian,0.9,0.85,0.8,High,1.0,0.81
+Mustard Oil,Sesame Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Sesame Oil,Mustard Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Mustard Oil,Sunflower Oil,Oil,Indian,0.86,0.82,0.8,High,1.0,0.774
+Sunflower Oil,Mustard Oil,Oil,Indian,0.86,0.82,0.8,High,1.0,0.774
+Groundnut Oil,Sunflower Oil,Oil,Indian,0.92,0.87,0.8,High,1.0,0.828
+Sunflower Oil,Groundnut Oil,Oil,Indian,0.92,0.87,0.8,High,1.0,0.828
+Groundnut Oil,Sesame Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Sesame Oil,Groundnut Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Sunflower Oil,Soybean Oil,Oil,Indian,0.94,0.89,0.8,High,1.0,0.846
+Soybean Oil,Sunflower Oil,Oil,Indian,0.94,0.89,0.8,High,1.0,0.846
+Soybean Oil,Groundnut Oil,Oil,Indian,0.9,0.85,0.8,High,1.0,0.81
+Groundnut Oil,Soybean Oil,Oil,Indian,0.9,0.85,0.8,High,1.0,0.81
+Coconut Oil,Sesame Oil,Oil,Indian,0.84,0.8,0.8,High,1.0,0.756
+Sesame Oil,Coconut Oil,Oil,Indian,0.84,0.8,0.8,High,1.0,0.756
+Olive Oil,Sunflower Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Sunflower Oil,Olive Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Olive Oil,Groundnut Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Groundnut Oil,Olive Oil,Oil,Indian,0.88,0.84,0.8,High,1.0,0.792
+Mustard Seeds,Cumin Seeds,Spice,Indian,0.84,0.8,0.8,High,1.0,0.756
+Cumin Seeds,Mustard Seeds,Spice,Indian,0.84,0.8,0.8,High,1.0,0.756
+Mustard Seeds,Fennel Seeds,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Fennel Seeds,Mustard Seeds,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cumin Seeds,Fennel Seeds,Spice,Indian,0.86,0.82,0.8,High,1.0,0.774
+Fennel Seeds,Cumin Seeds,Spice,Indian,0.86,0.82,0.8,High,1.0,0.774
+Cumin Seeds,Coriander Seeds,Spice,Indian,0.84,0.8,0.8,High,1.0,0.756
+Coriander Seeds,Cumin Seeds,Spice,Indian,0.84,0.8,0.8,High,1.0,0.756
+Coriander Seeds,Fennel Seeds,Spice,Indian,0.82,0.78,0.8,High,1.0,0.738
+Fennel Seeds,Coriander Seeds,Spice,Indian,0.82,0.78,0.8,High,1.0,0.738
+Fenugreek Seeds,Mustard Seeds,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Mustard Seeds,Fenugreek Seeds,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Fenugreek Seeds,Cumin Seeds,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cumin Seeds,Fenugreek Seeds,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cardamom,Cinnamon,Spice,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cinnamon,Cardamom,Spice,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cardamom,Cloves,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cloves,Cardamom,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Black Pepper,Cloves,Spice,Indian,0.82,0.78,0.8,High,1.0,0.738
+Cloves,Black Pepper,Spice,Indian,0.82,0.78,0.8,High,1.0,0.738
+Black Pepper,Ginger,Spice,Indian,0.8,0.76,0.8,High,0.5,0.72
+Ginger,Black Pepper,Aromatic,Indian,0.8,0.76,0.8,High,2.0,0.72
+Cinnamon,Nutmeg,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Nutmeg,Cinnamon,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Turmeric,Fresh Turmeric,Spice,Indian,0.92,0.87,0.8,High,0.5,0.828
+Fresh Turmeric,Turmeric,Root,Indian,0.92,0.87,0.8,High,2.0,0.828
+Turmeric,Ginger,Spice,Indian,0.78,0.74,0.8,High,0.5,0.702
+Ginger,Turmeric,Aromatic,Indian,0.78,0.74,0.8,High,2.0,0.702
+Fresh Turmeric,Turmeric,Root,Indian,0.92,0.87,0.8,High,0.5,0.828
+Turmeric,Fresh Turmeric,Spice,Indian,0.92,0.87,0.8,High,2.0,0.828
+Nutmeg,Cardamom,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Cardamom,Nutmeg,Spice,Indian,0.8,0.76,0.8,High,1.0,0.72
+Peanut Butter,Butter,Spread,Indian,0.78,0.74,0.8,High,0.5,0.702
+Butter,Peanut Butter,Dairy,Indian,0.78,0.74,0.8,High,2.0,0.702
+Peanut Butter,Tahini,Spread,Indian,0.84,0.8,0.8,High,1.0,0.756
+Tahini,Peanut Butter,Spread,Indian,0.84,0.8,0.8,High,1.0,0.756
+Tahini,Butter,Spread,Indian,0.78,0.74,0.8,High,0.5,0.702
+Butter,Tahini,Dairy,Indian,0.78,0.74,0.8,High,2.0,0.702
+Rock Salt,Black Salt,Seasoning,Indian,0.94,0.89,0.8,High,1.0,0.846
+Black Salt,Rock Salt,Seasoning,Indian,0.94,0.89,0.8,High,1.0,0.846

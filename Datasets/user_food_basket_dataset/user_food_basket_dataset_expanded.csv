@@ -1,0 +1,781 @@
+User_ID,Food,Quantity,Unit,Period
+U001,Tomato,4.4,kg,Monthly
+U001,Onion,5.5,kg,Monthly
+U001,Potato,3.3,kg,Monthly
+U001,Rice,11.0,kg,Monthly
+U001,Wheat,5.5,kg,Monthly
+U001,Toor Dal,2.2,kg,Monthly
+U001,Moong Dal,1.1,kg,Monthly
+U001,Chickpeas,1.1,kg,Monthly
+U001,Spinach,2.2,kg,Monthly
+U001,Carrot,2.2,kg,Monthly
+U001,Pumpkin,2.2,kg,Monthly
+U001,Brinjal,2.2,kg,Monthly
+U001,Cabbage,1.65,kg,Monthly
+U001,Cauliflower,1.65,kg,Monthly
+U001,Green Peas,1.1,kg,Monthly
+U001,Banana,4.4,kg,Monthly
+U001,Apple,3.3,kg,Monthly
+U001,Papaya,2.2,kg,Monthly
+U001,Orange,2.2,kg,Monthly
+U001,Milk,16.5,L,Monthly
+U001,Curd,4.4,kg,Monthly
+U001,Paneer,1.1,kg,Monthly
+U001,Egg,66.0,pieces,Monthly
+U001,Coconut,4.0,pieces,Monthly
+U001,Garlic,0.55,kg,Monthly
+U001,Ginger,0.28,kg,Monthly
+U002,Tomato,3.6,kg,Monthly
+U002,Onion,4.5,kg,Monthly
+U002,Potato,2.7,kg,Monthly
+U002,Rice,9.0,kg,Monthly
+U002,Wheat,4.5,kg,Monthly
+U002,Toor Dal,1.8,kg,Monthly
+U002,Moong Dal,0.9,kg,Monthly
+U002,Chickpeas,0.9,kg,Monthly
+U002,Spinach,1.8,kg,Monthly
+U002,Carrot,1.8,kg,Monthly
+U002,Pumpkin,1.8,kg,Monthly
+U002,Brinjal,1.8,kg,Monthly
+U002,Cabbage,1.35,kg,Monthly
+U002,Cauliflower,1.35,kg,Monthly
+U002,Green Peas,0.9,kg,Monthly
+U002,Banana,3.6,kg,Monthly
+U002,Apple,2.7,kg,Monthly
+U002,Papaya,1.8,kg,Monthly
+U002,Orange,1.8,kg,Monthly
+U002,Milk,13.5,L,Monthly
+U002,Curd,3.6,kg,Monthly
+U002,Paneer,0.9,kg,Monthly
+U002,Egg,54.0,pieces,Monthly
+U002,Coconut,4.0,pieces,Monthly
+U002,Garlic,0.45,kg,Monthly
+U002,Ginger,0.23,kg,Monthly
+U003,Tomato,5.0,kg,Monthly
+U003,Onion,6.25,kg,Monthly
+U003,Potato,3.75,kg,Monthly
+U003,Rice,12.5,kg,Monthly
+U003,Wheat,6.25,kg,Monthly
+U003,Toor Dal,2.5,kg,Monthly
+U003,Moong Dal,1.25,kg,Monthly
+U003,Chickpeas,1.25,kg,Monthly
+U003,Spinach,2.5,kg,Monthly
+U003,Carrot,2.5,kg,Monthly
+U003,Pumpkin,2.5,kg,Monthly
+U003,Brinjal,2.5,kg,Monthly
+U003,Cabbage,1.88,kg,Monthly
+U003,Cauliflower,1.88,kg,Monthly
+U003,Green Peas,1.25,kg,Monthly
+U003,Banana,5.0,kg,Monthly
+U003,Apple,3.75,kg,Monthly
+U003,Papaya,2.5,kg,Monthly
+U003,Orange,2.5,kg,Monthly
+U003,Milk,18.75,L,Monthly
+U003,Curd,5.0,kg,Monthly
+U003,Paneer,1.25,kg,Monthly
+U003,Egg,75.0,pieces,Monthly
+U003,Coconut,5.0,pieces,Monthly
+U003,Garlic,0.62,kg,Monthly
+U003,Ginger,0.31,kg,Monthly
+U004,Tomato,4.2,kg,Monthly
+U004,Onion,5.25,kg,Monthly
+U004,Potato,3.15,kg,Monthly
+U004,Rice,10.5,kg,Monthly
+U004,Wheat,5.25,kg,Monthly
+U004,Toor Dal,2.1,kg,Monthly
+U004,Moong Dal,1.05,kg,Monthly
+U004,Chickpeas,1.05,kg,Monthly
+U004,Spinach,2.1,kg,Monthly
+U004,Carrot,2.1,kg,Monthly
+U004,Pumpkin,2.1,kg,Monthly
+U004,Brinjal,2.1,kg,Monthly
+U004,Cabbage,1.58,kg,Monthly
+U004,Cauliflower,1.58,kg,Monthly
+U004,Green Peas,1.05,kg,Monthly
+U004,Banana,4.2,kg,Monthly
+U004,Apple,3.15,kg,Monthly
+U004,Papaya,2.1,kg,Monthly
+U004,Orange,2.1,kg,Monthly
+U004,Milk,15.75,L,Monthly
+U004,Curd,4.2,kg,Monthly
+U004,Paneer,1.05,kg,Monthly
+U004,Egg,63.0,pieces,Monthly
+U004,Coconut,4.0,pieces,Monthly
+U004,Garlic,0.53,kg,Monthly
+U004,Ginger,0.26,kg,Monthly
+U005,Tomato,3.4,kg,Monthly
+U005,Onion,4.25,kg,Monthly
+U005,Potato,2.55,kg,Monthly
+U005,Rice,8.5,kg,Monthly
+U005,Wheat,4.25,kg,Monthly
+U005,Toor Dal,1.7,kg,Monthly
+U005,Moong Dal,0.85,kg,Monthly
+U005,Chickpeas,0.85,kg,Monthly
+U005,Spinach,1.7,kg,Monthly
+U005,Carrot,1.7,kg,Monthly
+U005,Pumpkin,1.7,kg,Monthly
+U005,Brinjal,1.7,kg,Monthly
+U005,Cabbage,1.27,kg,Monthly
+U005,Cauliflower,1.27,kg,Monthly
+U005,Green Peas,0.85,kg,Monthly
+U005,Banana,3.4,kg,Monthly
+U005,Apple,2.55,kg,Monthly
+U005,Papaya,1.7,kg,Monthly
+U005,Orange,1.7,kg,Monthly
+U005,Milk,12.75,L,Monthly
+U005,Curd,3.4,kg,Monthly
+U005,Paneer,0.85,kg,Monthly
+U005,Egg,51.0,pieces,Monthly
+U005,Coconut,3.0,pieces,Monthly
+U005,Garlic,0.42,kg,Monthly
+U005,Ginger,0.21,kg,Monthly
+U006,Tomato,4.8,kg,Monthly
+U006,Onion,6.0,kg,Monthly
+U006,Potato,3.6,kg,Monthly
+U006,Rice,12.0,kg,Monthly
+U006,Wheat,6.0,kg,Monthly
+U006,Toor Dal,2.4,kg,Monthly
+U006,Moong Dal,1.2,kg,Monthly
+U006,Chickpeas,1.2,kg,Monthly
+U006,Spinach,2.4,kg,Monthly
+U006,Carrot,2.4,kg,Monthly
+U006,Pumpkin,2.4,kg,Monthly
+U006,Brinjal,2.4,kg,Monthly
+U006,Cabbage,1.8,kg,Monthly
+U006,Cauliflower,1.8,kg,Monthly
+U006,Green Peas,1.2,kg,Monthly
+U006,Banana,4.8,kg,Monthly
+U006,Apple,3.6,kg,Monthly
+U006,Papaya,2.4,kg,Monthly
+U006,Orange,2.4,kg,Monthly
+U006,Milk,18.0,L,Monthly
+U006,Curd,4.8,kg,Monthly
+U006,Paneer,1.2,kg,Monthly
+U006,Egg,72.0,pieces,Monthly
+U006,Coconut,5.0,pieces,Monthly
+U006,Garlic,0.6,kg,Monthly
+U006,Ginger,0.3,kg,Monthly
+U007,Tomato,4.0,kg,Monthly
+U007,Onion,5.0,kg,Monthly
+U007,Potato,3.0,kg,Monthly
+U007,Rice,10.0,kg,Monthly
+U007,Wheat,5.0,kg,Monthly
+U007,Toor Dal,2.0,kg,Monthly
+U007,Moong Dal,1.0,kg,Monthly
+U007,Chickpeas,1.0,kg,Monthly
+U007,Spinach,2.0,kg,Monthly
+U007,Carrot,2.0,kg,Monthly
+U007,Pumpkin,2.0,kg,Monthly
+U007,Brinjal,2.0,kg,Monthly
+U007,Cabbage,1.5,kg,Monthly
+U007,Cauliflower,1.5,kg,Monthly
+U007,Green Peas,1.0,kg,Monthly
+U007,Banana,4.0,kg,Monthly
+U007,Apple,3.0,kg,Monthly
+U007,Papaya,2.0,kg,Monthly
+U007,Orange,2.0,kg,Monthly
+U007,Milk,15.0,L,Monthly
+U007,Curd,4.0,kg,Monthly
+U007,Paneer,1.0,kg,Monthly
+U007,Egg,60.0,pieces,Monthly
+U007,Coconut,4.0,pieces,Monthly
+U007,Garlic,0.5,kg,Monthly
+U007,Ginger,0.25,kg,Monthly
+U008,Tomato,3.2,kg,Monthly
+U008,Onion,4.0,kg,Monthly
+U008,Potato,2.4,kg,Monthly
+U008,Rice,8.0,kg,Monthly
+U008,Wheat,4.0,kg,Monthly
+U008,Toor Dal,1.6,kg,Monthly
+U008,Moong Dal,0.8,kg,Monthly
+U008,Chickpeas,0.8,kg,Monthly
+U008,Spinach,1.6,kg,Monthly
+U008,Carrot,1.6,kg,Monthly
+U008,Pumpkin,1.6,kg,Monthly
+U008,Brinjal,1.6,kg,Monthly
+U008,Cabbage,1.2,kg,Monthly
+U008,Cauliflower,1.2,kg,Monthly
+U008,Green Peas,0.8,kg,Monthly
+U008,Banana,3.2,kg,Monthly
+U008,Apple,2.4,kg,Monthly
+U008,Papaya,1.6,kg,Monthly
+U008,Orange,1.6,kg,Monthly
+U008,Milk,12.0,L,Monthly
+U008,Curd,3.2,kg,Monthly
+U008,Paneer,0.8,kg,Monthly
+U008,Egg,48.0,pieces,Monthly
+U008,Coconut,3.0,pieces,Monthly
+U008,Garlic,0.4,kg,Monthly
+U008,Ginger,0.2,kg,Monthly
+U009,Tomato,4.6,kg,Monthly
+U009,Onion,5.75,kg,Monthly
+U009,Potato,3.45,kg,Monthly
+U009,Rice,11.5,kg,Monthly
+U009,Wheat,5.75,kg,Monthly
+U009,Toor Dal,2.3,kg,Monthly
+U009,Moong Dal,1.15,kg,Monthly
+U009,Chickpeas,1.15,kg,Monthly
+U009,Spinach,2.3,kg,Monthly
+U009,Carrot,2.3,kg,Monthly
+U009,Pumpkin,2.3,kg,Monthly
+U009,Brinjal,2.3,kg,Monthly
+U009,Cabbage,1.72,kg,Monthly
+U009,Cauliflower,1.72,kg,Monthly
+U009,Green Peas,1.15,kg,Monthly
+U009,Banana,4.6,kg,Monthly
+U009,Apple,3.45,kg,Monthly
+U009,Papaya,2.3,kg,Monthly
+U009,Orange,2.3,kg,Monthly
+U009,Milk,17.25,L,Monthly
+U009,Curd,4.6,kg,Monthly
+U009,Paneer,1.15,kg,Monthly
+U009,Egg,69.0,pieces,Monthly
+U009,Coconut,5.0,pieces,Monthly
+U009,Garlic,0.57,kg,Monthly
+U009,Ginger,0.29,kg,Monthly
+U010,Tomato,3.8,kg,Monthly
+U010,Onion,4.75,kg,Monthly
+U010,Potato,2.85,kg,Monthly
+U010,Rice,9.5,kg,Monthly
+U010,Wheat,4.75,kg,Monthly
+U010,Toor Dal,1.9,kg,Monthly
+U010,Moong Dal,0.95,kg,Monthly
+U010,Chickpeas,0.95,kg,Monthly
+U010,Spinach,1.9,kg,Monthly
+U010,Carrot,1.9,kg,Monthly
+U010,Pumpkin,1.9,kg,Monthly
+U010,Brinjal,1.9,kg,Monthly
+U010,Cabbage,1.42,kg,Monthly
+U010,Cauliflower,1.42,kg,Monthly
+U010,Green Peas,0.95,kg,Monthly
+U010,Banana,3.8,kg,Monthly
+U010,Apple,2.85,kg,Monthly
+U010,Papaya,1.9,kg,Monthly
+U010,Orange,1.9,kg,Monthly
+U010,Milk,14.25,L,Monthly
+U010,Curd,3.8,kg,Monthly
+U010,Paneer,0.95,kg,Monthly
+U010,Egg,57.0,pieces,Monthly
+U010,Coconut,4.0,pieces,Monthly
+U010,Garlic,0.47,kg,Monthly
+U010,Ginger,0.24,kg,Monthly
+U011,Tomato,3.0,kg,Monthly
+U011,Onion,3.75,kg,Monthly
+U011,Potato,2.25,kg,Monthly
+U011,Rice,7.5,kg,Monthly
+U011,Wheat,3.75,kg,Monthly
+U011,Toor Dal,1.5,kg,Monthly
+U011,Moong Dal,0.75,kg,Monthly
+U011,Chickpeas,0.75,kg,Monthly
+U011,Spinach,1.5,kg,Monthly
+U011,Carrot,1.5,kg,Monthly
+U011,Pumpkin,1.5,kg,Monthly
+U011,Brinjal,1.5,kg,Monthly
+U011,Cabbage,1.12,kg,Monthly
+U011,Cauliflower,1.12,kg,Monthly
+U011,Green Peas,0.75,kg,Monthly
+U011,Banana,3.0,kg,Monthly
+U011,Apple,2.25,kg,Monthly
+U011,Papaya,1.5,kg,Monthly
+U011,Orange,1.5,kg,Monthly
+U011,Milk,11.25,L,Monthly
+U011,Curd,3.0,kg,Monthly
+U011,Paneer,0.75,kg,Monthly
+U011,Egg,45.0,pieces,Monthly
+U011,Coconut,3.0,pieces,Monthly
+U011,Garlic,0.38,kg,Monthly
+U011,Ginger,0.19,kg,Monthly
+U012,Tomato,4.4,kg,Monthly
+U012,Onion,5.5,kg,Monthly
+U012,Potato,3.3,kg,Monthly
+U012,Rice,11.0,kg,Monthly
+U012,Wheat,5.5,kg,Monthly
+U012,Toor Dal,2.2,kg,Monthly
+U012,Moong Dal,1.1,kg,Monthly
+U012,Chickpeas,1.1,kg,Monthly
+U012,Spinach,2.2,kg,Monthly
+U012,Carrot,2.2,kg,Monthly
+U012,Pumpkin,2.2,kg,Monthly
+U012,Brinjal,2.2,kg,Monthly
+U012,Cabbage,1.65,kg,Monthly
+U012,Cauliflower,1.65,kg,Monthly
+U012,Green Peas,1.1,kg,Monthly
+U012,Banana,4.4,kg,Monthly
+U012,Apple,3.3,kg,Monthly
+U012,Papaya,2.2,kg,Monthly
+U012,Orange,2.2,kg,Monthly
+U012,Milk,16.5,L,Monthly
+U012,Curd,4.4,kg,Monthly
+U012,Paneer,1.1,kg,Monthly
+U012,Egg,66.0,pieces,Monthly
+U012,Coconut,4.0,pieces,Monthly
+U012,Garlic,0.55,kg,Monthly
+U012,Ginger,0.28,kg,Monthly
+U013,Tomato,3.6,kg,Monthly
+U013,Onion,4.5,kg,Monthly
+U013,Potato,2.7,kg,Monthly
+U013,Rice,9.0,kg,Monthly
+U013,Wheat,4.5,kg,Monthly
+U013,Toor Dal,1.8,kg,Monthly
+U013,Moong Dal,0.9,kg,Monthly
+U013,Chickpeas,0.9,kg,Monthly
+U013,Spinach,1.8,kg,Monthly
+U013,Carrot,1.8,kg,Monthly
+U013,Pumpkin,1.8,kg,Monthly
+U013,Brinjal,1.8,kg,Monthly
+U013,Cabbage,1.35,kg,Monthly
+U013,Cauliflower,1.35,kg,Monthly
+U013,Green Peas,0.9,kg,Monthly
+U013,Banana,3.6,kg,Monthly
+U013,Apple,2.7,kg,Monthly
+U013,Papaya,1.8,kg,Monthly
+U013,Orange,1.8,kg,Monthly
+U013,Milk,13.5,L,Monthly
+U013,Curd,3.6,kg,Monthly
+U013,Paneer,0.9,kg,Monthly
+U013,Egg,54.0,pieces,Monthly
+U013,Coconut,4.0,pieces,Monthly
+U013,Garlic,0.45,kg,Monthly
+U013,Ginger,0.23,kg,Monthly
+U014,Tomato,5.0,kg,Monthly
+U014,Onion,6.25,kg,Monthly
+U014,Potato,3.75,kg,Monthly
+U014,Rice,12.5,kg,Monthly
+U014,Wheat,6.25,kg,Monthly
+U014,Toor Dal,2.5,kg,Monthly
+U014,Moong Dal,1.25,kg,Monthly
+U014,Chickpeas,1.25,kg,Monthly
+U014,Spinach,2.5,kg,Monthly
+U014,Carrot,2.5,kg,Monthly
+U014,Pumpkin,2.5,kg,Monthly
+U014,Brinjal,2.5,kg,Monthly
+U014,Cabbage,1.88,kg,Monthly
+U014,Cauliflower,1.88,kg,Monthly
+U014,Green Peas,1.25,kg,Monthly
+U014,Banana,5.0,kg,Monthly
+U014,Apple,3.75,kg,Monthly
+U014,Papaya,2.5,kg,Monthly
+U014,Orange,2.5,kg,Monthly
+U014,Milk,18.75,L,Monthly
+U014,Curd,5.0,kg,Monthly
+U014,Paneer,1.25,kg,Monthly
+U014,Egg,75.0,pieces,Monthly
+U014,Coconut,5.0,pieces,Monthly
+U014,Garlic,0.62,kg,Monthly
+U014,Ginger,0.31,kg,Monthly
+U015,Tomato,4.2,kg,Monthly
+U015,Onion,5.25,kg,Monthly
+U015,Potato,3.15,kg,Monthly
+U015,Rice,10.5,kg,Monthly
+U015,Wheat,5.25,kg,Monthly
+U015,Toor Dal,2.1,kg,Monthly
+U015,Moong Dal,1.05,kg,Monthly
+U015,Chickpeas,1.05,kg,Monthly
+U015,Spinach,2.1,kg,Monthly
+U015,Carrot,2.1,kg,Monthly
+U015,Pumpkin,2.1,kg,Monthly
+U015,Brinjal,2.1,kg,Monthly
+U015,Cabbage,1.58,kg,Monthly
+U015,Cauliflower,1.58,kg,Monthly
+U015,Green Peas,1.05,kg,Monthly
+U015,Banana,4.2,kg,Monthly
+U015,Apple,3.15,kg,Monthly
+U015,Papaya,2.1,kg,Monthly
+U015,Orange,2.1,kg,Monthly
+U015,Milk,15.75,L,Monthly
+U015,Curd,4.2,kg,Monthly
+U015,Paneer,1.05,kg,Monthly
+U015,Egg,63.0,pieces,Monthly
+U015,Coconut,4.0,pieces,Monthly
+U015,Garlic,0.53,kg,Monthly
+U015,Ginger,0.26,kg,Monthly
+U016,Tomato,3.4,kg,Monthly
+U016,Onion,4.25,kg,Monthly
+U016,Potato,2.55,kg,Monthly
+U016,Rice,8.5,kg,Monthly
+U016,Wheat,4.25,kg,Monthly
+U016,Toor Dal,1.7,kg,Monthly
+U016,Moong Dal,0.85,kg,Monthly
+U016,Chickpeas,0.85,kg,Monthly
+U016,Spinach,1.7,kg,Monthly
+U016,Carrot,1.7,kg,Monthly
+U016,Pumpkin,1.7,kg,Monthly
+U016,Brinjal,1.7,kg,Monthly
+U016,Cabbage,1.27,kg,Monthly
+U016,Cauliflower,1.27,kg,Monthly
+U016,Green Peas,0.85,kg,Monthly
+U016,Banana,3.4,kg,Monthly
+U016,Apple,2.55,kg,Monthly
+U016,Papaya,1.7,kg,Monthly
+U016,Orange,1.7,kg,Monthly
+U016,Milk,12.75,L,Monthly
+U016,Curd,3.4,kg,Monthly
+U016,Paneer,0.85,kg,Monthly
+U016,Egg,51.0,pieces,Monthly
+U016,Coconut,3.0,pieces,Monthly
+U016,Garlic,0.42,kg,Monthly
+U016,Ginger,0.21,kg,Monthly
+U017,Tomato,4.8,kg,Monthly
+U017,Onion,6.0,kg,Monthly
+U017,Potato,3.6,kg,Monthly
+U017,Rice,12.0,kg,Monthly
+U017,Wheat,6.0,kg,Monthly
+U017,Toor Dal,2.4,kg,Monthly
+U017,Moong Dal,1.2,kg,Monthly
+U017,Chickpeas,1.2,kg,Monthly
+U017,Spinach,2.4,kg,Monthly
+U017,Carrot,2.4,kg,Monthly
+U017,Pumpkin,2.4,kg,Monthly
+U017,Brinjal,2.4,kg,Monthly
+U017,Cabbage,1.8,kg,Monthly
+U017,Cauliflower,1.8,kg,Monthly
+U017,Green Peas,1.2,kg,Monthly
+U017,Banana,4.8,kg,Monthly
+U017,Apple,3.6,kg,Monthly
+U017,Papaya,2.4,kg,Monthly
+U017,Orange,2.4,kg,Monthly
+U017,Milk,18.0,L,Monthly
+U017,Curd,4.8,kg,Monthly
+U017,Paneer,1.2,kg,Monthly
+U017,Egg,72.0,pieces,Monthly
+U017,Coconut,5.0,pieces,Monthly
+U017,Garlic,0.6,kg,Monthly
+U017,Ginger,0.3,kg,Monthly
+U018,Tomato,4.0,kg,Monthly
+U018,Onion,5.0,kg,Monthly
+U018,Potato,3.0,kg,Monthly
+U018,Rice,10.0,kg,Monthly
+U018,Wheat,5.0,kg,Monthly
+U018,Toor Dal,2.0,kg,Monthly
+U018,Moong Dal,1.0,kg,Monthly
+U018,Chickpeas,1.0,kg,Monthly
+U018,Spinach,2.0,kg,Monthly
+U018,Carrot,2.0,kg,Monthly
+U018,Pumpkin,2.0,kg,Monthly
+U018,Brinjal,2.0,kg,Monthly
+U018,Cabbage,1.5,kg,Monthly
+U018,Cauliflower,1.5,kg,Monthly
+U018,Green Peas,1.0,kg,Monthly
+U018,Banana,4.0,kg,Monthly
+U018,Apple,3.0,kg,Monthly
+U018,Papaya,2.0,kg,Monthly
+U018,Orange,2.0,kg,Monthly
+U018,Milk,15.0,L,Monthly
+U018,Curd,4.0,kg,Monthly
+U018,Paneer,1.0,kg,Monthly
+U018,Egg,60.0,pieces,Monthly
+U018,Coconut,4.0,pieces,Monthly
+U018,Garlic,0.5,kg,Monthly
+U018,Ginger,0.25,kg,Monthly
+U019,Tomato,3.2,kg,Monthly
+U019,Onion,4.0,kg,Monthly
+U019,Potato,2.4,kg,Monthly
+U019,Rice,8.0,kg,Monthly
+U019,Wheat,4.0,kg,Monthly
+U019,Toor Dal,1.6,kg,Monthly
+U019,Moong Dal,0.8,kg,Monthly
+U019,Chickpeas,0.8,kg,Monthly
+U019,Spinach,1.6,kg,Monthly
+U019,Carrot,1.6,kg,Monthly
+U019,Pumpkin,1.6,kg,Monthly
+U019,Brinjal,1.6,kg,Monthly
+U019,Cabbage,1.2,kg,Monthly
+U019,Cauliflower,1.2,kg,Monthly
+U019,Green Peas,0.8,kg,Monthly
+U019,Banana,3.2,kg,Monthly
+U019,Apple,2.4,kg,Monthly
+U019,Papaya,1.6,kg,Monthly
+U019,Orange,1.6,kg,Monthly
+U019,Milk,12.0,L,Monthly
+U019,Curd,3.2,kg,Monthly
+U019,Paneer,0.8,kg,Monthly
+U019,Egg,48.0,pieces,Monthly
+U019,Coconut,3.0,pieces,Monthly
+U019,Garlic,0.4,kg,Monthly
+U019,Ginger,0.2,kg,Monthly
+U020,Tomato,4.6,kg,Monthly
+U020,Onion,5.75,kg,Monthly
+U020,Potato,3.45,kg,Monthly
+U020,Rice,11.5,kg,Monthly
+U020,Wheat,5.75,kg,Monthly
+U020,Toor Dal,2.3,kg,Monthly
+U020,Moong Dal,1.15,kg,Monthly
+U020,Chickpeas,1.15,kg,Monthly
+U020,Spinach,2.3,kg,Monthly
+U020,Carrot,2.3,kg,Monthly
+U020,Pumpkin,2.3,kg,Monthly
+U020,Brinjal,2.3,kg,Monthly
+U020,Cabbage,1.72,kg,Monthly
+U020,Cauliflower,1.72,kg,Monthly
+U020,Green Peas,1.15,kg,Monthly
+U020,Banana,4.6,kg,Monthly
+U020,Apple,3.45,kg,Monthly
+U020,Papaya,2.3,kg,Monthly
+U020,Orange,2.3,kg,Monthly
+U020,Milk,17.25,L,Monthly
+U020,Curd,4.6,kg,Monthly
+U020,Paneer,1.15,kg,Monthly
+U020,Egg,69.0,pieces,Monthly
+U020,Coconut,5.0,pieces,Monthly
+U020,Garlic,0.57,kg,Monthly
+U020,Ginger,0.29,kg,Monthly
+U021,Tomato,3.8,kg,Monthly
+U021,Onion,4.75,kg,Monthly
+U021,Potato,2.85,kg,Monthly
+U021,Rice,9.5,kg,Monthly
+U021,Wheat,4.75,kg,Monthly
+U021,Toor Dal,1.9,kg,Monthly
+U021,Moong Dal,0.95,kg,Monthly
+U021,Chickpeas,0.95,kg,Monthly
+U021,Spinach,1.9,kg,Monthly
+U021,Carrot,1.9,kg,Monthly
+U021,Pumpkin,1.9,kg,Monthly
+U021,Brinjal,1.9,kg,Monthly
+U021,Cabbage,1.42,kg,Monthly
+U021,Cauliflower,1.42,kg,Monthly
+U021,Green Peas,0.95,kg,Monthly
+U021,Banana,3.8,kg,Monthly
+U021,Apple,2.85,kg,Monthly
+U021,Papaya,1.9,kg,Monthly
+U021,Orange,1.9,kg,Monthly
+U021,Milk,14.25,L,Monthly
+U021,Curd,3.8,kg,Monthly
+U021,Paneer,0.95,kg,Monthly
+U021,Egg,57.0,pieces,Monthly
+U021,Coconut,4.0,pieces,Monthly
+U021,Garlic,0.47,kg,Monthly
+U021,Ginger,0.24,kg,Monthly
+U022,Tomato,3.0,kg,Monthly
+U022,Onion,3.75,kg,Monthly
+U022,Potato,2.25,kg,Monthly
+U022,Rice,7.5,kg,Monthly
+U022,Wheat,3.75,kg,Monthly
+U022,Toor Dal,1.5,kg,Monthly
+U022,Moong Dal,0.75,kg,Monthly
+U022,Chickpeas,0.75,kg,Monthly
+U022,Spinach,1.5,kg,Monthly
+U022,Carrot,1.5,kg,Monthly
+U022,Pumpkin,1.5,kg,Monthly
+U022,Brinjal,1.5,kg,Monthly
+U022,Cabbage,1.12,kg,Monthly
+U022,Cauliflower,1.12,kg,Monthly
+U022,Green Peas,0.75,kg,Monthly
+U022,Banana,3.0,kg,Monthly
+U022,Apple,2.25,kg,Monthly
+U022,Papaya,1.5,kg,Monthly
+U022,Orange,1.5,kg,Monthly
+U022,Milk,11.25,L,Monthly
+U022,Curd,3.0,kg,Monthly
+U022,Paneer,0.75,kg,Monthly
+U022,Egg,45.0,pieces,Monthly
+U022,Coconut,3.0,pieces,Monthly
+U022,Garlic,0.38,kg,Monthly
+U022,Ginger,0.19,kg,Monthly
+U023,Tomato,4.4,kg,Monthly
+U023,Onion,5.5,kg,Monthly
+U023,Potato,3.3,kg,Monthly
+U023,Rice,11.0,kg,Monthly
+U023,Wheat,5.5,kg,Monthly
+U023,Toor Dal,2.2,kg,Monthly
+U023,Moong Dal,1.1,kg,Monthly
+U023,Chickpeas,1.1,kg,Monthly
+U023,Spinach,2.2,kg,Monthly
+U023,Carrot,2.2,kg,Monthly
+U023,Pumpkin,2.2,kg,Monthly
+U023,Brinjal,2.2,kg,Monthly
+U023,Cabbage,1.65,kg,Monthly
+U023,Cauliflower,1.65,kg,Monthly
+U023,Green Peas,1.1,kg,Monthly
+U023,Banana,4.4,kg,Monthly
+U023,Apple,3.3,kg,Monthly
+U023,Papaya,2.2,kg,Monthly
+U023,Orange,2.2,kg,Monthly
+U023,Milk,16.5,L,Monthly
+U023,Curd,4.4,kg,Monthly
+U023,Paneer,1.1,kg,Monthly
+U023,Egg,66.0,pieces,Monthly
+U023,Coconut,4.0,pieces,Monthly
+U023,Garlic,0.55,kg,Monthly
+U023,Ginger,0.28,kg,Monthly
+U024,Tomato,3.6,kg,Monthly
+U024,Onion,4.5,kg,Monthly
+U024,Potato,2.7,kg,Monthly
+U024,Rice,9.0,kg,Monthly
+U024,Wheat,4.5,kg,Monthly
+U024,Toor Dal,1.8,kg,Monthly
+U024,Moong Dal,0.9,kg,Monthly
+U024,Chickpeas,0.9,kg,Monthly
+U024,Spinach,1.8,kg,Monthly
+U024,Carrot,1.8,kg,Monthly
+U024,Pumpkin,1.8,kg,Monthly
+U024,Brinjal,1.8,kg,Monthly
+U024,Cabbage,1.35,kg,Monthly
+U024,Cauliflower,1.35,kg,Monthly
+U024,Green Peas,0.9,kg,Monthly
+U024,Banana,3.6,kg,Monthly
+U024,Apple,2.7,kg,Monthly
+U024,Papaya,1.8,kg,Monthly
+U024,Orange,1.8,kg,Monthly
+U024,Milk,13.5,L,Monthly
+U024,Curd,3.6,kg,Monthly
+U024,Paneer,0.9,kg,Monthly
+U024,Egg,54.0,pieces,Monthly
+U024,Coconut,4.0,pieces,Monthly
+U024,Garlic,0.45,kg,Monthly
+U024,Ginger,0.23,kg,Monthly
+U025,Tomato,5.0,kg,Monthly
+U025,Onion,6.25,kg,Monthly
+U025,Potato,3.75,kg,Monthly
+U025,Rice,12.5,kg,Monthly
+U025,Wheat,6.25,kg,Monthly
+U025,Toor Dal,2.5,kg,Monthly
+U025,Moong Dal,1.25,kg,Monthly
+U025,Chickpeas,1.25,kg,Monthly
+U025,Spinach,2.5,kg,Monthly
+U025,Carrot,2.5,kg,Monthly
+U025,Pumpkin,2.5,kg,Monthly
+U025,Brinjal,2.5,kg,Monthly
+U025,Cabbage,1.88,kg,Monthly
+U025,Cauliflower,1.88,kg,Monthly
+U025,Green Peas,1.25,kg,Monthly
+U025,Banana,5.0,kg,Monthly
+U025,Apple,3.75,kg,Monthly
+U025,Papaya,2.5,kg,Monthly
+U025,Orange,2.5,kg,Monthly
+U025,Milk,18.75,L,Monthly
+U025,Curd,5.0,kg,Monthly
+U025,Paneer,1.25,kg,Monthly
+U025,Egg,75.0,pieces,Monthly
+U025,Coconut,5.0,pieces,Monthly
+U025,Garlic,0.62,kg,Monthly
+U025,Ginger,0.31,kg,Monthly
+U026,Tomato,4.2,kg,Monthly
+U026,Onion,5.25,kg,Monthly
+U026,Potato,3.15,kg,Monthly
+U026,Rice,10.5,kg,Monthly
+U026,Wheat,5.25,kg,Monthly
+U026,Toor Dal,2.1,kg,Monthly
+U026,Moong Dal,1.05,kg,Monthly
+U026,Chickpeas,1.05,kg,Monthly
+U026,Spinach,2.1,kg,Monthly
+U026,Carrot,2.1,kg,Monthly
+U026,Pumpkin,2.1,kg,Monthly
+U026,Brinjal,2.1,kg,Monthly
+U026,Cabbage,1.58,kg,Monthly
+U026,Cauliflower,1.58,kg,Monthly
+U026,Green Peas,1.05,kg,Monthly
+U026,Banana,4.2,kg,Monthly
+U026,Apple,3.15,kg,Monthly
+U026,Papaya,2.1,kg,Monthly
+U026,Orange,2.1,kg,Monthly
+U026,Milk,15.75,L,Monthly
+U026,Curd,4.2,kg,Monthly
+U026,Paneer,1.05,kg,Monthly
+U026,Egg,63.0,pieces,Monthly
+U026,Coconut,4.0,pieces,Monthly
+U026,Garlic,0.53,kg,Monthly
+U026,Ginger,0.26,kg,Monthly
+U027,Tomato,3.4,kg,Monthly
+U027,Onion,4.25,kg,Monthly
+U027,Potato,2.55,kg,Monthly
+U027,Rice,8.5,kg,Monthly
+U027,Wheat,4.25,kg,Monthly
+U027,Toor Dal,1.7,kg,Monthly
+U027,Moong Dal,0.85,kg,Monthly
+U027,Chickpeas,0.85,kg,Monthly
+U027,Spinach,1.7,kg,Monthly
+U027,Carrot,1.7,kg,Monthly
+U027,Pumpkin,1.7,kg,Monthly
+U027,Brinjal,1.7,kg,Monthly
+U027,Cabbage,1.27,kg,Monthly
+U027,Cauliflower,1.27,kg,Monthly
+U027,Green Peas,0.85,kg,Monthly
+U027,Banana,3.4,kg,Monthly
+U027,Apple,2.55,kg,Monthly
+U027,Papaya,1.7,kg,Monthly
+U027,Orange,1.7,kg,Monthly
+U027,Milk,12.75,L,Monthly
+U027,Curd,3.4,kg,Monthly
+U027,Paneer,0.85,kg,Monthly
+U027,Egg,51.0,pieces,Monthly
+U027,Coconut,3.0,pieces,Monthly
+U027,Garlic,0.42,kg,Monthly
+U027,Ginger,0.21,kg,Monthly
+U028,Tomato,4.8,kg,Monthly
+U028,Onion,6.0,kg,Monthly
+U028,Potato,3.6,kg,Monthly
+U028,Rice,12.0,kg,Monthly
+U028,Wheat,6.0,kg,Monthly
+U028,Toor Dal,2.4,kg,Monthly
+U028,Moong Dal,1.2,kg,Monthly
+U028,Chickpeas,1.2,kg,Monthly
+U028,Spinach,2.4,kg,Monthly
+U028,Carrot,2.4,kg,Monthly
+U028,Pumpkin,2.4,kg,Monthly
+U028,Brinjal,2.4,kg,Monthly
+U028,Cabbage,1.8,kg,Monthly
+U028,Cauliflower,1.8,kg,Monthly
+U028,Green Peas,1.2,kg,Monthly
+U028,Banana,4.8,kg,Monthly
+U028,Apple,3.6,kg,Monthly
+U028,Papaya,2.4,kg,Monthly
+U028,Orange,2.4,kg,Monthly
+U028,Milk,18.0,L,Monthly
+U028,Curd,4.8,kg,Monthly
+U028,Paneer,1.2,kg,Monthly
+U028,Egg,72.0,pieces,Monthly
+U028,Coconut,5.0,pieces,Monthly
+U028,Garlic,0.6,kg,Monthly
+U028,Ginger,0.3,kg,Monthly
+U029,Tomato,4.0,kg,Monthly
+U029,Onion,5.0,kg,Monthly
+U029,Potato,3.0,kg,Monthly
+U029,Rice,10.0,kg,Monthly
+U029,Wheat,5.0,kg,Monthly
+U029,Toor Dal,2.0,kg,Monthly
+U029,Moong Dal,1.0,kg,Monthly
+U029,Chickpeas,1.0,kg,Monthly
+U029,Spinach,2.0,kg,Monthly
+U029,Carrot,2.0,kg,Monthly
+U029,Pumpkin,2.0,kg,Monthly
+U029,Brinjal,2.0,kg,Monthly
+U029,Cabbage,1.5,kg,Monthly
+U029,Cauliflower,1.5,kg,Monthly
+U029,Green Peas,1.0,kg,Monthly
+U029,Banana,4.0,kg,Monthly
+U029,Apple,3.0,kg,Monthly
+U029,Papaya,2.0,kg,Monthly
+U029,Orange,2.0,kg,Monthly
+U029,Milk,15.0,L,Monthly
+U029,Curd,4.0,kg,Monthly
+U029,Paneer,1.0,kg,Monthly
+U029,Egg,60.0,pieces,Monthly
+U029,Coconut,4.0,pieces,Monthly
+U029,Garlic,0.5,kg,Monthly
+U029,Ginger,0.25,kg,Monthly
+U030,Tomato,3.2,kg,Monthly
+U030,Onion,4.0,kg,Monthly
+U030,Potato,2.4,kg,Monthly
+U030,Rice,8.0,kg,Monthly
+U030,Wheat,4.0,kg,Monthly
+U030,Toor Dal,1.6,kg,Monthly
+U030,Moong Dal,0.8,kg,Monthly
+U030,Chickpeas,0.8,kg,Monthly
+U030,Spinach,1.6,kg,Monthly
+U030,Carrot,1.6,kg,Monthly
+U030,Pumpkin,1.6,kg,Monthly
+U030,Brinjal,1.6,kg,Monthly
+U030,Cabbage,1.2,kg,Monthly
+U030,Cauliflower,1.2,kg,Monthly
+U030,Green Peas,0.8,kg,Monthly
+U030,Banana,3.2,kg,Monthly
+U030,Apple,2.4,kg,Monthly
+U030,Papaya,1.6,kg,Monthly
+U030,Orange,1.6,kg,Monthly
+U030,Milk,12.0,L,Monthly
+U030,Curd,3.2,kg,Monthly
+U030,Paneer,0.8,kg,Monthly
+U030,Egg,48.0,pieces,Monthly
+U030,Coconut,3.0,pieces,Monthly
+U030,Garlic,0.4,kg,Monthly
+U030,Ginger,0.2,kg,Monthly

@@ -1,0 +1,5322 @@
+{
+  "Tomato_7": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Tomato",
+    "icon": "🍅",
+    "horizon": "7d",
+    "currentPrice": 2186,
+    "previousPrice": 1831.6,
+    "predictedPrice": 2196.6,
+    "priceChange": 10.6,
+    "priceChangePercent": 0.48,
+    "riskLevel": "Medium",
+    "riskScore": 38,
+    "volatility": "±9.2%",
+    "supplyStatus": "Data not available",
+    "outlook": "Fairly Stable",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 1715.8,
+        "min": 1578.5,
+        "max": 1853.1,
+        "model_pred": 1735,
+        "market": "Anaiyur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Madurai"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 1642.3,
+        "min": 1510.9,
+        "max": 1773.7,
+        "model_pred": 1780.2,
+        "market": "Banki APMC",
+        "state": "Odisha",
+        "district": "Cuttack"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 1521.2,
+        "min": 1399.5,
+        "max": 1642.9,
+        "model_pred": 1685.1,
+        "market": "Kalikiri APMC",
+        "state": "Andhra Pradesh",
+        "district": "Chittor"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 1618.3,
+        "min": 1488.8,
+        "max": 1747.8,
+        "model_pred": 1732.6,
+        "market": "Bassi Pathana APMC",
+        "state": "Punjab",
+        "district": "Fatehgarh"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 1572.8,
+        "min": 1447,
+        "max": 1698.6,
+        "model_pred": 1689.6,
+        "market": "Kottakkal APMC",
+        "state": "Kerala",
+        "district": "Malappuram"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 1609.2,
+        "min": 1480.5,
+        "max": 1737.9,
+        "model_pred": 1717.1,
+        "market": "Harur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Dharmapuri"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 1615.5,
+        "min": 1486.3,
+        "max": 1744.7,
+        "model_pred": 1665.9,
+        "market": "Nagapattinam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Nagapattinam"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 1468.5,
+        "min": 1351,
+        "max": 1586,
+        "model_pred": 1570.7,
+        "market": "Bolpur APMC",
+        "state": "West Bengal",
+        "district": "Birbhum"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 1654.4,
+        "min": 1522,
+        "max": 1786.8,
+        "model_pred": 1699.7,
+        "market": "Gudalur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "The Nilgiris"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 1556.7,
+        "min": 1432.2,
+        "max": 1681.2,
+        "model_pred": 1604.5,
+        "market": "Madanapalli APMC",
+        "state": "Andhra Pradesh",
+        "district": "Chittor"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 1522.9,
+        "min": 1401.1,
+        "max": 1644.7,
+        "model_pred": 1598.5,
+        "market": "Diamond Harbour (South 24-pgs) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 1554.7,
+        "min": 1430.3,
+        "max": 1679.1,
+        "model_pred": 1660.8,
+        "market": "Perambakkam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruvellore"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 1578.4,
+        "min": 1452.1,
+        "max": 1704.7,
+        "model_pred": 1659.7,
+        "market": "Mehsana (Mehsana Veg) APMC",
+        "state": "Gujarat",
+        "district": "Mehsana"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 1634.1,
+        "min": 1503.4,
+        "max": 1764.8,
+        "model_pred": 1775.8,
+        "market": "SMY Nadaun",
+        "state": "Himachal Pradesh",
+        "district": "Hamirpur"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 1546.5,
+        "min": 1422.8,
+        "max": 1670.2,
+        "model_pred": 1635.5,
+        "market": "Bhinmal APMC",
+        "state": "Rajasthan",
+        "district": "Jalore"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 1571.4,
+        "min": 1445.7,
+        "max": 1697.1,
+        "model_pred": 1679.3,
+        "market": "Dhekiajuli APMC",
+        "state": "Assam",
+        "district": "Sonitpur"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 1563.6,
+        "min": 1438.5,
+        "max": 1688.7,
+        "model_pred": 1655.9,
+        "market": "Thirumangalam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Madurai"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 1555,
+        "min": 1430.6,
+        "max": 1679.4,
+        "model_pred": 1662.5,
+        "market": "Pukharayan APMC",
+        "state": "Uttar Pradesh",
+        "district": "Kanpur Dehat"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 1583.3,
+        "min": 1456.6,
+        "max": 1710,
+        "model_pred": 1926.7,
+        "market": "Thalasserry APMC",
+        "state": "Kerala",
+        "district": "Kannur"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 1595,
+        "min": 1467.4,
+        "max": 1722.6,
+        "model_pred": 1802.8,
+        "market": "Ernakulam APMC",
+        "state": "Kerala",
+        "district": "Ernakulam"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 1580.6,
+        "min": 1454.2,
+        "max": 1707,
+        "model_pred": 1815.7,
+        "market": "Solapur APMC",
+        "state": "Maharashtra",
+        "district": "Sholapur"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 1671.8,
+        "min": 1538.1,
+        "max": 1805.5,
+        "model_pred": 1910.8,
+        "market": "Diamond Harbour (South 24-pgs) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 1723,
+        "min": 1585.2,
+        "max": 1860.8,
+        "model_pred": 1871.6,
+        "market": "Baruipur (Canning) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 1831.6,
+        "min": 1685.1,
+        "max": 1978.1,
+        "model_pred": 1856.1,
+        "market": "Anchal APMC",
+        "state": "Kerala",
+        "district": "Kollam"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 1714,
+        "min": 1576.9,
+        "max": 1851.1,
+        "model_pred": 1740.7,
+        "market": "Jeyankondam (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Ariyalur"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 1924.5,
+        "min": 1770.5,
+        "max": 2078.5,
+        "model_pred": 1911.6,
+        "market": "Chathanoor APMC",
+        "state": "Kerala",
+        "district": "Kollam"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 1998.1,
+        "min": 1838.3,
+        "max": 2157.9,
+        "model_pred": 1916.5,
+        "market": "Medinipur (West) APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (W)"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 2026.6,
+        "min": 1864.5,
+        "max": 2188.7,
+        "model_pred": 1930,
+        "market": "Sikarpur APMC",
+        "state": "Uttar Pradesh",
+        "district": "Bulandshahar"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 1969.1,
+        "min": 1811.6,
+        "max": 2126.6,
+        "model_pred": 1881.3,
+        "market": "Jaleswar APMC",
+        "state": "Odisha",
+        "district": "Balasore"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 2186,
+        "min": 2011.1,
+        "max": 2360.9,
+        "model_pred": 2021.6,
+        "market": "Thalavaipuram (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Virudhunagar"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 2125.4,
+        "lower": 2005.6,
+        "upper": 2245.2,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2146.2,
+        "lower": 2036,
+        "upper": 2256.5,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 2162,
+        "lower": 2042.8,
+        "upper": 2281.1,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2173.5,
+        "lower": 2043.7,
+        "upper": 2303.4,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 2182.8,
+        "lower": 2048.7,
+        "upper": 2316.9,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2190.3,
+        "lower": 2144.5,
+        "upper": 2236,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 2196.6,
+        "lower": 2143.6,
+        "upper": 2249.7,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2125.4,
+        "lower": 2005.6,
+        "upper": 2245.2,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2146.2,
+        "lower": 2036,
+        "upper": 2256.5,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2162,
+        "lower": 2042.8,
+        "upper": 2281.1,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 2173.5,
+        "lower": 2043.7,
+        "upper": 2303.4,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 2182.8,
+        "lower": 2048.7,
+        "upper": 2316.9,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 2190.3,
+        "lower": 2144.5,
+        "upper": 2236,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 2196.6,
+        "lower": 2143.6,
+        "upper": 2249.7,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 2202.1,
+        "lower": 2157.8,
+        "upper": 2246.4,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 2206.9,
+        "lower": 2169,
+        "upper": 2244.9,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 2211,
+        "lower": 2176,
+        "upper": 2246,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 2214.6,
+        "lower": 2179.6,
+        "upper": 2249.6,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 2217.5,
+        "lower": 2182.5,
+        "upper": 2252.5,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 2220.1,
+        "lower": 2185.1,
+        "upper": 2255.1,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 2222.3,
+        "lower": 2187.3,
+        "upper": 2257.3,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:03:57.436812"
+    }
+  },
+  "Tomato_30": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Tomato",
+    "icon": "🍅",
+    "horizon": "30d",
+    "currentPrice": 2186,
+    "previousPrice": 1831.6,
+    "predictedPrice": 2222.3,
+    "priceChange": 36.3,
+    "priceChangePercent": 1.66,
+    "riskLevel": "Medium",
+    "riskScore": 38,
+    "volatility": "±9.2%",
+    "supplyStatus": "Data not available",
+    "outlook": "Fairly Stable",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 1715.8,
+        "min": 1578.5,
+        "max": 1853.1,
+        "model_pred": 1735,
+        "market": "Anaiyur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Madurai"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 1642.3,
+        "min": 1510.9,
+        "max": 1773.7,
+        "model_pred": 1780.2,
+        "market": "Banki APMC",
+        "state": "Odisha",
+        "district": "Cuttack"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 1521.2,
+        "min": 1399.5,
+        "max": 1642.9,
+        "model_pred": 1685.1,
+        "market": "Kalikiri APMC",
+        "state": "Andhra Pradesh",
+        "district": "Chittor"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 1618.3,
+        "min": 1488.8,
+        "max": 1747.8,
+        "model_pred": 1732.6,
+        "market": "Bassi Pathana APMC",
+        "state": "Punjab",
+        "district": "Fatehgarh"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 1572.8,
+        "min": 1447,
+        "max": 1698.6,
+        "model_pred": 1689.6,
+        "market": "Kottakkal APMC",
+        "state": "Kerala",
+        "district": "Malappuram"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 1609.2,
+        "min": 1480.5,
+        "max": 1737.9,
+        "model_pred": 1717.1,
+        "market": "Harur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Dharmapuri"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 1615.5,
+        "min": 1486.3,
+        "max": 1744.7,
+        "model_pred": 1665.9,
+        "market": "Nagapattinam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Nagapattinam"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 1468.5,
+        "min": 1351,
+        "max": 1586,
+        "model_pred": 1570.7,
+        "market": "Bolpur APMC",
+        "state": "West Bengal",
+        "district": "Birbhum"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 1654.4,
+        "min": 1522,
+        "max": 1786.8,
+        "model_pred": 1699.7,
+        "market": "Gudalur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "The Nilgiris"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 1556.7,
+        "min": 1432.2,
+        "max": 1681.2,
+        "model_pred": 1604.5,
+        "market": "Madanapalli APMC",
+        "state": "Andhra Pradesh",
+        "district": "Chittor"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 1522.9,
+        "min": 1401.1,
+        "max": 1644.7,
+        "model_pred": 1598.5,
+        "market": "Diamond Harbour (South 24-pgs) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 1554.7,
+        "min": 1430.3,
+        "max": 1679.1,
+        "model_pred": 1660.8,
+        "market": "Perambakkam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruvellore"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 1578.4,
+        "min": 1452.1,
+        "max": 1704.7,
+        "model_pred": 1659.7,
+        "market": "Mehsana (Mehsana Veg) APMC",
+        "state": "Gujarat",
+        "district": "Mehsana"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 1634.1,
+        "min": 1503.4,
+        "max": 1764.8,
+        "model_pred": 1775.8,
+        "market": "SMY Nadaun",
+        "state": "Himachal Pradesh",
+        "district": "Hamirpur"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 1546.5,
+        "min": 1422.8,
+        "max": 1670.2,
+        "model_pred": 1635.5,
+        "market": "Bhinmal APMC",
+        "state": "Rajasthan",
+        "district": "Jalore"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 1571.4,
+        "min": 1445.7,
+        "max": 1697.1,
+        "model_pred": 1679.3,
+        "market": "Dhekiajuli APMC",
+        "state": "Assam",
+        "district": "Sonitpur"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 1563.6,
+        "min": 1438.5,
+        "max": 1688.7,
+        "model_pred": 1655.9,
+        "market": "Thirumangalam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Madurai"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 1555,
+        "min": 1430.6,
+        "max": 1679.4,
+        "model_pred": 1662.5,
+        "market": "Pukharayan APMC",
+        "state": "Uttar Pradesh",
+        "district": "Kanpur Dehat"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 1583.3,
+        "min": 1456.6,
+        "max": 1710,
+        "model_pred": 1926.7,
+        "market": "Thalasserry APMC",
+        "state": "Kerala",
+        "district": "Kannur"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 1595,
+        "min": 1467.4,
+        "max": 1722.6,
+        "model_pred": 1802.8,
+        "market": "Ernakulam APMC",
+        "state": "Kerala",
+        "district": "Ernakulam"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 1580.6,
+        "min": 1454.2,
+        "max": 1707,
+        "model_pred": 1815.7,
+        "market": "Solapur APMC",
+        "state": "Maharashtra",
+        "district": "Sholapur"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 1671.8,
+        "min": 1538.1,
+        "max": 1805.5,
+        "model_pred": 1910.8,
+        "market": "Diamond Harbour (South 24-pgs) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 1723,
+        "min": 1585.2,
+        "max": 1860.8,
+        "model_pred": 1871.6,
+        "market": "Baruipur (Canning) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 1831.6,
+        "min": 1685.1,
+        "max": 1978.1,
+        "model_pred": 1856.1,
+        "market": "Anchal APMC",
+        "state": "Kerala",
+        "district": "Kollam"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 1714,
+        "min": 1576.9,
+        "max": 1851.1,
+        "model_pred": 1740.7,
+        "market": "Jeyankondam (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Ariyalur"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 1924.5,
+        "min": 1770.5,
+        "max": 2078.5,
+        "model_pred": 1911.6,
+        "market": "Chathanoor APMC",
+        "state": "Kerala",
+        "district": "Kollam"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 1998.1,
+        "min": 1838.3,
+        "max": 2157.9,
+        "model_pred": 1916.5,
+        "market": "Medinipur (West) APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (W)"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 2026.6,
+        "min": 1864.5,
+        "max": 2188.7,
+        "model_pred": 1930,
+        "market": "Sikarpur APMC",
+        "state": "Uttar Pradesh",
+        "district": "Bulandshahar"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 1969.1,
+        "min": 1811.6,
+        "max": 2126.6,
+        "model_pred": 1881.3,
+        "market": "Jaleswar APMC",
+        "state": "Odisha",
+        "district": "Balasore"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 2186,
+        "min": 2011.1,
+        "max": 2360.9,
+        "model_pred": 2021.6,
+        "market": "Thalavaipuram (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Virudhunagar"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 2125.4,
+        "lower": 2005.6,
+        "upper": 2245.2,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2146.2,
+        "lower": 2036,
+        "upper": 2256.5,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 2162,
+        "lower": 2042.8,
+        "upper": 2281.1,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2173.5,
+        "lower": 2043.7,
+        "upper": 2303.4,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 2182.8,
+        "lower": 2048.7,
+        "upper": 2316.9,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2190.3,
+        "lower": 2144.5,
+        "upper": 2236,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 2196.6,
+        "lower": 2143.6,
+        "upper": 2249.7,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2125.4,
+        "lower": 2005.6,
+        "upper": 2245.2,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2146.2,
+        "lower": 2036,
+        "upper": 2256.5,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2162,
+        "lower": 2042.8,
+        "upper": 2281.1,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 2173.5,
+        "lower": 2043.7,
+        "upper": 2303.4,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 2182.8,
+        "lower": 2048.7,
+        "upper": 2316.9,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 2190.3,
+        "lower": 2144.5,
+        "upper": 2236,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 2196.6,
+        "lower": 2143.6,
+        "upper": 2249.7,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 2202.1,
+        "lower": 2157.8,
+        "upper": 2246.4,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 2206.9,
+        "lower": 2169,
+        "upper": 2244.9,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 2211,
+        "lower": 2176,
+        "upper": 2246,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 2214.6,
+        "lower": 2179.6,
+        "upper": 2249.6,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 2217.5,
+        "lower": 2182.5,
+        "upper": 2252.5,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 2220.1,
+        "lower": 2185.1,
+        "upper": 2255.1,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 2222.3,
+        "lower": 2187.3,
+        "upper": 2257.3,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:15.353307"
+    }
+  },
+  "Onion_7": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Onion",
+    "icon": "🧅",
+    "horizon": "7d",
+    "currentPrice": 2095.5,
+    "previousPrice": 1961.7,
+    "predictedPrice": 2142.2,
+    "priceChange": 46.7,
+    "priceChangePercent": 2.23,
+    "riskLevel": "Low",
+    "riskScore": 15,
+    "volatility": "±5.7%",
+    "supplyStatus": "Data not available",
+    "outlook": "Fairly Stable",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 2216.2,
+        "min": 2038.9,
+        "max": 2393.5,
+        "model_pred": 2243.6,
+        "market": "Karambakkudi (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Pudukkottai"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 1865.7,
+        "min": 1716.4,
+        "max": 2015,
+        "model_pred": 1978.8,
+        "market": "Velayuthampalayam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Karur"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 1873.4,
+        "min": 1723.5,
+        "max": 2023.3,
+        "model_pred": 1975.8,
+        "market": "New Grain Market (main), Karnal APMC",
+        "state": "Haryana",
+        "district": "Karnal"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 1699.3,
+        "min": 1563.4,
+        "max": 1835.2,
+        "model_pred": 1852.1,
+        "market": "Samsabad APMC",
+        "state": "Uttar Pradesh",
+        "district": "Agra"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 2040.6,
+        "min": 1877.4,
+        "max": 2203.8,
+        "model_pred": 2111.1,
+        "market": "Mannargudi II (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruvarur"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 1912.7,
+        "min": 1759.7,
+        "max": 2065.7,
+        "model_pred": 2008.5,
+        "market": "Pattambi APMC",
+        "state": "Kerala",
+        "district": "Palakad"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 2021.3,
+        "min": 1859.6,
+        "max": 2183,
+        "model_pred": 2075.3,
+        "market": "SMY Dhanotu",
+        "state": "Himachal Pradesh",
+        "district": "Mandi"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 2068.7,
+        "min": 1903.2,
+        "max": 2234.2,
+        "model_pred": 2149.7,
+        "market": "Garhakota APMC",
+        "state": "Madhya Pradesh",
+        "district": "Sagar"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 1987.9,
+        "min": 1828.9,
+        "max": 2146.9,
+        "model_pred": 2074,
+        "market": "Belgaum APMC",
+        "state": "Karnataka",
+        "district": "Belgaum"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 2154.7,
+        "min": 1982.3,
+        "max": 2327.1,
+        "model_pred": 2198.4,
+        "market": "Kambam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Theni"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 1894.5,
+        "min": 1742.9,
+        "max": 2046.1,
+        "model_pred": 1960.4,
+        "market": "Gangarampur (Dakshin Dinajpur) APMC",
+        "state": "West Bengal",
+        "district": "Dakshin Dinajpur"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 1896.1,
+        "min": 1744.4,
+        "max": 2047.8,
+        "model_pred": 1990.2,
+        "market": "Tiruchengode APMC",
+        "state": "Tamil Nadu",
+        "district": "Namakkal"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 1935.3,
+        "min": 1780.5,
+        "max": 2090.1,
+        "model_pred": 2034.1,
+        "market": "Thanjavur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thanjavur"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 1889.6,
+        "min": 1738.4,
+        "max": 2040.8,
+        "model_pred": 1990.4,
+        "market": "Lasalgaon APMC",
+        "state": "Maharashtra",
+        "district": "Nashik"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 1941.5,
+        "min": 1786.2,
+        "max": 2096.8,
+        "model_pred": 2068.4,
+        "market": "Panipat APMC",
+        "state": "Haryana",
+        "district": "Panipat"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 1819.8,
+        "min": 1674.2,
+        "max": 1965.4,
+        "model_pred": 1945.7,
+        "market": "Vedaranyam (Uzhavar Sandhai)",
+        "state": "Tamil Nadu",
+        "district": "Nagapattinam"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 1854.4,
+        "min": 1706,
+        "max": 2002.8,
+        "model_pred": 1959.1,
+        "market": "Bilimora APMC",
+        "state": "Gujarat",
+        "district": "Navsari"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 1888.9,
+        "min": 1737.8,
+        "max": 2040,
+        "model_pred": 2009,
+        "market": "Kayamkulam APMC",
+        "state": "Kerala",
+        "district": "Alappuzha"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 2004.5,
+        "min": 1844.1,
+        "max": 2164.9,
+        "model_pred": 2209.9,
+        "market": "PMY Kangni Mandi",
+        "state": "Himachal Pradesh",
+        "district": "Mandi"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 1775.5,
+        "min": 1633.5,
+        "max": 1917.5,
+        "model_pred": 1997.4,
+        "market": "Gohana APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 1961.3,
+        "min": 1804.4,
+        "max": 2118.2,
+        "model_pred": 2206.7,
+        "market": "Aruppukottai (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Virudhunagar"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 2014.4,
+        "min": 1853.2,
+        "max": 2175.6,
+        "model_pred": 2231.1,
+        "market": "Sulur (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Coimbatore"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 1845.2,
+        "min": 1697.6,
+        "max": 1992.8,
+        "model_pred": 2030.7,
+        "market": "Farukh Nagar APMC",
+        "state": "Haryana",
+        "district": "Gurgaon"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 1961.7,
+        "min": 1804.8,
+        "max": 2118.6,
+        "model_pred": 2095.4,
+        "market": "Dablirathan APMC",
+        "state": "Rajasthan",
+        "district": "Hanumangarh"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 1761.1,
+        "min": 1620.2,
+        "max": 1902,
+        "model_pred": 1926.3,
+        "market": "Harur (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Dharmapuri"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 1873.6,
+        "min": 1723.7,
+        "max": 2023.5,
+        "model_pred": 2012.8,
+        "market": "Kopargaon APMC",
+        "state": "Maharashtra",
+        "district": "Ahmednagar"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 1742.3,
+        "min": 1602.9,
+        "max": 1881.7,
+        "model_pred": 1867.3,
+        "market": "Mecheri (Uzhavar Sandhai)",
+        "state": "Tamil Nadu",
+        "district": "Salem"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 1884.7,
+        "min": 1733.9,
+        "max": 2035.5,
+        "model_pred": 1980.2,
+        "market": "Ferozepur Cantt. APMC",
+        "state": "Punjab",
+        "district": "Ferozpur"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 2166.9,
+        "min": 1993.5,
+        "max": 2340.3,
+        "model_pred": 2270.8,
+        "market": "Sonepat (Kharkhoda) APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 2095.5,
+        "min": 1927.9,
+        "max": 2263.1,
+        "model_pred": 2197.9,
+        "market": "Garh Shankar APMC",
+        "state": "Punjab",
+        "district": "Hoshiarpur"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 2095,
+        "lower": 1959.5,
+        "upper": 2230.6,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2113.9,
+        "lower": 1935.3,
+        "upper": 2292.6,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 2124.3,
+        "lower": 1910.9,
+        "upper": 2337.7,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2131.6,
+        "lower": 1985.7,
+        "upper": 2277.4,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 2137.3,
+        "lower": 2092.8,
+        "upper": 2181.7,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2140.5,
+        "lower": 2104.2,
+        "upper": 2176.9,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 2142.2,
+        "lower": 2106.7,
+        "upper": 2177.6,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2095,
+        "lower": 1959.5,
+        "upper": 2230.6,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2113.9,
+        "lower": 1935.3,
+        "upper": 2292.6,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2124.3,
+        "lower": 1910.9,
+        "upper": 2337.7,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 2131.6,
+        "lower": 1985.7,
+        "upper": 2277.4,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 2137.3,
+        "lower": 2092.8,
+        "upper": 2181.7,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 2140.5,
+        "lower": 2104.2,
+        "upper": 2176.9,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 2142.2,
+        "lower": 2106.7,
+        "upper": 2177.6,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 2144.8,
+        "lower": 2109.8,
+        "upper": 2179.8,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 2147,
+        "lower": 2112,
+        "upper": 2182,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 2148.9,
+        "lower": 2113.9,
+        "upper": 2183.9,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 2150.4,
+        "lower": 2115.4,
+        "upper": 2185.4,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 2151.7,
+        "lower": 2116.7,
+        "upper": 2186.7,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 2152.8,
+        "lower": 2117.8,
+        "upper": 2187.8,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 2153.8,
+        "lower": 2118.8,
+        "upper": 2188.8,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:20.955948"
+    }
+  },
+  "Onion_30": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Onion",
+    "icon": "🧅",
+    "horizon": "30d",
+    "currentPrice": 2095.5,
+    "previousPrice": 1961.7,
+    "predictedPrice": 2153.8,
+    "priceChange": 58.3,
+    "priceChangePercent": 2.78,
+    "riskLevel": "Low",
+    "riskScore": 15,
+    "volatility": "±5.7%",
+    "supplyStatus": "Data not available",
+    "outlook": "Fairly Stable",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 2216.2,
+        "min": 2038.9,
+        "max": 2393.5,
+        "model_pred": 2243.6,
+        "market": "Karambakkudi (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Pudukkottai"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 1865.7,
+        "min": 1716.4,
+        "max": 2015,
+        "model_pred": 1978.8,
+        "market": "Velayuthampalayam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Karur"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 1873.4,
+        "min": 1723.5,
+        "max": 2023.3,
+        "model_pred": 1975.8,
+        "market": "New Grain Market (main), Karnal APMC",
+        "state": "Haryana",
+        "district": "Karnal"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 1699.3,
+        "min": 1563.4,
+        "max": 1835.2,
+        "model_pred": 1852.1,
+        "market": "Samsabad APMC",
+        "state": "Uttar Pradesh",
+        "district": "Agra"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 2040.6,
+        "min": 1877.4,
+        "max": 2203.8,
+        "model_pred": 2111.1,
+        "market": "Mannargudi II (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruvarur"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 1912.7,
+        "min": 1759.7,
+        "max": 2065.7,
+        "model_pred": 2008.5,
+        "market": "Pattambi APMC",
+        "state": "Kerala",
+        "district": "Palakad"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 2021.3,
+        "min": 1859.6,
+        "max": 2183,
+        "model_pred": 2075.3,
+        "market": "SMY Dhanotu",
+        "state": "Himachal Pradesh",
+        "district": "Mandi"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 2068.7,
+        "min": 1903.2,
+        "max": 2234.2,
+        "model_pred": 2149.7,
+        "market": "Garhakota APMC",
+        "state": "Madhya Pradesh",
+        "district": "Sagar"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 1987.9,
+        "min": 1828.9,
+        "max": 2146.9,
+        "model_pred": 2074,
+        "market": "Belgaum APMC",
+        "state": "Karnataka",
+        "district": "Belgaum"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 2154.7,
+        "min": 1982.3,
+        "max": 2327.1,
+        "model_pred": 2198.4,
+        "market": "Kambam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Theni"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 1894.5,
+        "min": 1742.9,
+        "max": 2046.1,
+        "model_pred": 1960.4,
+        "market": "Gangarampur (Dakshin Dinajpur) APMC",
+        "state": "West Bengal",
+        "district": "Dakshin Dinajpur"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 1896.1,
+        "min": 1744.4,
+        "max": 2047.8,
+        "model_pred": 1990.2,
+        "market": "Tiruchengode APMC",
+        "state": "Tamil Nadu",
+        "district": "Namakkal"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 1935.3,
+        "min": 1780.5,
+        "max": 2090.1,
+        "model_pred": 2034.1,
+        "market": "Thanjavur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thanjavur"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 1889.6,
+        "min": 1738.4,
+        "max": 2040.8,
+        "model_pred": 1990.4,
+        "market": "Lasalgaon APMC",
+        "state": "Maharashtra",
+        "district": "Nashik"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 1941.5,
+        "min": 1786.2,
+        "max": 2096.8,
+        "model_pred": 2068.4,
+        "market": "Panipat APMC",
+        "state": "Haryana",
+        "district": "Panipat"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 1819.8,
+        "min": 1674.2,
+        "max": 1965.4,
+        "model_pred": 1945.7,
+        "market": "Vedaranyam (Uzhavar Sandhai)",
+        "state": "Tamil Nadu",
+        "district": "Nagapattinam"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 1854.4,
+        "min": 1706,
+        "max": 2002.8,
+        "model_pred": 1959.1,
+        "market": "Bilimora APMC",
+        "state": "Gujarat",
+        "district": "Navsari"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 1888.9,
+        "min": 1737.8,
+        "max": 2040,
+        "model_pred": 2009,
+        "market": "Kayamkulam APMC",
+        "state": "Kerala",
+        "district": "Alappuzha"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 2004.5,
+        "min": 1844.1,
+        "max": 2164.9,
+        "model_pred": 2209.9,
+        "market": "PMY Kangni Mandi",
+        "state": "Himachal Pradesh",
+        "district": "Mandi"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 1775.5,
+        "min": 1633.5,
+        "max": 1917.5,
+        "model_pred": 1997.4,
+        "market": "Gohana APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 1961.3,
+        "min": 1804.4,
+        "max": 2118.2,
+        "model_pred": 2206.7,
+        "market": "Aruppukottai (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Virudhunagar"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 2014.4,
+        "min": 1853.2,
+        "max": 2175.6,
+        "model_pred": 2231.1,
+        "market": "Sulur (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Coimbatore"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 1845.2,
+        "min": 1697.6,
+        "max": 1992.8,
+        "model_pred": 2030.7,
+        "market": "Farukh Nagar APMC",
+        "state": "Haryana",
+        "district": "Gurgaon"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 1961.7,
+        "min": 1804.8,
+        "max": 2118.6,
+        "model_pred": 2095.4,
+        "market": "Dablirathan APMC",
+        "state": "Rajasthan",
+        "district": "Hanumangarh"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 1761.1,
+        "min": 1620.2,
+        "max": 1902,
+        "model_pred": 1926.3,
+        "market": "Harur (Uzhavar Sandhai )",
+        "state": "Tamil Nadu",
+        "district": "Dharmapuri"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 1873.6,
+        "min": 1723.7,
+        "max": 2023.5,
+        "model_pred": 2012.8,
+        "market": "Kopargaon APMC",
+        "state": "Maharashtra",
+        "district": "Ahmednagar"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 1742.3,
+        "min": 1602.9,
+        "max": 1881.7,
+        "model_pred": 1867.3,
+        "market": "Mecheri (Uzhavar Sandhai)",
+        "state": "Tamil Nadu",
+        "district": "Salem"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 1884.7,
+        "min": 1733.9,
+        "max": 2035.5,
+        "model_pred": 1980.2,
+        "market": "Ferozepur Cantt. APMC",
+        "state": "Punjab",
+        "district": "Ferozpur"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 2166.9,
+        "min": 1993.5,
+        "max": 2340.3,
+        "model_pred": 2270.8,
+        "market": "Sonepat (Kharkhoda) APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 2095.5,
+        "min": 1927.9,
+        "max": 2263.1,
+        "model_pred": 2197.9,
+        "market": "Garh Shankar APMC",
+        "state": "Punjab",
+        "district": "Hoshiarpur"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 2095,
+        "lower": 1959.5,
+        "upper": 2230.6,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2113.9,
+        "lower": 1935.3,
+        "upper": 2292.6,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 2124.3,
+        "lower": 1910.9,
+        "upper": 2337.7,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2131.6,
+        "lower": 1985.7,
+        "upper": 2277.4,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 2137.3,
+        "lower": 2092.8,
+        "upper": 2181.7,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2140.5,
+        "lower": 2104.2,
+        "upper": 2176.9,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 2142.2,
+        "lower": 2106.7,
+        "upper": 2177.6,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2095,
+        "lower": 1959.5,
+        "upper": 2230.6,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2113.9,
+        "lower": 1935.3,
+        "upper": 2292.6,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2124.3,
+        "lower": 1910.9,
+        "upper": 2337.7,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 2131.6,
+        "lower": 1985.7,
+        "upper": 2277.4,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 2137.3,
+        "lower": 2092.8,
+        "upper": 2181.7,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 2140.5,
+        "lower": 2104.2,
+        "upper": 2176.9,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 2142.2,
+        "lower": 2106.7,
+        "upper": 2177.6,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 2144.8,
+        "lower": 2109.8,
+        "upper": 2179.8,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 2147,
+        "lower": 2112,
+        "upper": 2182,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 2148.9,
+        "lower": 2113.9,
+        "upper": 2183.9,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 2150.4,
+        "lower": 2115.4,
+        "upper": 2185.4,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 2151.7,
+        "lower": 2116.7,
+        "upper": 2186.7,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 2152.8,
+        "lower": 2117.8,
+        "upper": 2187.8,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 2153.8,
+        "lower": 2118.8,
+        "upper": 2188.8,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:26.424498"
+    }
+  },
+  "Potato_7": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Potato",
+    "icon": "🥔",
+    "horizon": "7d",
+    "currentPrice": 1178.9,
+    "previousPrice": 1140.1,
+    "predictedPrice": 1317.6,
+    "priceChange": 138.7,
+    "priceChangePercent": 11.77,
+    "riskLevel": "High",
+    "riskScore": 72,
+    "volatility": "±19.8%",
+    "supplyStatus": "Data not available",
+    "outlook": "Expected to Rise",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 1851.8,
+        "min": 1703.7,
+        "max": 1999.9,
+        "model_pred": 1962.9,
+        "market": "Bankura Sadar APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 1723.6,
+        "min": 1585.7,
+        "max": 1861.5,
+        "model_pred": 1847.1,
+        "market": "Jampuijala APMC",
+        "state": "Tripura",
+        "district": "Sepahijala"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 1757.3,
+        "min": 1616.7,
+        "max": 1897.9,
+        "model_pred": 1838.3,
+        "market": "Kumbakonam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thanjavur"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 1567.2,
+        "min": 1441.8,
+        "max": 1692.6,
+        "model_pred": 1670.9,
+        "market": "Mayiladuthurai (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Nagapattinam"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 1580.6,
+        "min": 1454.2,
+        "max": 1707,
+        "model_pred": 1675.1,
+        "market": "Kotadwara APMC",
+        "state": "Uttarakhand",
+        "district": "Garhwal (Pauri)"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 1601.8,
+        "min": 1473.7,
+        "max": 1729.9,
+        "model_pred": 1667.7,
+        "market": "Pandua APMC",
+        "state": "West Bengal",
+        "district": "Hooghly"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 1656.2,
+        "min": 1523.7,
+        "max": 1788.7,
+        "model_pred": 1738.1,
+        "market": "Chandrapur (Ganjwad) APMC",
+        "state": "Maharashtra",
+        "district": "Chandrapur"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 1688,
+        "min": 1553,
+        "max": 1823,
+        "model_pred": 1757.3,
+        "market": "Chattrapati Sambhajinagar APMC",
+        "state": "Maharashtra",
+        "district": "Chattrapati Sambhajinagar"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 1629.5,
+        "min": 1499.1,
+        "max": 1759.9,
+        "model_pred": 1713.6,
+        "market": "Panisagar APMC",
+        "state": "Tripura",
+        "district": "North Tripura"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 1921,
+        "min": 1767.3,
+        "max": 2074.7,
+        "model_pred": 1988.6,
+        "market": "KKNagar (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruchirappalli"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 1425.1,
+        "min": 1311.1,
+        "max": 1539.1,
+        "model_pred": 1507.4,
+        "market": "Ganaur APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 1482.7,
+        "min": 1364.1,
+        "max": 1601.3,
+        "model_pred": 1567.6,
+        "market": "Jiaganj APMC",
+        "state": "West Bengal",
+        "district": "Murshidabad"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 1632.9,
+        "min": 1502.3,
+        "max": 1763.5,
+        "model_pred": 1734.3,
+        "market": "Madhavapuram APMC",
+        "state": "Kerala",
+        "district": "Alappuzha"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 1603.8,
+        "min": 1475.5,
+        "max": 1732.1,
+        "model_pred": 1684.3,
+        "market": "Asansol APMC",
+        "state": "West Bengal",
+        "district": "Paschim Bardhaman"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 1678.7,
+        "min": 1544.4,
+        "max": 1813,
+        "model_pred": 1787.3,
+        "market": "Kaveripattinam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Krishnagiri"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 1550.2,
+        "min": 1426.2,
+        "max": 1674.2,
+        "model_pred": 1654.2,
+        "market": "Rania APMC",
+        "state": "Haryana",
+        "district": "Sirsa"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 1705.4,
+        "min": 1569,
+        "max": 1841.8,
+        "model_pred": 1822.7,
+        "market": "Chengam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruvannamalai"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 1408.6,
+        "min": 1295.9,
+        "max": 1521.3,
+        "model_pred": 1548.1,
+        "market": "Sonepat APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 1529.4,
+        "min": 1407,
+        "max": 1651.8,
+        "model_pred": 1655.6,
+        "market": "Mettur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Salem"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 1003.2,
+        "min": 922.9,
+        "max": 1083.5,
+        "model_pred": 1144.5,
+        "market": "Barpathari APMC",
+        "state": "Tripura",
+        "district": "South Tripura"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 1208.2,
+        "min": 1111.5,
+        "max": 1304.9,
+        "model_pred": 1324.3,
+        "market": "Halahali",
+        "state": "Tripura",
+        "district": "Dhalai"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 923.3,
+        "min": 849.4,
+        "max": 997.2,
+        "model_pred": 1064.3,
+        "market": "Jhajjar APMC",
+        "state": "Haryana",
+        "district": "Jhajar"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 1105.7,
+        "min": 1017.2,
+        "max": 1194.2,
+        "model_pred": 1240.1,
+        "market": "Bishnupur (Bankura) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 1140.1,
+        "min": 1048.9,
+        "max": 1231.3,
+        "model_pred": 1275.5,
+        "market": "Vazhapadi (Uzhavar Sandhai)",
+        "state": "Tamil Nadu",
+        "district": "Salem"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 896.2,
+        "min": 824.5,
+        "max": 967.9,
+        "model_pred": 1033.9,
+        "market": "Kayamkulam APMC",
+        "state": "Kerala",
+        "district": "Alappuzha"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 933.5,
+        "min": 858.8,
+        "max": 1008.2,
+        "model_pred": 1086.6,
+        "market": "Indri APMC",
+        "state": "Haryana",
+        "district": "Karnal"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 1059.6,
+        "min": 974.8,
+        "max": 1144.4,
+        "model_pred": 1181.4,
+        "market": "Halahali",
+        "state": "Tripura",
+        "district": "Dhalai"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 1011.8,
+        "min": 930.9,
+        "max": 1092.7,
+        "model_pred": 1157.5,
+        "market": "Kopaganj APMC",
+        "state": "Uttar Pradesh",
+        "district": "Mau (Maunathbhanjan)"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 1000.6,
+        "min": 920.6,
+        "max": 1080.6,
+        "model_pred": 1113.6,
+        "market": "Shadabad APMC",
+        "state": "Uttar Pradesh",
+        "district": "Hathras"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 1178.9,
+        "min": 1084.6,
+        "max": 1273.2,
+        "model_pred": 1308.1,
+        "market": "Boudh APMC",
+        "state": "Odisha",
+        "district": "Boudh"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 1208.4,
+        "lower": 1116.1,
+        "upper": 1300.6,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 1244.1,
+        "lower": 1111.5,
+        "upper": 1376.8,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 1265.6,
+        "lower": 1113.1,
+        "upper": 1418.2,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 1282.9,
+        "lower": 1098.2,
+        "upper": 1467.6,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 1295.9,
+        "lower": 1117.4,
+        "upper": 1474.4,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 1306.4,
+        "lower": 1215.7,
+        "upper": 1397.1,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 1317.6,
+        "lower": 1238,
+        "upper": 1397.2,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 1208.4,
+        "lower": 1116.1,
+        "upper": 1300.6,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 1244.1,
+        "lower": 1111.5,
+        "upper": 1376.8,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 1265.6,
+        "lower": 1113.1,
+        "upper": 1418.2,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 1282.9,
+        "lower": 1098.2,
+        "upper": 1467.6,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 1295.9,
+        "lower": 1117.4,
+        "upper": 1474.4,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 1306.4,
+        "lower": 1215.7,
+        "upper": 1397.1,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 1317.6,
+        "lower": 1238,
+        "upper": 1397.2,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 1325.5,
+        "lower": 1260.8,
+        "upper": 1390.1,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 1331.8,
+        "lower": 1275.5,
+        "upper": 1388,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 1336.9,
+        "lower": 1287.8,
+        "upper": 1386,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 1341.1,
+        "lower": 1297.9,
+        "upper": 1384.2,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 1344.4,
+        "lower": 1307.4,
+        "upper": 1381.5,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 1347.2,
+        "lower": 1312.2,
+        "upper": 1382.2,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 1349.4,
+        "lower": 1314.4,
+        "upper": 1384.4,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:31.886489"
+    }
+  },
+  "Potato_30": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Potato",
+    "icon": "🥔",
+    "horizon": "30d",
+    "currentPrice": 1178.9,
+    "previousPrice": 1140.1,
+    "predictedPrice": 1349.4,
+    "priceChange": 170.5,
+    "priceChangePercent": 14.46,
+    "riskLevel": "High",
+    "riskScore": 72,
+    "volatility": "±19.8%",
+    "supplyStatus": "Data not available",
+    "outlook": "Expected to Rise",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 1851.8,
+        "min": 1703.7,
+        "max": 1999.9,
+        "model_pred": 1962.9,
+        "market": "Bankura Sadar APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 1723.6,
+        "min": 1585.7,
+        "max": 1861.5,
+        "model_pred": 1847.1,
+        "market": "Jampuijala APMC",
+        "state": "Tripura",
+        "district": "Sepahijala"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 1757.3,
+        "min": 1616.7,
+        "max": 1897.9,
+        "model_pred": 1838.3,
+        "market": "Kumbakonam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thanjavur"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 1567.2,
+        "min": 1441.8,
+        "max": 1692.6,
+        "model_pred": 1670.9,
+        "market": "Mayiladuthurai (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Nagapattinam"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 1580.6,
+        "min": 1454.2,
+        "max": 1707,
+        "model_pred": 1675.1,
+        "market": "Kotadwara APMC",
+        "state": "Uttarakhand",
+        "district": "Garhwal (Pauri)"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 1601.8,
+        "min": 1473.7,
+        "max": 1729.9,
+        "model_pred": 1667.7,
+        "market": "Pandua APMC",
+        "state": "West Bengal",
+        "district": "Hooghly"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 1656.2,
+        "min": 1523.7,
+        "max": 1788.7,
+        "model_pred": 1738.1,
+        "market": "Chandrapur (Ganjwad) APMC",
+        "state": "Maharashtra",
+        "district": "Chandrapur"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 1688,
+        "min": 1553,
+        "max": 1823,
+        "model_pred": 1757.3,
+        "market": "Chattrapati Sambhajinagar APMC",
+        "state": "Maharashtra",
+        "district": "Chattrapati Sambhajinagar"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 1629.5,
+        "min": 1499.1,
+        "max": 1759.9,
+        "model_pred": 1713.6,
+        "market": "Panisagar APMC",
+        "state": "Tripura",
+        "district": "North Tripura"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 1921,
+        "min": 1767.3,
+        "max": 2074.7,
+        "model_pred": 1988.6,
+        "market": "KKNagar (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruchirappalli"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 1425.1,
+        "min": 1311.1,
+        "max": 1539.1,
+        "model_pred": 1507.4,
+        "market": "Ganaur APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 1482.7,
+        "min": 1364.1,
+        "max": 1601.3,
+        "model_pred": 1567.6,
+        "market": "Jiaganj APMC",
+        "state": "West Bengal",
+        "district": "Murshidabad"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 1632.9,
+        "min": 1502.3,
+        "max": 1763.5,
+        "model_pred": 1734.3,
+        "market": "Madhavapuram APMC",
+        "state": "Kerala",
+        "district": "Alappuzha"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 1603.8,
+        "min": 1475.5,
+        "max": 1732.1,
+        "model_pred": 1684.3,
+        "market": "Asansol APMC",
+        "state": "West Bengal",
+        "district": "Paschim Bardhaman"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 1678.7,
+        "min": 1544.4,
+        "max": 1813,
+        "model_pred": 1787.3,
+        "market": "Kaveripattinam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Krishnagiri"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 1550.2,
+        "min": 1426.2,
+        "max": 1674.2,
+        "model_pred": 1654.2,
+        "market": "Rania APMC",
+        "state": "Haryana",
+        "district": "Sirsa"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 1705.4,
+        "min": 1569,
+        "max": 1841.8,
+        "model_pred": 1822.7,
+        "market": "Chengam (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Thiruvannamalai"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 1408.6,
+        "min": 1295.9,
+        "max": 1521.3,
+        "model_pred": 1548.1,
+        "market": "Sonepat APMC",
+        "state": "Haryana",
+        "district": "Sonipat"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 1529.4,
+        "min": 1407,
+        "max": 1651.8,
+        "model_pred": 1655.6,
+        "market": "Mettur (Uzhavar Sandhai ) APMC",
+        "state": "Tamil Nadu",
+        "district": "Salem"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 1003.2,
+        "min": 922.9,
+        "max": 1083.5,
+        "model_pred": 1144.5,
+        "market": "Barpathari APMC",
+        "state": "Tripura",
+        "district": "South Tripura"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 1208.2,
+        "min": 1111.5,
+        "max": 1304.9,
+        "model_pred": 1324.3,
+        "market": "Halahali",
+        "state": "Tripura",
+        "district": "Dhalai"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 923.3,
+        "min": 849.4,
+        "max": 997.2,
+        "model_pred": 1064.3,
+        "market": "Jhajjar APMC",
+        "state": "Haryana",
+        "district": "Jhajar"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 1105.7,
+        "min": 1017.2,
+        "max": 1194.2,
+        "model_pred": 1240.1,
+        "market": "Bishnupur (Bankura) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 1140.1,
+        "min": 1048.9,
+        "max": 1231.3,
+        "model_pred": 1275.5,
+        "market": "Vazhapadi (Uzhavar Sandhai)",
+        "state": "Tamil Nadu",
+        "district": "Salem"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 896.2,
+        "min": 824.5,
+        "max": 967.9,
+        "model_pred": 1033.9,
+        "market": "Kayamkulam APMC",
+        "state": "Kerala",
+        "district": "Alappuzha"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 933.5,
+        "min": 858.8,
+        "max": 1008.2,
+        "model_pred": 1086.6,
+        "market": "Indri APMC",
+        "state": "Haryana",
+        "district": "Karnal"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 1059.6,
+        "min": 974.8,
+        "max": 1144.4,
+        "model_pred": 1181.4,
+        "market": "Halahali",
+        "state": "Tripura",
+        "district": "Dhalai"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 1011.8,
+        "min": 930.9,
+        "max": 1092.7,
+        "model_pred": 1157.5,
+        "market": "Kopaganj APMC",
+        "state": "Uttar Pradesh",
+        "district": "Mau (Maunathbhanjan)"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 1000.6,
+        "min": 920.6,
+        "max": 1080.6,
+        "model_pred": 1113.6,
+        "market": "Shadabad APMC",
+        "state": "Uttar Pradesh",
+        "district": "Hathras"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 1178.9,
+        "min": 1084.6,
+        "max": 1273.2,
+        "model_pred": 1308.1,
+        "market": "Boudh APMC",
+        "state": "Odisha",
+        "district": "Boudh"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 1208.4,
+        "lower": 1116.1,
+        "upper": 1300.6,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 1244.1,
+        "lower": 1111.5,
+        "upper": 1376.8,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 1265.6,
+        "lower": 1113.1,
+        "upper": 1418.2,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 1282.9,
+        "lower": 1098.2,
+        "upper": 1467.6,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 1295.9,
+        "lower": 1117.4,
+        "upper": 1474.4,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 1306.4,
+        "lower": 1215.7,
+        "upper": 1397.1,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 1317.6,
+        "lower": 1238,
+        "upper": 1397.2,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 1208.4,
+        "lower": 1116.1,
+        "upper": 1300.6,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 1244.1,
+        "lower": 1111.5,
+        "upper": 1376.8,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 1265.6,
+        "lower": 1113.1,
+        "upper": 1418.2,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 1282.9,
+        "lower": 1098.2,
+        "upper": 1467.6,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 1295.9,
+        "lower": 1117.4,
+        "upper": 1474.4,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 1306.4,
+        "lower": 1215.7,
+        "upper": 1397.1,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 1317.6,
+        "lower": 1238,
+        "upper": 1397.2,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 1325.5,
+        "lower": 1260.8,
+        "upper": 1390.1,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 1331.8,
+        "lower": 1275.5,
+        "upper": 1388,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 1336.9,
+        "lower": 1287.8,
+        "upper": 1386,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 1341.1,
+        "lower": 1297.9,
+        "upper": 1384.2,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 1344.4,
+        "lower": 1307.4,
+        "upper": 1381.5,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 1347.2,
+        "lower": 1312.2,
+        "upper": 1382.2,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 1349.4,
+        "lower": 1314.4,
+        "upper": 1384.4,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:37.440234"
+    }
+  },
+  "Rice_7": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Rice",
+    "icon": "🌾",
+    "horizon": "7d",
+    "currentPrice": 3643.5,
+    "previousPrice": 4441.9,
+    "predictedPrice": 3720.7,
+    "priceChange": 77.2,
+    "priceChangePercent": 2.12,
+    "riskLevel": "Low",
+    "riskScore": 16,
+    "volatility": "±6.5%",
+    "supplyStatus": "Data not available",
+    "outlook": "Fairly Stable",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 3482.5,
+        "min": 3203.9,
+        "max": 3761.1,
+        "model_pred": 3548.4,
+        "market": "Tamluk (Medinipur E) APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 4008.7,
+        "min": 3688,
+        "max": 4329.4,
+        "model_pred": 3609.6,
+        "market": "Dinhata APMC",
+        "state": "West Bengal",
+        "district": "Coochbehar"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 4036.5,
+        "min": 3713.6,
+        "max": 4359.4,
+        "model_pred": 3919.4,
+        "market": "Kalipur APMC",
+        "state": "West Bengal",
+        "district": "Hooghly"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 4187.2,
+        "min": 3852.2,
+        "max": 4522.2,
+        "model_pred": 4104.3,
+        "market": "Kolaghat APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 4053.1,
+        "min": 3728.9,
+        "max": 4377.3,
+        "model_pred": 4022.4,
+        "market": "Bankura Sadar APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 3879.1,
+        "min": 3568.8,
+        "max": 4189.4,
+        "model_pred": 3946.6,
+        "market": "Kalburgi APMC",
+        "state": "Karnataka",
+        "district": "Kalburgi"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 3929.8,
+        "min": 3615.4,
+        "max": 4244.2,
+        "model_pred": 3929.4,
+        "market": "Alibagh APMC",
+        "state": "Maharashtra",
+        "district": "Raigad"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 3729.1,
+        "min": 3430.8,
+        "max": 4027.4,
+        "model_pred": 3662.3,
+        "market": "Alibagh APMC",
+        "state": "Maharashtra",
+        "district": "Raigad"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 4005.7,
+        "min": 3685.2,
+        "max": 4326.2,
+        "model_pred": 3969.3,
+        "market": "Masli",
+        "state": "Tripura",
+        "district": "Dhalai"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 4280,
+        "min": 3937.6,
+        "max": 4622.4,
+        "model_pred": 4300.9,
+        "market": "Kottayam APMC",
+        "state": "Kerala",
+        "district": "Kottayam"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 4112,
+        "min": 3783,
+        "max": 4441,
+        "model_pred": 4037.6,
+        "market": "Kalna APMC",
+        "state": "West Bengal",
+        "district": "Purba Bardhaman"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 3876,
+        "min": 3565.9,
+        "max": 4186.1,
+        "model_pred": 3853.9,
+        "market": "Dahod APMC",
+        "state": "Gujarat",
+        "district": "Dahod"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 3670.5,
+        "min": 3376.9,
+        "max": 3964.1,
+        "model_pred": 3609,
+        "market": "Karanjia APMC",
+        "state": "Odisha",
+        "district": "Mayurbhanja"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 3635.9,
+        "min": 3345,
+        "max": 3926.8,
+        "model_pred": 3600.9,
+        "market": "Pandua APMC",
+        "state": "West Bengal",
+        "district": "Hooghly"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 3812.3,
+        "min": 3507.3,
+        "max": 4117.3,
+        "model_pred": 3826.4,
+        "market": "Rampurhat APMC",
+        "state": "West Bengal",
+        "district": "Birbhum"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 3877.7,
+        "min": 3567.5,
+        "max": 4187.9,
+        "model_pred": 3820.3,
+        "market": "Indus (Bankura Sadar) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 4021.2,
+        "min": 3699.5,
+        "max": 4342.9,
+        "model_pred": 3863.1,
+        "market": "Kolaghat APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 3818.2,
+        "min": 3512.7,
+        "max": 4123.7,
+        "model_pred": 3749.2,
+        "market": "Kanchanpur",
+        "state": "Tripura",
+        "district": "North Tripura"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 3918.5,
+        "min": 3605,
+        "max": 4232,
+        "model_pred": 4033.4,
+        "market": "Dinhata APMC",
+        "state": "West Bengal",
+        "district": "Coochbehar"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 3930.5,
+        "min": 3616.1,
+        "max": 4244.9,
+        "model_pred": 3954.2,
+        "market": "Bishnupur (Bankura) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 4350.7,
+        "min": 4002.6,
+        "max": 4698.8,
+        "model_pred": 4290.1,
+        "market": "Khatra APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 3754.3,
+        "min": 3454,
+        "max": 4054.6,
+        "model_pred": 3806.8,
+        "market": "Mangaon APMC",
+        "state": "Maharashtra",
+        "district": "Raigad"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 3962.8,
+        "min": 3645.8,
+        "max": 4279.8,
+        "model_pred": 3968.5,
+        "market": "Kolaghat APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 4441.9,
+        "min": 4086.5,
+        "max": 4797.3,
+        "model_pred": 4398.8,
+        "market": "Baruipur (Canning) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 3743.5,
+        "min": 3444,
+        "max": 4043,
+        "model_pred": 3781.9,
+        "market": "Bishnupur (Bankura) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 4018.2,
+        "min": 3696.7,
+        "max": 4339.7,
+        "model_pred": 3916.6,
+        "market": "Egra/contai APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 3693.2,
+        "min": 3397.7,
+        "max": 3988.7,
+        "model_pred": 3649,
+        "market": "Kalyani APMC",
+        "state": "West Bengal",
+        "district": "Nadia"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 3807.7,
+        "min": 3503.1,
+        "max": 4112.3,
+        "model_pred": 3649.1,
+        "market": "Palghar APMC",
+        "state": "Maharashtra",
+        "district": "Thane"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 3596.1,
+        "min": 3308.4,
+        "max": 3883.8,
+        "model_pred": 3671.7,
+        "market": "Pukharayan APMC",
+        "state": "Uttar Pradesh",
+        "district": "Kanpur Dehat"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 3643.5,
+        "min": 3352,
+        "max": 3935,
+        "model_pred": 3665,
+        "market": "Gadarpur APMC",
+        "state": "Uttarakhand",
+        "district": "UdhamSinghNagar"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 3682.8,
+        "lower": 3572.7,
+        "upper": 3792.9,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 3688.3,
+        "lower": 3531.1,
+        "upper": 3845.6,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 3695.5,
+        "lower": 3607.7,
+        "upper": 3783.2,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 3703.4,
+        "lower": 3601.7,
+        "upper": 3805.1,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 3711,
+        "lower": 3639.3,
+        "upper": 3782.8,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 3717.2,
+        "lower": 3670,
+        "upper": 3764.3,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 3720.7,
+        "lower": 3685.7,
+        "upper": 3755.7,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 3682.8,
+        "lower": 3572.7,
+        "upper": 3792.9,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 3688.3,
+        "lower": 3531.1,
+        "upper": 3845.6,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 3695.5,
+        "lower": 3607.7,
+        "upper": 3783.2,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 3703.4,
+        "lower": 3601.7,
+        "upper": 3805.1,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 3711,
+        "lower": 3639.3,
+        "upper": 3782.8,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 3717.2,
+        "lower": 3670,
+        "upper": 3764.3,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 3720.7,
+        "lower": 3685.7,
+        "upper": 3755.7,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 3724.8,
+        "lower": 3689.8,
+        "upper": 3759.8,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 3728.4,
+        "lower": 3693.4,
+        "upper": 3763.4,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 3731.6,
+        "lower": 3696.6,
+        "upper": 3766.6,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 3734.5,
+        "lower": 3699.5,
+        "upper": 3769.5,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 3737,
+        "lower": 3702,
+        "upper": 3772,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 3739.3,
+        "lower": 3704.3,
+        "upper": 3774.3,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 3741.3,
+        "lower": 3706.3,
+        "upper": 3776.3,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:42.833427"
+    }
+  },
+  "Rice_30": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Rice",
+    "icon": "🌾",
+    "horizon": "30d",
+    "currentPrice": 3643.5,
+    "previousPrice": 4441.9,
+    "predictedPrice": 3741.3,
+    "priceChange": 97.8,
+    "priceChangePercent": 2.68,
+    "riskLevel": "Low",
+    "riskScore": 16,
+    "volatility": "±6.5%",
+    "supplyStatus": "Data not available",
+    "outlook": "Fairly Stable",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 3482.5,
+        "min": 3203.9,
+        "max": 3761.1,
+        "model_pred": 3548.4,
+        "market": "Tamluk (Medinipur E) APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 4008.7,
+        "min": 3688,
+        "max": 4329.4,
+        "model_pred": 3609.6,
+        "market": "Dinhata APMC",
+        "state": "West Bengal",
+        "district": "Coochbehar"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 4036.5,
+        "min": 3713.6,
+        "max": 4359.4,
+        "model_pred": 3919.4,
+        "market": "Kalipur APMC",
+        "state": "West Bengal",
+        "district": "Hooghly"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 4187.2,
+        "min": 3852.2,
+        "max": 4522.2,
+        "model_pred": 4104.3,
+        "market": "Kolaghat APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 4053.1,
+        "min": 3728.9,
+        "max": 4377.3,
+        "model_pred": 4022.4,
+        "market": "Bankura Sadar APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 3879.1,
+        "min": 3568.8,
+        "max": 4189.4,
+        "model_pred": 3946.6,
+        "market": "Kalburgi APMC",
+        "state": "Karnataka",
+        "district": "Kalburgi"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 3929.8,
+        "min": 3615.4,
+        "max": 4244.2,
+        "model_pred": 3929.4,
+        "market": "Alibagh APMC",
+        "state": "Maharashtra",
+        "district": "Raigad"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 3729.1,
+        "min": 3430.8,
+        "max": 4027.4,
+        "model_pred": 3662.3,
+        "market": "Alibagh APMC",
+        "state": "Maharashtra",
+        "district": "Raigad"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 4005.7,
+        "min": 3685.2,
+        "max": 4326.2,
+        "model_pred": 3969.3,
+        "market": "Masli",
+        "state": "Tripura",
+        "district": "Dhalai"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 4280,
+        "min": 3937.6,
+        "max": 4622.4,
+        "model_pred": 4300.9,
+        "market": "Kottayam APMC",
+        "state": "Kerala",
+        "district": "Kottayam"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 4112,
+        "min": 3783,
+        "max": 4441,
+        "model_pred": 4037.6,
+        "market": "Kalna APMC",
+        "state": "West Bengal",
+        "district": "Purba Bardhaman"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 3876,
+        "min": 3565.9,
+        "max": 4186.1,
+        "model_pred": 3853.9,
+        "market": "Dahod APMC",
+        "state": "Gujarat",
+        "district": "Dahod"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 3670.5,
+        "min": 3376.9,
+        "max": 3964.1,
+        "model_pred": 3609,
+        "market": "Karanjia APMC",
+        "state": "Odisha",
+        "district": "Mayurbhanja"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 3635.9,
+        "min": 3345,
+        "max": 3926.8,
+        "model_pred": 3600.9,
+        "market": "Pandua APMC",
+        "state": "West Bengal",
+        "district": "Hooghly"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 3812.3,
+        "min": 3507.3,
+        "max": 4117.3,
+        "model_pred": 3826.4,
+        "market": "Rampurhat APMC",
+        "state": "West Bengal",
+        "district": "Birbhum"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 3877.7,
+        "min": 3567.5,
+        "max": 4187.9,
+        "model_pred": 3820.3,
+        "market": "Indus (Bankura Sadar) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 4021.2,
+        "min": 3699.5,
+        "max": 4342.9,
+        "model_pred": 3863.1,
+        "market": "Kolaghat APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 3818.2,
+        "min": 3512.7,
+        "max": 4123.7,
+        "model_pred": 3749.2,
+        "market": "Kanchanpur",
+        "state": "Tripura",
+        "district": "North Tripura"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 3918.5,
+        "min": 3605,
+        "max": 4232,
+        "model_pred": 4033.4,
+        "market": "Dinhata APMC",
+        "state": "West Bengal",
+        "district": "Coochbehar"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 3930.5,
+        "min": 3616.1,
+        "max": 4244.9,
+        "model_pred": 3954.2,
+        "market": "Bishnupur (Bankura) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 4350.7,
+        "min": 4002.6,
+        "max": 4698.8,
+        "model_pred": 4290.1,
+        "market": "Khatra APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 3754.3,
+        "min": 3454,
+        "max": 4054.6,
+        "model_pred": 3806.8,
+        "market": "Mangaon APMC",
+        "state": "Maharashtra",
+        "district": "Raigad"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 3962.8,
+        "min": 3645.8,
+        "max": 4279.8,
+        "model_pred": 3968.5,
+        "market": "Kolaghat APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 4441.9,
+        "min": 4086.5,
+        "max": 4797.3,
+        "model_pred": 4398.8,
+        "market": "Baruipur (Canning) APMC",
+        "state": "West Bengal",
+        "district": "Sounth 24 Parganas"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 3743.5,
+        "min": 3444,
+        "max": 4043,
+        "model_pred": 3781.9,
+        "market": "Bishnupur (Bankura) APMC",
+        "state": "West Bengal",
+        "district": "Bankura"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 4018.2,
+        "min": 3696.7,
+        "max": 4339.7,
+        "model_pred": 3916.6,
+        "market": "Egra/contai APMC",
+        "state": "West Bengal",
+        "district": "Medinipur (E)"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 3693.2,
+        "min": 3397.7,
+        "max": 3988.7,
+        "model_pred": 3649,
+        "market": "Kalyani APMC",
+        "state": "West Bengal",
+        "district": "Nadia"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 3807.7,
+        "min": 3503.1,
+        "max": 4112.3,
+        "model_pred": 3649.1,
+        "market": "Palghar APMC",
+        "state": "Maharashtra",
+        "district": "Thane"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 3596.1,
+        "min": 3308.4,
+        "max": 3883.8,
+        "model_pred": 3671.7,
+        "market": "Pukharayan APMC",
+        "state": "Uttar Pradesh",
+        "district": "Kanpur Dehat"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 3643.5,
+        "min": 3352,
+        "max": 3935,
+        "model_pred": 3665,
+        "market": "Gadarpur APMC",
+        "state": "Uttarakhand",
+        "district": "UdhamSinghNagar"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 3682.8,
+        "lower": 3572.7,
+        "upper": 3792.9,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 3688.3,
+        "lower": 3531.1,
+        "upper": 3845.6,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 3695.5,
+        "lower": 3607.7,
+        "upper": 3783.2,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 3703.4,
+        "lower": 3601.7,
+        "upper": 3805.1,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 3711,
+        "lower": 3639.3,
+        "upper": 3782.8,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 3717.2,
+        "lower": 3670,
+        "upper": 3764.3,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 3720.7,
+        "lower": 3685.7,
+        "upper": 3755.7,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 3682.8,
+        "lower": 3572.7,
+        "upper": 3792.9,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 3688.3,
+        "lower": 3531.1,
+        "upper": 3845.6,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 3695.5,
+        "lower": 3607.7,
+        "upper": 3783.2,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 3703.4,
+        "lower": 3601.7,
+        "upper": 3805.1,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 3711,
+        "lower": 3639.3,
+        "upper": 3782.8,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 3717.2,
+        "lower": 3670,
+        "upper": 3764.3,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 3720.7,
+        "lower": 3685.7,
+        "upper": 3755.7,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 3724.8,
+        "lower": 3689.8,
+        "upper": 3759.8,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 3728.4,
+        "lower": 3693.4,
+        "upper": 3763.4,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 3731.6,
+        "lower": 3696.6,
+        "upper": 3766.6,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 3734.5,
+        "lower": 3699.5,
+        "upper": 3769.5,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 3737,
+        "lower": 3702,
+        "upper": 3772,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 3739.3,
+        "lower": 3704.3,
+        "upper": 3774.3,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 3741.3,
+        "lower": 3706.3,
+        "upper": 3776.3,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:48.463997"
+    }
+  },
+  "Wheat_7": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Wheat",
+    "icon": "🌾",
+    "horizon": "7d",
+    "currentPrice": 2385.7,
+    "previousPrice": 2347.3,
+    "predictedPrice": 2489,
+    "priceChange": 103.3,
+    "priceChangePercent": 4.33,
+    "riskLevel": "Low",
+    "riskScore": 15,
+    "volatility": "±0.8%",
+    "supplyStatus": "Data not available",
+    "outlook": "Expected to Rise",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 2375.4,
+        "min": 2185.4,
+        "max": 2565.4,
+        "model_pred": 2492.8,
+        "market": "Babra APMC",
+        "state": "Gujarat",
+        "district": "Amreli"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 2359.2,
+        "min": 2170.5,
+        "max": 2547.9,
+        "model_pred": 2462.3,
+        "market": "Sanwer APMC",
+        "state": "Madhya Pradesh",
+        "district": "Indore"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 2295.4,
+        "min": 2111.8,
+        "max": 2479,
+        "model_pred": 2423.1,
+        "market": "Kumbhraj APMC",
+        "state": "Madhya Pradesh",
+        "district": "Guna"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 2311.1,
+        "min": 2126.2,
+        "max": 2496,
+        "model_pred": 2414.8,
+        "market": "Shamshabad APMC",
+        "state": "Madhya Pradesh",
+        "district": "Vidisha"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 2307.9,
+        "min": 2123.3,
+        "max": 2492.5,
+        "model_pred": 2397.5,
+        "market": "Ratlam APMC",
+        "state": "Madhya Pradesh",
+        "district": "Ratlam"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 2325.2,
+        "min": 2139.2,
+        "max": 2511.2,
+        "model_pred": 2413.5,
+        "market": "Segaon APMC",
+        "state": "Madhya Pradesh",
+        "district": "Khargone"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 2326.1,
+        "min": 2140,
+        "max": 2512.2,
+        "model_pred": 2410.4,
+        "market": "Damoh APMC",
+        "state": "Madhya Pradesh",
+        "district": "Damoh"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 2260.3,
+        "min": 2079.5,
+        "max": 2441.1,
+        "model_pred": 2355.6,
+        "market": "Badod APMC",
+        "state": "Madhya Pradesh",
+        "district": "Shajapur"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 2332.3,
+        "min": 2145.7,
+        "max": 2518.9,
+        "model_pred": 2408.3,
+        "market": "Mandla APMC",
+        "state": "Madhya Pradesh",
+        "district": "Mandla"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 2349.7,
+        "min": 2161.7,
+        "max": 2537.7,
+        "model_pred": 2410,
+        "market": "Katol APMC",
+        "state": "Maharashtra",
+        "district": "Nagpur"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 2319.5,
+        "min": 2133.9,
+        "max": 2505.1,
+        "model_pred": 2413.4,
+        "market": "Seoni APMC",
+        "state": "Madhya Pradesh",
+        "district": "Seoni"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 2350.5,
+        "min": 2162.5,
+        "max": 2538.5,
+        "model_pred": 2415.4,
+        "market": "Chhindwara APMC",
+        "state": "Madhya Pradesh",
+        "district": "Chhindwara"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 2309.9,
+        "min": 2125.1,
+        "max": 2494.7,
+        "model_pred": 2403.1,
+        "market": "Sevda APMC",
+        "state": "Madhya Pradesh",
+        "district": "Datia"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 2320.4,
+        "min": 2134.8,
+        "max": 2506,
+        "model_pred": 2399.2,
+        "market": "Babai APMC",
+        "state": "Madhya Pradesh",
+        "district": "Hoshangabad"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 2287.4,
+        "min": 2104.4,
+        "max": 2470.4,
+        "model_pred": 2376.2,
+        "market": "Mohammdi APMC",
+        "state": "Uttar Pradesh",
+        "district": "Khiri (Lakhimpur)"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 2294.4,
+        "min": 2110.8,
+        "max": 2478,
+        "model_pred": 2393.6,
+        "market": "Piplya APMC",
+        "state": "Madhya Pradesh",
+        "district": "Mandsaur"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 2342,
+        "min": 2154.6,
+        "max": 2529.4,
+        "model_pred": 2399.4,
+        "market": "Paithan APMC",
+        "state": "Maharashtra",
+        "district": "Chattrapati Sambhajinagar"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 2353,
+        "min": 2164.8,
+        "max": 2541.2,
+        "model_pred": 2419.7,
+        "market": "Rannod APMC",
+        "state": "Madhya Pradesh",
+        "district": "Shivpuri"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 2329,
+        "min": 2142.7,
+        "max": 2515.3,
+        "model_pred": 2403.8,
+        "market": "Mandla APMC",
+        "state": "Madhya Pradesh",
+        "district": "Mandla"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 2349.3,
+        "min": 2161.4,
+        "max": 2537.2,
+        "model_pred": 2418.7,
+        "market": "Chaurai APMC",
+        "state": "Madhya Pradesh",
+        "district": "Chhindwara"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 2345.9,
+        "min": 2158.2,
+        "max": 2533.6,
+        "model_pred": 2419.2,
+        "market": "Sironj APMC",
+        "state": "Madhya Pradesh",
+        "district": "Vidisha"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 2345.9,
+        "min": 2158.2,
+        "max": 2533.6,
+        "model_pred": 2431,
+        "market": "Mirzapur APMC",
+        "state": "Uttar Pradesh",
+        "district": "Mirzapur"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 2357.7,
+        "min": 2169.1,
+        "max": 2546.3,
+        "model_pred": 2420.7,
+        "market": "Lateri APMC",
+        "state": "Madhya Pradesh",
+        "district": "Vidisha"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 2347.3,
+        "min": 2159.5,
+        "max": 2535.1,
+        "model_pred": 2414.7,
+        "market": "Sehora APMC",
+        "state": "Madhya Pradesh",
+        "district": "Jabalpur"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 2391.3,
+        "min": 2200,
+        "max": 2582.6,
+        "model_pred": 2448.1,
+        "market": "Kasrawad APMC",
+        "state": "Madhya Pradesh",
+        "district": "Khargone"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 2352.3,
+        "min": 2164.1,
+        "max": 2540.5,
+        "model_pred": 2430.3,
+        "market": "Raath APMC",
+        "state": "Uttar Pradesh",
+        "district": "Hamirpur"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 2371.4,
+        "min": 2181.7,
+        "max": 2561.1,
+        "model_pred": 2430.3,
+        "market": "Shirpur APMC",
+        "state": "Maharashtra",
+        "district": "Dhule"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 2398,
+        "min": 2206.2,
+        "max": 2589.8,
+        "model_pred": 2445.8,
+        "market": "Haatpipliya APMC",
+        "state": "Madhya Pradesh",
+        "district": "Dewas"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 2372.8,
+        "min": 2183,
+        "max": 2562.6,
+        "model_pred": 2426,
+        "market": "Viswan APMC",
+        "state": "Uttar Pradesh",
+        "district": "Sitapur"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 2385.7,
+        "min": 2194.8,
+        "max": 2576.6,
+        "model_pred": 2430.8,
+        "market": "Karera APMC",
+        "state": "Madhya Pradesh",
+        "district": "Shivpuri"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 2441.3,
+        "lower": 2406.3,
+        "upper": 2476.3,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2456.4,
+        "lower": 2413.7,
+        "upper": 2499.2,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 2464.7,
+        "lower": 2410,
+        "upper": 2519.4,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2472.5,
+        "lower": 2408.1,
+        "upper": 2537,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 2479.4,
+        "lower": 2404.2,
+        "upper": 2554.5,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2484.8,
+        "lower": 2419.6,
+        "upper": 2550.1,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 2489,
+        "lower": 2453.8,
+        "upper": 2524.1,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2441.3,
+        "lower": 2406.3,
+        "upper": 2476.3,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2456.4,
+        "lower": 2413.7,
+        "upper": 2499.2,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2464.7,
+        "lower": 2410,
+        "upper": 2519.4,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 2472.5,
+        "lower": 2408.1,
+        "upper": 2537,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 2479.4,
+        "lower": 2404.2,
+        "upper": 2554.5,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 2484.8,
+        "lower": 2419.6,
+        "upper": 2550.1,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 2489,
+        "lower": 2453.8,
+        "upper": 2524.1,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 2493.2,
+        "lower": 2458.2,
+        "upper": 2528.2,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 2496.7,
+        "lower": 2461.7,
+        "upper": 2531.7,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 2499.8,
+        "lower": 2464.8,
+        "upper": 2534.8,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 2502.5,
+        "lower": 2467.5,
+        "upper": 2537.5,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 2504.8,
+        "lower": 2469.8,
+        "upper": 2539.8,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 2506.8,
+        "lower": 2471.8,
+        "upper": 2541.8,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 2508.5,
+        "lower": 2473.5,
+        "upper": 2543.5,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:07:54.573980"
+    }
+  },
+  "Wheat_30": {
+    "success": true,
+    "forecastAvailable": true,
+    "supported": true,
+    "commodity": "Wheat",
+    "icon": "🌾",
+    "horizon": "30d",
+    "currentPrice": 2385.7,
+    "previousPrice": 2347.3,
+    "predictedPrice": 2508.5,
+    "priceChange": 122.8,
+    "priceChangePercent": 5.15,
+    "riskLevel": "Low",
+    "riskScore": 15,
+    "volatility": "±0.8%",
+    "supplyStatus": "Data not available",
+    "outlook": "Expected to Rise",
+    "historical": [
+      {
+        "date": "19 Mar",
+        "raw_date": "2026-03-19",
+        "modal": 2375.4,
+        "min": 2185.4,
+        "max": 2565.4,
+        "model_pred": 2492.8,
+        "market": "Babra APMC",
+        "state": "Gujarat",
+        "district": "Amreli"
+      },
+      {
+        "date": "23 Mar",
+        "raw_date": "2026-03-23",
+        "modal": 2359.2,
+        "min": 2170.5,
+        "max": 2547.9,
+        "model_pred": 2462.3,
+        "market": "Sanwer APMC",
+        "state": "Madhya Pradesh",
+        "district": "Indore"
+      },
+      {
+        "date": "24 Mar",
+        "raw_date": "2026-03-24",
+        "modal": 2295.4,
+        "min": 2111.8,
+        "max": 2479,
+        "model_pred": 2423.1,
+        "market": "Kumbhraj APMC",
+        "state": "Madhya Pradesh",
+        "district": "Guna"
+      },
+      {
+        "date": "25 Mar",
+        "raw_date": "2026-03-25",
+        "modal": 2311.1,
+        "min": 2126.2,
+        "max": 2496,
+        "model_pred": 2414.8,
+        "market": "Shamshabad APMC",
+        "state": "Madhya Pradesh",
+        "district": "Vidisha"
+      },
+      {
+        "date": "26 Mar",
+        "raw_date": "2026-03-26",
+        "modal": 2307.9,
+        "min": 2123.3,
+        "max": 2492.5,
+        "model_pred": 2397.5,
+        "market": "Ratlam APMC",
+        "state": "Madhya Pradesh",
+        "district": "Ratlam"
+      },
+      {
+        "date": "27 Mar",
+        "raw_date": "2026-03-27",
+        "modal": 2325.2,
+        "min": 2139.2,
+        "max": 2511.2,
+        "model_pred": 2413.5,
+        "market": "Segaon APMC",
+        "state": "Madhya Pradesh",
+        "district": "Khargone"
+      },
+      {
+        "date": "28 Mar",
+        "raw_date": "2026-03-28",
+        "modal": 2326.1,
+        "min": 2140,
+        "max": 2512.2,
+        "model_pred": 2410.4,
+        "market": "Damoh APMC",
+        "state": "Madhya Pradesh",
+        "district": "Damoh"
+      },
+      {
+        "date": "29 Mar",
+        "raw_date": "2026-03-29",
+        "modal": 2260.3,
+        "min": 2079.5,
+        "max": 2441.1,
+        "model_pred": 2355.6,
+        "market": "Badod APMC",
+        "state": "Madhya Pradesh",
+        "district": "Shajapur"
+      },
+      {
+        "date": "30 Mar",
+        "raw_date": "2026-03-30",
+        "modal": 2332.3,
+        "min": 2145.7,
+        "max": 2518.9,
+        "model_pred": 2408.3,
+        "market": "Mandla APMC",
+        "state": "Madhya Pradesh",
+        "district": "Mandla"
+      },
+      {
+        "date": "31 Mar",
+        "raw_date": "2026-03-31",
+        "modal": 2349.7,
+        "min": 2161.7,
+        "max": 2537.7,
+        "model_pred": 2410,
+        "market": "Katol APMC",
+        "state": "Maharashtra",
+        "district": "Nagpur"
+      },
+      {
+        "date": "01 Apr",
+        "raw_date": "2026-04-01",
+        "modal": 2319.5,
+        "min": 2133.9,
+        "max": 2505.1,
+        "model_pred": 2413.4,
+        "market": "Seoni APMC",
+        "state": "Madhya Pradesh",
+        "district": "Seoni"
+      },
+      {
+        "date": "02 Apr",
+        "raw_date": "2026-04-02",
+        "modal": 2350.5,
+        "min": 2162.5,
+        "max": 2538.5,
+        "model_pred": 2415.4,
+        "market": "Chhindwara APMC",
+        "state": "Madhya Pradesh",
+        "district": "Chhindwara"
+      },
+      {
+        "date": "03 Apr",
+        "raw_date": "2026-04-03",
+        "modal": 2309.9,
+        "min": 2125.1,
+        "max": 2494.7,
+        "model_pred": 2403.1,
+        "market": "Sevda APMC",
+        "state": "Madhya Pradesh",
+        "district": "Datia"
+      },
+      {
+        "date": "04 Apr",
+        "raw_date": "2026-04-04",
+        "modal": 2320.4,
+        "min": 2134.8,
+        "max": 2506,
+        "model_pred": 2399.2,
+        "market": "Babai APMC",
+        "state": "Madhya Pradesh",
+        "district": "Hoshangabad"
+      },
+      {
+        "date": "05 Apr",
+        "raw_date": "2026-04-05",
+        "modal": 2287.4,
+        "min": 2104.4,
+        "max": 2470.4,
+        "model_pred": 2376.2,
+        "market": "Mohammdi APMC",
+        "state": "Uttar Pradesh",
+        "district": "Khiri (Lakhimpur)"
+      },
+      {
+        "date": "06 Apr",
+        "raw_date": "2026-04-06",
+        "modal": 2294.4,
+        "min": 2110.8,
+        "max": 2478,
+        "model_pred": 2393.6,
+        "market": "Piplya APMC",
+        "state": "Madhya Pradesh",
+        "district": "Mandsaur"
+      },
+      {
+        "date": "07 Apr",
+        "raw_date": "2026-04-07",
+        "modal": 2342,
+        "min": 2154.6,
+        "max": 2529.4,
+        "model_pred": 2399.4,
+        "market": "Paithan APMC",
+        "state": "Maharashtra",
+        "district": "Chattrapati Sambhajinagar"
+      },
+      {
+        "date": "08 Apr",
+        "raw_date": "2026-04-08",
+        "modal": 2353,
+        "min": 2164.8,
+        "max": 2541.2,
+        "model_pred": 2419.7,
+        "market": "Rannod APMC",
+        "state": "Madhya Pradesh",
+        "district": "Shivpuri"
+      },
+      {
+        "date": "09 Apr",
+        "raw_date": "2026-04-09",
+        "modal": 2329,
+        "min": 2142.7,
+        "max": 2515.3,
+        "model_pred": 2403.8,
+        "market": "Mandla APMC",
+        "state": "Madhya Pradesh",
+        "district": "Mandla"
+      },
+      {
+        "date": "10 Apr",
+        "raw_date": "2026-04-10",
+        "modal": 2349.3,
+        "min": 2161.4,
+        "max": 2537.2,
+        "model_pred": 2418.7,
+        "market": "Chaurai APMC",
+        "state": "Madhya Pradesh",
+        "district": "Chhindwara"
+      },
+      {
+        "date": "11 Apr",
+        "raw_date": "2026-04-11",
+        "modal": 2345.9,
+        "min": 2158.2,
+        "max": 2533.6,
+        "model_pred": 2419.2,
+        "market": "Sironj APMC",
+        "state": "Madhya Pradesh",
+        "district": "Vidisha"
+      },
+      {
+        "date": "12 Apr",
+        "raw_date": "2026-04-12",
+        "modal": 2345.9,
+        "min": 2158.2,
+        "max": 2533.6,
+        "model_pred": 2431,
+        "market": "Mirzapur APMC",
+        "state": "Uttar Pradesh",
+        "district": "Mirzapur"
+      },
+      {
+        "date": "13 Apr",
+        "raw_date": "2026-04-13",
+        "modal": 2357.7,
+        "min": 2169.1,
+        "max": 2546.3,
+        "model_pred": 2420.7,
+        "market": "Lateri APMC",
+        "state": "Madhya Pradesh",
+        "district": "Vidisha"
+      },
+      {
+        "date": "14 Apr",
+        "raw_date": "2026-04-14",
+        "modal": 2347.3,
+        "min": 2159.5,
+        "max": 2535.1,
+        "model_pred": 2414.7,
+        "market": "Sehora APMC",
+        "state": "Madhya Pradesh",
+        "district": "Jabalpur"
+      },
+      {
+        "date": "15 Apr",
+        "raw_date": "2026-04-15",
+        "modal": 2391.3,
+        "min": 2200,
+        "max": 2582.6,
+        "model_pred": 2448.1,
+        "market": "Kasrawad APMC",
+        "state": "Madhya Pradesh",
+        "district": "Khargone"
+      },
+      {
+        "date": "16 Apr",
+        "raw_date": "2026-04-16",
+        "modal": 2352.3,
+        "min": 2164.1,
+        "max": 2540.5,
+        "model_pred": 2430.3,
+        "market": "Raath APMC",
+        "state": "Uttar Pradesh",
+        "district": "Hamirpur"
+      },
+      {
+        "date": "17 Apr",
+        "raw_date": "2026-04-17",
+        "modal": 2371.4,
+        "min": 2181.7,
+        "max": 2561.1,
+        "model_pred": 2430.3,
+        "market": "Shirpur APMC",
+        "state": "Maharashtra",
+        "district": "Dhule"
+      },
+      {
+        "date": "18 Apr",
+        "raw_date": "2026-04-18",
+        "modal": 2398,
+        "min": 2206.2,
+        "max": 2589.8,
+        "model_pred": 2445.8,
+        "market": "Haatpipliya APMC",
+        "state": "Madhya Pradesh",
+        "district": "Dewas"
+      },
+      {
+        "date": "19 Apr",
+        "raw_date": "2026-04-19",
+        "modal": 2372.8,
+        "min": 2183,
+        "max": 2562.6,
+        "model_pred": 2426,
+        "market": "Viswan APMC",
+        "state": "Uttar Pradesh",
+        "district": "Sitapur"
+      },
+      {
+        "date": "20 Apr",
+        "raw_date": "2026-04-20",
+        "modal": 2385.7,
+        "min": 2194.8,
+        "max": 2576.6,
+        "model_pred": 2430.8,
+        "market": "Karera APMC",
+        "state": "Madhya Pradesh",
+        "district": "Shivpuri"
+      }
+    ],
+    "predicted7d": [
+      {
+        "date": "21 Apr",
+        "raw_date": "2026-04-21",
+        "price": 2441.3,
+        "lower": 2406.3,
+        "upper": 2476.3,
+        "conf": 95
+      },
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2456.4,
+        "lower": 2413.7,
+        "upper": 2499.2,
+        "conf": 95
+      },
+      {
+        "date": "23 Apr",
+        "raw_date": "2026-04-23",
+        "price": 2464.7,
+        "lower": 2410,
+        "upper": 2519.4,
+        "conf": 94
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2472.5,
+        "lower": 2408.1,
+        "upper": 2537,
+        "conf": 94
+      },
+      {
+        "date": "25 Apr",
+        "raw_date": "2026-04-25",
+        "price": 2479.4,
+        "lower": 2404.2,
+        "upper": 2554.5,
+        "conf": 93
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2484.8,
+        "lower": 2419.6,
+        "upper": 2550.1,
+        "conf": 93
+      },
+      {
+        "date": "27 Apr",
+        "raw_date": "2026-04-27",
+        "price": 2489,
+        "lower": 2453.8,
+        "upper": 2524.1,
+        "conf": 92
+      }
+    ],
+    "predicted30d": [
+      {
+        "date": "22 Apr",
+        "raw_date": "2026-04-22",
+        "price": 2441.3,
+        "lower": 2406.3,
+        "upper": 2476.3,
+        "conf": 95
+      },
+      {
+        "date": "24 Apr",
+        "raw_date": "2026-04-24",
+        "price": 2456.4,
+        "lower": 2413.7,
+        "upper": 2499.2,
+        "conf": 95
+      },
+      {
+        "date": "26 Apr",
+        "raw_date": "2026-04-26",
+        "price": 2464.7,
+        "lower": 2410,
+        "upper": 2519.4,
+        "conf": 94
+      },
+      {
+        "date": "28 Apr",
+        "raw_date": "2026-04-28",
+        "price": 2472.5,
+        "lower": 2408.1,
+        "upper": 2537,
+        "conf": 94
+      },
+      {
+        "date": "30 Apr",
+        "raw_date": "2026-04-30",
+        "price": 2479.4,
+        "lower": 2404.2,
+        "upper": 2554.5,
+        "conf": 93
+      },
+      {
+        "date": "02 May",
+        "raw_date": "2026-05-02",
+        "price": 2484.8,
+        "lower": 2419.6,
+        "upper": 2550.1,
+        "conf": 93
+      },
+      {
+        "date": "04 May",
+        "raw_date": "2026-05-04",
+        "price": 2489,
+        "lower": 2453.8,
+        "upper": 2524.1,
+        "conf": 92
+      },
+      {
+        "date": "06 May",
+        "raw_date": "2026-05-06",
+        "price": 2493.2,
+        "lower": 2458.2,
+        "upper": 2528.2,
+        "conf": 92
+      },
+      {
+        "date": "08 May",
+        "raw_date": "2026-05-08",
+        "price": 2496.7,
+        "lower": 2461.7,
+        "upper": 2531.7,
+        "conf": 91
+      },
+      {
+        "date": "10 May",
+        "raw_date": "2026-05-10",
+        "price": 2499.8,
+        "lower": 2464.8,
+        "upper": 2534.8,
+        "conf": 91
+      },
+      {
+        "date": "12 May",
+        "raw_date": "2026-05-12",
+        "price": 2502.5,
+        "lower": 2467.5,
+        "upper": 2537.5,
+        "conf": 90
+      },
+      {
+        "date": "14 May",
+        "raw_date": "2026-05-14",
+        "price": 2504.8,
+        "lower": 2469.8,
+        "upper": 2539.8,
+        "conf": 90
+      },
+      {
+        "date": "16 May",
+        "raw_date": "2026-05-16",
+        "price": 2506.8,
+        "lower": 2471.8,
+        "upper": 2541.8,
+        "conf": 89
+      },
+      {
+        "date": "18 May",
+        "raw_date": "2026-05-18",
+        "price": 2508.5,
+        "lower": 2473.5,
+        "upper": 2543.5,
+        "conf": 89
+      }
+    ],
+    "modelMetadata": {
+      "modelType": "PyTorch LSTM Regressor (Deep Learning)",
+      "checkpoint": "lstm_price_prediction.pth",
+      "bestEpoch": 17,
+      "bestValLoss": 0.000006033953259489361,
+      "validationRmse": 537.03,
+      "inputSequenceLength": 7,
+      "numFeatures": 19,
+      "timestamp": "2026-10-15T11:08:00.275132"
+    }
+  }
+}

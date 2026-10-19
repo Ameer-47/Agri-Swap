@@ -1,0 +1,17 @@
+{
+  "name": "agri-swap-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node Backend/supervisor.js",
+    "dev": "node Backend/supervisor.js",
+    "server": "node Backend/supervisor.js",
+    "server:raw": "node Backend/server.js",
+    "backfill": "python Backend/scripts/backfillHistoricalPrices.py",
+    "frontend": "npm run dev --prefix Frontend"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.5",
+    "parquetjs": "^0.11.2",
+    "parquetjs-lite": "^0.8.7"
+  }
+}

@@ -1,0 +1,93 @@
+# =================================================================
+# AGRI-SWAP Root .gitignore
+# =================================================================
+
+# 1. Environment Secrets & Local Credentials
+.env
+.env.*
+*.env
+!.env.example
+Backend/.env
+
+# 2. Dependency Directories
+node_modules/
+Backend/node_modules/
+Frontend/node_modules/
+
+# 3. Build & Distribution Artifacts
+dist/
+Frontend/dist/
+dist-ssr/
+build/
+
+# 4. Uploads & Temporary Runtime Files
+Backend/uploads/*
+!Backend/uploads/.gitkeep
+tmp/
+temp/
+
+# 5. SQLite Journal, WAL Locks, & Backup Files
+*.db-wal
+*.db-shm
+*.bak
+*.pre_*
+*pre_accuracy*
+*pre_expansion*
+Backend/data/*.bak
+Backend/data/*_backup*.db
+Backend/data/backups/
+Backend/data/*.pre_*
+
+# 6. Python & Jupyter Runtime Artifacts
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# 7. Application & System Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+ML/price_prediction/lstm-model-agri-swap.log
+
+# 8. OS & IDE Metadata
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 9. Large Binary Datasets & Archives (> 100 MB or Multi-Gigabyte)
+# GitHub hard-rejects files > 100 MB and warns on files > 50 MB.
+Datasets/*.zip
+Datasets/Agricultural Market Price Dataset/csv/
+Datasets/Fruit and Vegetable image dataset/
+Datasets/Fruit_and_Vegetable_Cleaned/
+Datasets/Agricultural Market Price Dataset/cleaned_dataset/
+Datasets/Agricultural Market Price Dataset/feature_engineered_dataset/
+Datasets/Agricultural Market Price Dataset/parquet/
+
+# 10. Large ML Model Weights (> 100 MB)
+# Store externally via GitHub Releases, Git LFS, or Cloud Storage
+ML/image_recognition/resnet50_fruit_vegetable_best.keras
+ML/image_recognition/resnet50_fruit_vegetable_best.zip
+
+# 11. Testing & IDE scratch
+.system_generated/
+
+# Runtime PID files
+Backend/data/*.pid
