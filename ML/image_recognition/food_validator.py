@@ -116,6 +116,14 @@ AGRICULTURAL_PRODUCE_INDICES = {
     998   # ear (corn / cereal grain)
 }
 
+# Squashes, pumpkins, and gourds in ImageNet (unsupported in our 36 produce classes)
+SQUASH_PUMPKIN_INDICES = {
+    939,  # zucchini
+    940,  # spaghetti_squash
+    941,  # acorn_squash
+    942   # butternut_squash
+}
+
 # Explicit food/produce classes in ImageNet that are NOT in our 36 supported classes
 EXPLICIT_UNSUPPORTED_FOOD_INDICES = {
     924,  # guacamole / avocado
@@ -131,6 +139,9 @@ EXPLICIT_UNSUPPORTED_FOOD_INDICES = {
     940,  # spaghetti_squash
     941,  # acorn_squash
     942,  # butternut_squash
+    988,  # acorn
+    989,  # hip (rose hip)
+    990,  # buckeye
     991, 992, 993, 994, 995, 996, 997  # mushrooms/fungi
 }
 
@@ -316,14 +327,44 @@ def validate_and_classify_food(
             "isConfident": False
         }
 
-    # Explicit unsupported produce in ImageNet (strawberry, avocado, broccoli, etc.)
+    # Compute aggregate produce probabilities
+    squash_prob = float(sum(mb_preds[i] for i in SQUASH_PUMPKIN_INDICES if i < len(mb_preds)))
+    unsupported_produce_prob = float(sum(mb_preds[i] for i in EXPLICIT_UNSUPPORTED_FOOD_INDICES if i < len(mb_preds)))
+
+    # Detect Squash / Pumpkin / Gourd:
+    # If MobileNetV2 detects squashes (>= 10% prob or in top-3) and ResNet50 tries to force it into
+    # orange, bell pepper, capsicum, tomato, eggplant, cucumber, or watermelon:
+    has_squash_detection = (
+        squash_prob >= 0.10 or
+        any(idx in SQUASH_PUMPKIN_INDICES and mb_preds[idx] >= 0.08 for idx in top5_mb_indices[:3])
+    )
+    is_pumpkin_or_squash = bool(
+        has_squash_detection and
+        predicted_food in ("orange", "bell pepper", "capsicum", "tomato", "eggplant", "cucumber", "watermelon")
+    )
+
+    # Detect Plum / stone fruit out-of-distribution confusion:
+    # Plum is not in ResNet50's 36 classes and gets erroneously pushed to eggplant or beetroot.
+    # When MobileNetV2 detects stone fruit / berry / fig / hip (989, 952, 949, 988, 990)
+    # or ResNet50 lacks overwhelming confidence (>= 0.85 with margin >= 0.30):
+    is_plum_like_ood = bool(
+        predicted_food in ("eggplant", "beetroot") and
+        (any(idx in (989, 952, 949, 988, 990) and mb_preds[idx] >= 0.05 for idx in top5_mb_indices[:3]) or
+         (confidence < 0.85 or margin < 0.30))
+    )
+
+    # Explicit unsupported produce in ImageNet (strawberry, avocado, broccoli, squashes, etc.)
     # Note: ImageNet has no red apple class (only green Granny Smith at 948), and frequently
-    # maps red apples to strawberry (949). When ResNet50 is confident (>= 0.70) on apple,
+    # maps red apples to strawberry (949). When ResNet50 is confident (>= 0.85) on apple,
     # tomato, or pomegranate, ImageNet's strawberry guess must not override ResNet50.
+    has_unsupported_mb_match = (
+        (top1_mb_idx in EXPLICIT_UNSUPPORTED_FOOD_INDICES and top1_mb_prob >= 0.15) or
+        any(idx in EXPLICIT_UNSUPPORTED_FOOD_INDICES and mb_preds[idx] >= 0.18 for idx in top5_mb_indices[:3]) or
+        (unsupported_produce_prob >= 0.25)
+    )
     is_explicit_unsupported = (
-        top1_mb_idx in EXPLICIT_UNSUPPORTED_FOOD_INDICES
-        and top1_mb_prob >= 0.25
-        and not (predicted_food in ("apple", "tomato", "pomegranate") and confidence >= 0.70)
+        (has_unsupported_mb_match or is_pumpkin_or_squash or is_plum_like_ood)
+        and not (predicted_food in ("apple", "tomato", "pomegranate") and confidence >= 0.85 and top1_mb_idx in (948, 957, 949))
     )
 
     # --- MIXED-FRUIT / MULTI-PRODUCE RECOGNITION (STEP 3) ---
@@ -343,12 +384,12 @@ def validate_and_classify_food(
 
     # --- OUTCOME 1: SUPPORTED FRUIT OR VEGETABLE ---
     # Return the identified supported class when:
-    # 1. High single-produce confidence (>= 70% with margin >= 12%)
-    # 2. Dominant single-produce margin (>= 60% confidence with margin >= 40%, e.g. clear grape image)
+    # 1. High single-produce confidence (>= 72% with margin >= 14%)
+    # 2. Dominant single-produce margin (>= 62% confidence with margin >= 42%, e.g. clear grape image)
     # 3. Verified mixed produce / fruit basket containing supported fruits
     is_single_supported = (
-        ((confidence >= 0.70 and margin >= 0.12) or
-         (confidence >= 0.60 and margin >= 0.40))
+        ((confidence >= 0.72 and margin >= 0.14) or
+         (confidence >= 0.62 and margin >= 0.42))
         and not is_explicit_unsupported
     )
     is_supported = is_single_supported or is_mixed_produce

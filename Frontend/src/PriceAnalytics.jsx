@@ -465,7 +465,22 @@ const COMMODITY_ICONS = {
   Cauliflower: "🥦",
   Chilli: "🌶️",
   "Green Chilli": "🌶️",
-  Turmeric: "🫚"
+  Turmeric: "🫚",
+  Pumpkin: "🎃",
+  Plum: "🫐",
+  "Bhindi(Ladies Finger)": "🥒",
+  Bhindi: "🥒",
+  "Ladies Finger": "🥒",
+  Beetroot: "🍠",
+  Cucumber: "🥒",
+  Spinach: "🥬",
+  Watermelon: "🍉",
+  Peas: "🫛",
+  "Green Peas": "🫛",
+  Radish: "🥕",
+  Raddish: "🥕",
+  Capsicum: "🫑",
+  "Bell Pepper": "🫑"
 };
 
 function getCommodityIcon(name) {

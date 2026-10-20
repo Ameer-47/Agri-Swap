@@ -190,15 +190,23 @@ def execute_query(params, con_db=None, bypass_cache=False):
 
                 cursor.execute("""
                     SELECT data FROM historical_query_cache 
-                    WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 0
+                    WHERE commodity LIKE ? AND state = ? COLLATE NOCASE AND district = ? COLLATE NOCASE AND market = ? COLLATE NOCASE AND is_timeline = 0
                     ORDER BY length(data) DESC LIMIT 1
                 """, (comm, state, district, market))
                 flex_row = cursor.fetchone()
                 if flex_row:
                     flex_data = json.loads(flex_row[0])
                     if flex_data and isinstance(flex_data.get("records"), list) and len(flex_data["records"]) > 0 and not flex_data.get("isFallbackMode"):
-                        sliced_recs = flex_data["records"][:requested_limit]
-                        total_cnt = flex_data.get("total") if isinstance(flex_data.get("total"), int) and flex_data["total"] > 0 else len(flex_data["records"])
+                        filtered_recs = flex_data["records"]
+                        if state != "All":
+                            filtered_recs = [r for r in filtered_recs if r.get("state") and r.get("state").lower() == state.lower()]
+                        if district != "All":
+                            filtered_recs = [r for r in filtered_recs if r.get("district") and r.get("district").lower() == district.lower()]
+                        if market != "All":
+                            filtered_recs = [r for r in filtered_recs if r.get("market") and r.get("market").lower() == market.lower()]
+
+                        sliced_recs = filtered_recs[:requested_limit]
+                        total_cnt = len(filtered_recs)
                         sliced_payload = dict(flex_data)
                         sliced_payload.update({
                             "records": sliced_recs,
@@ -206,7 +214,7 @@ def execute_query(params, con_db=None, bypass_cache=False):
                             "page": 1,
                             "limit": requested_limit,
                             "total": total_cnt,
-                            "totalPages": max(1, (total_cnt + requested_limit - 1) // requested_limit),
+                            "totalPages": max(1, (total_cnt + requested_limit - 1) // requested_limit) if total_cnt > 0 else 0,
                             "fromPersistentStorage": True,
                             "dataSource": "sqlite_cache"
                         })
@@ -217,7 +225,7 @@ def execute_query(params, con_db=None, bypass_cache=False):
                 dr = str(params.get("dateRange", "30d") or "30d").strip().lower()
                 cursor.execute("""
                     SELECT data FROM historical_query_cache 
-                    WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 1
+                    WHERE commodity LIKE ? AND state = ? COLLATE NOCASE AND district = ? COLLATE NOCASE AND market = ? COLLATE NOCASE AND is_timeline = 1
                     ORDER BY length(data) DESC LIMIT 1
                 """, (comm, state, district, market))
                 flex_tl_row = cursor.fetchone()
@@ -225,6 +233,12 @@ def execute_query(params, con_db=None, bypass_cache=False):
                     flex_tl_data = json.loads(flex_tl_row[0])
                     if flex_tl_data and isinstance(flex_tl_data.get("records"), list) and len(flex_tl_data["records"]) > 0 and not flex_tl_data.get("isFallbackMode"):
                         recs = flex_tl_data["records"]
+                        if state != "All":
+                            recs = [r for r in recs if r.get("state") and r.get("state").lower() == state.lower()]
+                        if district != "All":
+                            recs = [r for r in recs if r.get("district") and r.get("district").lower() == district.lower()]
+                        if market != "All":
+                            recs = [r for r in recs if r.get("market") and r.get("market").lower() == market.lower()]
                         if dr == "7d" and len(recs) > 7:
                             recs = recs[-7:]
                         elif dr == "14d" and len(recs) > 14:
@@ -309,21 +323,21 @@ def execute_query(params, con_db=None, bypass_cache=False):
     # 1. State filter
     if state and state != "All":
         clean_state = state.replace("'", "''")
-        if clean_state in ["Delhi", "NCT of Delhi"]:
-            where_clauses.append("(State = 'NCT of Delhi' OR State = 'Delhi')")
+        if clean_state.lower() in ["delhi", "nct of delhi"]:
+            where_clauses.append("(State ILIKE 'NCT of Delhi' OR State ILIKE 'Delhi')")
         else:
-            where_clauses.append(f"State = '{clean_state}'")
+            where_clauses.append(f"State ILIKE '{clean_state}'")
 
     # 2. District filter
     if district and district != "All":
         clean_dist = district.replace("'", "''")
-        where_clauses.append(f"District = '{clean_dist}'")
+        where_clauses.append(f"District ILIKE '{clean_dist}'")
 
-    # 3. Market filter: exact match on registered market name
+    # 3. Market filter: exact match on registered market name (case-insensitive)
     clean_mkt = None
     if market and market != "All":
         clean_mkt = market.replace("'", "''").strip()
-        where_clauses.append(f"Market = '{clean_mkt}'")
+        where_clauses.append(f"Market ILIKE '{clean_mkt}'")
 
     # 4. Commodity filter with comprehensive alias normalization and exact matching
     if commodity and commodity != "All":

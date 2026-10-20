@@ -39,6 +39,17 @@ function getNormalizedCacheKey(params = {}) {
     return `hist::c=${commodity}::s=${state}::d=${district}::m=${market}::dr=${dateRange}::q=${search}::sf=${sortField}::so=${sortOrder}::p=${page}::l=${limit}::tl=${isTimeline ? 1 : 0}`;
 }
 
+function isStateMatch(recordState, requestedState) {
+    if (!recordState || !requestedState || requestedState === "All") return true;
+    const s1 = recordState.trim().toLowerCase();
+    const s2 = requestedState.trim().toLowerCase();
+    if (s1 === s2) return true;
+    if ((s1 === "delhi" || s1 === "nct of delhi") && (s2 === "delhi" || s2 === "nct of delhi")) return true;
+    if ((s1.includes("jammu") && s1.includes("kashmir")) && (s2.includes("jammu") && s2.includes("kashmir"))) return true;
+    if ((s1.includes("andaman") && s1.includes("nicobar")) && (s2.includes("andaman") && s2.includes("nicobar"))) return true;
+    return false;
+}
+
 let persistentDbInstance = null;
 function getPersistentDb() {
     if (!DatabaseSync) return null;
@@ -80,6 +91,23 @@ function getFromPersistentDb(cacheKey, params = {}) {
         if (row && row.data) {
             const parsed = JSON.parse(row.data);
             if (parsed && !parsed.isFallbackMode) {
+                const reqState = String(params.state || "All").trim();
+                const reqDist = String(params.district || "All").trim();
+                const reqMkt = String(params.market || "All").trim();
+
+                // Strict filter assurance: never leak mixed-state or mismatched location records
+                if (reqState !== "All" && Array.isArray(parsed.records)) {
+                    parsed.records = parsed.records.filter(r => isStateMatch(r.state, reqState));
+                    if (reqDist !== "All") {
+                        parsed.records = parsed.records.filter(r => r.district && r.district.toLowerCase() === reqDist.toLowerCase());
+                    }
+                    if (reqMkt !== "All") {
+                        parsed.records = parsed.records.filter(r => r.market && r.market.toLowerCase() === reqMkt.toLowerCase());
+                    }
+                    parsed.count = parsed.records.length;
+                    parsed.total = parsed.records.length;
+                    parsed.totalPages = Math.max(1, Math.ceil(parsed.records.length / (parsed.limit || 10)));
+                }
                 parsed.fromPersistentStorage = true;
                 parsed.dataSource = "sqlite_cache";
                 return parsed;
@@ -99,15 +127,26 @@ function getFromPersistentDb(cacheKey, params = {}) {
             const requestedLimit = Math.min(100, Math.max(1, parseInt(params.limit, 10) || 10));
             const flexStmt = db.prepare(`
                 SELECT data FROM historical_query_cache 
-                WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 0
+                WHERE commodity LIKE ? AND state = ? COLLATE NOCASE AND district = ? COLLATE NOCASE AND market = ? COLLATE NOCASE AND is_timeline = 0
                 ORDER BY length(data) DESC LIMIT 1
             `);
             const flexRow = flexStmt.get(comm, state, district, market);
             if (flexRow && flexRow.data) {
                 const flexData = JSON.parse(flexRow.data);
                 if (flexData && Array.isArray(flexData.records) && flexData.records.length > 0 && !flexData.isFallbackMode) {
-                    const slicedRecords = flexData.records.slice(0, requestedLimit);
-                    const totalCount = typeof flexData.total === "number" && flexData.total > 0 ? flexData.total : flexData.records.length;
+                    let filteredRecords = flexData.records;
+                    if (state !== "All") {
+                        filteredRecords = filteredRecords.filter(r => isStateMatch(r.state, state));
+                    }
+                    if (district !== "All") {
+                        filteredRecords = filteredRecords.filter(r => r.district && r.district.toLowerCase() === district.toLowerCase());
+                    }
+                    if (market !== "All") {
+                        filteredRecords = filteredRecords.filter(r => r.market && r.market.toLowerCase() === market.toLowerCase());
+                    }
+
+                    const slicedRecords = filteredRecords.slice(0, requestedLimit);
+                    const totalCount = filteredRecords.length;
                     const slicedPayload = {
                         ...flexData,
                         records: slicedRecords,
@@ -115,7 +154,7 @@ function getFromPersistentDb(cacheKey, params = {}) {
                         page: 1,
                         limit: requestedLimit,
                         total: totalCount,
-                        totalPages: Math.max(1, Math.ceil(totalCount / requestedLimit)),
+                        totalPages: totalCount > 0 ? Math.max(1, Math.ceil(totalCount / requestedLimit)) : 0,
                         fromPersistentStorage: true,
                         dataSource: "sqlite_cache"
                     };
@@ -128,7 +167,7 @@ function getFromPersistentDb(cacheKey, params = {}) {
             const dr = String(params.dateRange || "30d").trim().toLowerCase();
             const flexTlStmt = db.prepare(`
                 SELECT data FROM historical_query_cache 
-                WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 1
+                WHERE commodity LIKE ? AND state = ? COLLATE NOCASE AND district = ? COLLATE NOCASE AND market = ? COLLATE NOCASE AND is_timeline = 1
                 ORDER BY length(data) DESC LIMIT 1
             `);
             const flexTlRow = flexTlStmt.get(comm, state, district, market);
@@ -136,6 +175,15 @@ function getFromPersistentDb(cacheKey, params = {}) {
                 const flexTlData = JSON.parse(flexTlRow.data);
                 if (flexTlData && Array.isArray(flexTlData.records) && flexTlData.records.length > 0 && !flexTlData.isFallbackMode) {
                     let recs = flexTlData.records;
+                    if (state !== "All") {
+                        recs = recs.filter(r => isStateMatch(r.state, state));
+                    }
+                    if (district !== "All") {
+                        recs = recs.filter(r => r.district && r.district.toLowerCase() === district.toLowerCase());
+                    }
+                    if (market !== "All") {
+                        recs = recs.filter(r => r.market && r.market.toLowerCase() === market.toLowerCase());
+                    }
                     if (dr === "7d" && recs.length > 7) {
                         recs = recs.slice(-7);
                     } else if (dr === "14d" && recs.length > 14) {

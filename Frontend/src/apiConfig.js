@@ -11,10 +11,11 @@
  */
 
 const rawBaseUrl = import.meta.env.VITE_API_BASE_URL;
+const PRODUCTION_BACKEND_URL = "https://agri-swap-backend.onrender.com";
 
 export const API_BASE_URL = (typeof rawBaseUrl === "string" && rawBaseUrl.trim() !== "")
   ? rawBaseUrl.trim().replace(/\/+$/, "")
-  : "";
+  : (import.meta.env.PROD ? PRODUCTION_BACKEND_URL : "");
 
 /**
  * Builds a full API endpoint URL for single-target fetches (e.g. App.jsx).
@@ -32,11 +33,10 @@ export function buildApiUrl(pathWithQuery) {
 
 /**
  * Returns ordered candidate endpoints for resilient multi-target fetching:
- * 1. If VITE_API_BASE_URL is set, returns solely the configured public endpoint.
+ * 1. If VITE_API_BASE_URL or production fallback is active, returns the resolved URL.
  * 2. In local development with no base URL, prioritizes relative path (Vite proxy)
  *    with local loopback fallbacks for standalone node testing.
- * 3. In production with no base URL, uses relative path only (e.g. reverse-proxied /api).
- *    Never attempts localhost or 127.0.0.1 on client devices.
+ * 3. Never attempts localhost or 127.0.0.1 on client devices in production.
  *
  * @param {string} pathWithQuery - Relative API path, e.g. "/api/prices"
  * @returns {Array<string>} Ordered list of candidate URLs
@@ -57,6 +57,6 @@ export function getApiEndpoints(pathWithQuery) {
     ];
   }
 
-  // Production without explicit base URL: relative path for reverse proxy
-  return [cleanPath];
+  // Production fallback: try Render backend directly, then relative path
+  return [`${PRODUCTION_BACKEND_URL}${cleanPath}`, cleanPath];
 }

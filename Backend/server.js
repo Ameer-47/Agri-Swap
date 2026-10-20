@@ -30,8 +30,12 @@ const app = express();
 app.use(express.json());
 
 // Configurable CORS for production frontend origins while preserving local development
-const allowedOrigins = process.env.CORS_ORIGIN
+const defaultAllowedOrigins = ["https://agri-swap.vercel.app"];
+const configuredOrigins = process.env.CORS_ORIGIN
     ? process.env.CORS_ORIGIN.split(",").map((o) => o.trim()).filter(Boolean)
+    : [];
+const allowedOrigins = configuredOrigins.length > 0
+    ? [...new Set([...configuredOrigins, ...defaultAllowedOrigins])]
     : null;
 
 app.use(cors({
