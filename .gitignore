@@ -81,7 +81,7 @@ Datasets/Agricultural Market Price Dataset/cleaned_dataset/
 Datasets/Agricultural Market Price Dataset/feature_engineered_dataset/
 Datasets/Agricultural Market Price Dataset/parquet/
 
-# 10. Large ML Model Weights (> 100 MB)
+# 10. Large ML Model Weights (> 100 MB or Pre-trained Binaries)
 # Store externally via GitHub Releases, Git LFS, or Cloud Storage
 ML/image_recognition/resnet50_fruit_vegetable_best.keras
 ML/image_recognition/resnet50_fruit_vegetable_best.zip
@@ -90,6 +90,9 @@ ML/image_recognition/*.keras.*
 ML/image_recognition/*.tmp
 *.keras
 *.keras.download.tmp
+*.tflite
+*.tflite.download.tmp
+ML/image_recognition/*.tflite
 
 # 11. Testing & IDE scratch
 .system_generated/

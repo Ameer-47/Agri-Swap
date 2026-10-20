@@ -54,9 +54,11 @@ services:
     region: oregon
     rootDir: .
     buildCommand: pip install -r ML/image_recognition/requirements-vision.txt && python scripts/download_model.py
-    startCommand: python ML/image_recognition/vision_service.py
+    startCommand: python -u ML/image_recognition/vision_service.py
     healthCheckPath: /health
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
       - key: PYTHONPATH
         value: .
       - key: PYTHONIOENCODING
@@ -71,3 +73,7 @@ services:
         value: "1"
       - key: TF_NUM_INTEROP_THREADS
         value: "1"
+      - key: RESNET50_TFLITE_URL
+        value: "https://github.com/Ameer-47/Agri-Swap/releases/download/v1.0.0/resnet50.tflite"
+      - key: RESNET50_TFLITE_EXPECTED_SHA256
+        value: "8aa337e9914af3937881900dfe83694b3a2a1a49dea9b081671fb5dca46e2a94"

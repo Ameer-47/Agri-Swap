@@ -43,64 +43,87 @@ if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
 MODEL_PATH = os.environ.get(
-    "RESNET50_MODEL_PATH",
-    os.path.join(CURRENT_DIR, "resnet50_fruit_vegetable_best.keras")
+    "RESNET50_TFLITE_PATH",
+    os.environ.get(
+        "RESNET50_MODEL_PATH",
+        os.path.join(CURRENT_DIR, "resnet50.tflite")
+    )
 )
 CLASS_NAMES_PATH = os.environ.get(
     "RESNET50_CLASSES_PATH",
     os.path.join(CURRENT_DIR, "resnet50_class_names.json")
 )
 
-# Auto-download model weights if missing
-if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) < 1000000:
+# Auto-download or verify model weights if missing
+if not os.path.exists(MODEL_PATH) or os.path.getsize(MODEL_PATH) < 10000000:
     try:
         from ML.image_recognition.download_model import ensure_model_downloaded
-        print("[VISION SERVICE] Model weights missing. Starting download...")
+        print(f"[VISION SERVICE] Model weights missing at {MODEL_PATH}. Ensuring model is available...")
         ensure_model_downloaded(MODEL_PATH)
     except Exception as dl_err:
-        print(f"[VISION SERVICE] Failed to download model: {dl_err}", file=sys.stderr)
+        print(f"[VISION SERVICE] Failed to verify or download model: {dl_err}", file=sys.stderr)
 
 # Global model state
 PRODUCE_MODEL = None
-IMAGENET_MODEL = None
 CLASS_NAMES = []
 IS_READY = False
 INIT_ERROR = None
+MODEL_ENGINE = "uninitialized"
 
 def initialize_models():
-    global PRODUCE_MODEL, IMAGENET_MODEL, CLASS_NAMES, IS_READY, INIT_ERROR
+    global PRODUCE_MODEL, CLASS_NAMES, IS_READY, INIT_ERROR, MODEL_ENGINE
     if IS_READY:
         return True
 
     try:
         import gc
         import numpy as np
-        from PIL import Image
-        import tensorflow as tf
-
-        try:
-            tf.config.threading.set_inter_op_parallelism_threads(1)
-            tf.config.threading.set_intra_op_parallelism_threads(1)
-        except Exception:
-            pass
-
-        from tensorflow.keras.models import load_model
-        from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2
-
-        print(f"[VISION SERVICE] Loading ResNet50 model from: {MODEL_PATH}...", flush=True)
-        PRODUCE_MODEL = load_model(MODEL_PATH)
 
         print(f"[VISION SERVICE] Loading class names from: {CLASS_NAMES_PATH}...", flush=True)
         with open(CLASS_NAMES_PATH, "r", encoding="utf-8") as f:
             raw_classes = json.load(f)
         CLASS_NAMES = raw_classes if isinstance(raw_classes, list) else list(raw_classes.values())
 
-        print("[VISION SERVICE] Loading MobileNetV2 for domain validation...", flush=True)
-        IMAGENET_MODEL = MobileNetV2(weights="imagenet")
+        print(f"[VISION SERVICE] Initializing ResNet50 model from: {MODEL_PATH}...", flush=True)
+
+        if MODEL_PATH.endswith(".tflite"):
+            # Load with TFLite runtime (ultra-low memory <140 MB total)
+            Interpreter = None
+            try:
+                from tflite_runtime.interpreter import Interpreter
+                MODEL_ENGINE = "tflite-runtime (Linux optimized)"
+            except ImportError:
+                try:
+                    from ai_edge_litert.interpreter import Interpreter
+                    MODEL_ENGINE = "ai-edge-litert"
+                except ImportError:
+                    try:
+                        from tensorflow.lite.python.interpreter import Interpreter
+                        MODEL_ENGINE = "tensorflow.lite"
+                    except ImportError:
+                        try:
+                            import tensorflow as tf
+                            Interpreter = tf.lite.Interpreter
+                            MODEL_ENGINE = "tensorflow.lite.Interpreter"
+                        except ImportError:
+                            raise ImportError(
+                                "No TFLite interpreter runtime found. Please install tflite-runtime or tensorflow."
+                            )
+
+            print(f"[VISION SERVICE] Using {MODEL_ENGINE} for ResNet50 TFLite inference...", flush=True)
+            PRODUCE_MODEL = Interpreter(model_path=MODEL_PATH)
+            PRODUCE_MODEL.allocate_tensors()
+        else:
+            # Fallback for full Keras model if explicitly configured
+            MODEL_ENGINE = "tensorflow.keras"
+            print("[VISION SERVICE] WARNING: Loading full Keras model. This uses >450 MB RAM.", flush=True)
+            import tensorflow as tf
+            from tensorflow.keras.models import load_model
+            PRODUCE_MODEL = load_model(MODEL_PATH, compile=False)
 
         gc.collect()
         IS_READY = True
-        print(f"[SUCCESS] All models loaded successfully ({len(CLASS_NAMES)} produce categories ready).", flush=True)
+        print(f"[SUCCESS] ResNet50 vision model loaded successfully ({len(CLASS_NAMES)} produce categories ready).", flush=True)
         return True
     except Exception as e:
         INIT_ERROR = str(e)
@@ -119,9 +142,7 @@ def run_prediction_on_bytes(image_bytes, original_filename="uploaded.jpg"):
                 "error": INIT_ERROR
             }
 
-    from tensorflow.keras.applications.resnet50 import preprocess_input as resnet_preprocess
-    from tensorflow.keras.applications.mobilenet_v2 import preprocess_input as mobilenet_preprocess
-    from ML.image_recognition.food_validator import validate_and_classify_food
+    from ML.image_recognition.food_validator import validate_and_classify_food, resnet50_preprocess
 
     # Save to temp file for robust PIL/Exif handling
     suffix = os.path.splitext(original_filename)[1] or ".jpg"
@@ -135,9 +156,8 @@ def run_prediction_on_bytes(image_bytes, original_filename="uploaded.jpg"):
             image_path=tmp_path,
             produce_model=PRODUCE_MODEL,
             produce_classes=CLASS_NAMES,
-            imagenet_model=IMAGENET_MODEL,
-            preprocess_produce_fn=resnet_preprocess,
-            preprocess_imagenet_fn=mobilenet_preprocess
+            imagenet_model=None,
+            preprocess_produce_fn=resnet50_preprocess
         )
         elapsed_ms = round((time.time() - t0) * 1000, 2)
         result["inferenceTimeMs"] = elapsed_ms
@@ -191,6 +211,7 @@ class VisionHTTPRequestHandler(BaseHTTPRequestHandler):
                     "ready": IS_READY,
                     "service": "AGRI-SWAP Vision Inference Microservice",
                     "model": "ResNet50",
+                    "runtime": MODEL_ENGINE,
                     "classesCount": len(CLASS_NAMES) if IS_READY else 0,
                     "error": INIT_ERROR
                 })
@@ -295,7 +316,7 @@ class VisionHTTPRequestHandler(BaseHTTPRequestHandler):
 
 
 class AgriSwapVisionServer(ThreadingHTTPServer):
-    allow_reuse_address = False
+    allow_reuse_address = True
 
 
 def start_server(port=None):

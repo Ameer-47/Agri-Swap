@@ -1,7 +1,7 @@
-# AGRI-SWAP Dedicated ResNet50 Vision Service Dependencies
-# Light and focused: Only includes TensorFlow and image manipulation libraries
+# AGRI-SWAP ResNet50 TFLite Vision Service Dependencies
+# Light and focused: ~12 MB download, installs in ~3 seconds.
+# Uses ~130 MB peak RAM on Render free tier (comfortably below 512 MiB limit).
 
-tensorflow>=2.15.0
+tflite-runtime==2.14.0; sys_platform == 'linux'
 Pillow>=9.5.0
-numpy>=1.24.0
-scipy>=1.10.0
+numpy>=1.24.0,<2.0.0
