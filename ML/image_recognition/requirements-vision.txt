@@ -1,0 +1,7 @@
+# AGRI-SWAP Dedicated ResNet50 Vision Service Dependencies
+# Light and focused: Only includes TensorFlow and image manipulation libraries
+
+tensorflow>=2.15.0
+Pillow>=9.5.0
+numpy>=1.24.0
+scipy>=1.10.0

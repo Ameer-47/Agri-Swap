@@ -1,16 +1,26 @@
 # ====================================================================
 # AGRI-SWAP Render Blueprint Specification
-# Deploys Backend API + ML Inference Engine (PyTorch, TensorFlow, DuckDB)
+#
+# Architected for Render 512 MB RAM constraints:
+# 1. agri-swap-backend (Node.js Web Service):
+#    - Runs Express API, DuckDB Parquet analytics, SQLite nutrition/cache, and PyTorch LSTM.
+#    - TensorFlow and heavy ResNet50 vision models are completely excluded to keep memory <160 MB.
+# 2. agri-swap-vision (Dedicated Python Vision Microservice):
+#    - Standalone Python service hosting the ResNet50 .keras classifier and MobileNetV2 validator.
+#    - Connected to the backend via the VISION_INFERENCE_URL environment variable.
 # ====================================================================
 
 services:
+  # ------------------------------------------------------------------
+  # Service 1: AGRI-SWAP Main Backend API Gateway
+  # ------------------------------------------------------------------
   - type: web
     name: agri-swap-backend
     runtime: node
     plan: free
     region: oregon
     rootDir: .
-    buildCommand: pip install -r requirements.txt && npm install && python scripts/download_model.py
+    buildCommand: pip install -r requirements.txt && npm install
     startCommand: node Backend/server.js
     healthCheckPath: /api/health
     envVars:
@@ -24,11 +34,40 @@ services:
         value: .
       - key: PYTHONIOENCODING
         value: utf-8
+      - key: CORS_ORIGIN
+        value: "*"
+      # Configurable vision microservice endpoint.
+      # In Render dashboard, set this to your deployed vision service URL:
+      # e.g., https://agri-swap-vision.onrender.com
+      - key: VISION_INFERENCE_URL
+        sync: false
+      - key: VISION_TIMEOUT_MS
+        value: "35000"
+
+  # ------------------------------------------------------------------
+  # Service 2: Dedicated AGRI-SWAP ResNet50 Vision Inference Service
+  # ------------------------------------------------------------------
+  - type: web
+    name: agri-swap-vision
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: .
+    buildCommand: pip install -r ML/image_recognition/requirements-vision.txt && python scripts/download_model.py
+    startCommand: python ML/image_recognition/vision_service.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHONPATH
+        value: .
+      - key: PYTHONIOENCODING
+        value: utf-8
       - key: TF_ENABLE_ONEDNN_OPTS
         value: "0"
       - key: TF_CPP_MIN_LOG_LEVEL
         value: "2"
       - key: OMP_NUM_THREADS
         value: "1"
-      - key: CORS_ORIGIN
-        value: "*"
+      - key: TF_NUM_INTRAOP_THREADS
+        value: "1"
+      - key: TF_NUM_INTEROP_THREADS
+        value: "1"

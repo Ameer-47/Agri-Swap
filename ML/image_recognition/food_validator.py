@@ -363,8 +363,9 @@ def validate_and_classify_food(
         (unsupported_produce_prob >= 0.25)
     )
     is_explicit_unsupported = (
-        (has_unsupported_mb_match or is_pumpkin_or_squash or is_plum_like_ood)
-        and not (predicted_food in ("apple", "tomato", "pomegranate") and confidence >= 0.85 and top1_mb_idx in (948, 957, 949))
+        is_pumpkin_or_squash or
+        is_plum_like_ood or
+        (has_unsupported_mb_match and not (confidence >= 0.72 and margin >= 0.25))
     )
 
     # --- MIXED-FRUIT / MULTI-PRODUCE RECOGNITION (STEP 3) ---

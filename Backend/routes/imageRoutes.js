@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const { predictFoodImage, getVisionStatus } = require("../services/imageService");
+const { predictFoodImage, getVisionStatus, checkVisionHealth } = require("../services/imageService");
 
 const router = express.Router();
 
@@ -46,10 +46,13 @@ const upload = multer({
     }
 });
 
-router.get("/status", (req, res) => {
+router.get("/status", async (req, res) => {
+    const configStatus = getVisionStatus();
+    const liveHealth = await checkVisionHealth();
     res.json({
         success: true,
-        ...getVisionStatus()
+        ...configStatus,
+        remoteHealth: liveHealth
     });
 });
 
@@ -86,12 +89,16 @@ router.post("/", (req, res, next) => {
 
     try {
         const result = await predictFoodImage(imagePath);
+        if (!result.success) {
+            const httpStatus = (result.status === "inference_unavailable" || result.status === "inference_timeout" || result.status === "service_not_configured") ? 503 : 422;
+            return res.status(httpStatus).json(result);
+        }
         res.json(result);
     } catch (error) {
         console.error("Food prediction error:", error);
         res.status(500).json({
             success: false,
-            message: "Food prediction failed. Please try another image.",
+            message: "Food prediction failed. Please try another image or select your food from Option B.",
             error: process.env.NODE_ENV === "production" ? "Model inference failure" : error.message
         });
     } finally {

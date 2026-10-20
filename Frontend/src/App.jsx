@@ -353,6 +353,7 @@ function App() {
 
     setLoading("image");
     setError("");
+    setPrediction(null);
 
     try {
       const formData = new FormData();
@@ -369,6 +370,9 @@ function App() {
       }
 
       const data = await response.json();
+      if (data && data.success === false) {
+        throw new Error(data.message || data.error || "Food identification failed.");
+      }
       setPrediction(data);
 
       // Only automatically lock into active state if prediction is valid produce and confident (>= 70%)

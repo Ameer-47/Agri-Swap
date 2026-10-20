@@ -1,12 +1,13 @@
 --index-url https://download.pytorch.org/whl/cpu
 --extra-index-url https://pypi.org/simple
 
-# AGRI-SWAP Python ML & Analytics Dependencies
-# Compatible with PyTorch LSTM, ResNet50 Keras classifier, DuckDB Parquet queries, and USDA Nutrition Store.
+# AGRI-SWAP Backend ML & Analytics Dependencies
+# PyTorch CPU for LSTM Price Prediction, DuckDB for Parquet queries.
+# Heavy TensorFlow & ResNet50 dependencies are separated into ML/image_recognition/requirements-vision.txt
+# to maintain low memory consumption (<200 MB) on 512 MB instances.
 
-# Machine Learning & Deep Learning Runtimes (CPU-only PyTorch to prevent downloading multi-gigabyte CUDA dependencies)
+# Machine Learning Runtime (CPU-only PyTorch for LSTM price forecasting)
 torch>=2.0.0
-tensorflow>=2.15.0
 
 # OLAP Analytics & Parquet Engine
 duckdb>=1.0.0
@@ -17,7 +18,3 @@ pandas>=2.0.0
 numpy>=1.24.0
 scikit-learn>=1.3.0
 joblib>=1.3.0
-
-# Vision & Image Processing
-Pillow>=9.5.0
-scipy>=1.10.0
