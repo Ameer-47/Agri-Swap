@@ -60,25 +60,105 @@ function getPersistentDb() {
 
 /**
  * Reads cached query directly from durable SQLite storage in Node.
+ * Supports exact key lookup, case-insensitive key lookup, and flexible page 1 limit/timeline slicing.
  */
-function getFromPersistentDb(cacheKey) {
+function getFromPersistentDb(cacheKey, params = {}) {
     const db = getPersistentDb();
     if (!db) return null;
 
     try {
+        // 1. Exact match
         const stmt = db.prepare("SELECT data FROM historical_query_cache WHERE cache_key = ?");
-        const row = stmt.get(cacheKey);
+        let row = stmt.get(cacheKey);
+
+        // 2. Case-insensitive key match
+        if (!row || !row.data) {
+            const stmtNoCase = db.prepare("SELECT data FROM historical_query_cache WHERE cache_key = ? COLLATE NOCASE");
+            row = stmtNoCase.get(cacheKey);
+        }
+
         if (row && row.data) {
             const parsed = JSON.parse(row.data);
-            parsed.fromPersistentStorage = true;
-            parsed.dataSource = "sqlite_cache";
-            return parsed;
+            if (parsed && !parsed.isFallbackMode) {
+                parsed.fromPersistentStorage = true;
+                parsed.dataSource = "sqlite_cache";
+                return parsed;
+            }
+        }
+
+        // 3. Flexible resolution when Parquet dataset is not available or query has different limit/dateRange
+        const isTimeline = Boolean(params.timeline === true || params.timeline === "true" || params.timeline === 1 || params.timeline === "1");
+        const page = Math.max(1, parseInt(params.page, 10) || 1);
+        const comm = String(params.commodity || "All").trim();
+        const state = String(params.state || "All").trim();
+        const district = String(params.district || "All").trim();
+        const market = String(params.market || "All").trim();
+
+        if (!isTimeline && page === 1) {
+            // Flexible Page-1 Table Query: slice available cached records to requested limit
+            const requestedLimit = Math.min(100, Math.max(1, parseInt(params.limit, 10) || 10));
+            const flexStmt = db.prepare(`
+                SELECT data FROM historical_query_cache 
+                WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 0
+                ORDER BY length(data) DESC LIMIT 1
+            `);
+            const flexRow = flexStmt.get(comm, state, district, market);
+            if (flexRow && flexRow.data) {
+                const flexData = JSON.parse(flexRow.data);
+                if (flexData && Array.isArray(flexData.records) && flexData.records.length > 0 && !flexData.isFallbackMode) {
+                    const slicedRecords = flexData.records.slice(0, requestedLimit);
+                    const totalCount = typeof flexData.total === "number" && flexData.total > 0 ? flexData.total : flexData.records.length;
+                    const slicedPayload = {
+                        ...flexData,
+                        records: slicedRecords,
+                        count: slicedRecords.length,
+                        page: 1,
+                        limit: requestedLimit,
+                        total: totalCount,
+                        totalPages: Math.max(1, Math.ceil(totalCount / requestedLimit)),
+                        fromPersistentStorage: true,
+                        dataSource: "sqlite_cache"
+                    };
+                    writeToPersistentDb(cacheKey, slicedPayload, params);
+                    return slicedPayload;
+                }
+            }
+        } else if (isTimeline) {
+            // Flexible Timeline Query: derive 7d or 14d from cached 30d/all timeline records
+            const dr = String(params.dateRange || "30d").trim().toLowerCase();
+            const flexTlStmt = db.prepare(`
+                SELECT data FROM historical_query_cache 
+                WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 1
+                ORDER BY length(data) DESC LIMIT 1
+            `);
+            const flexTlRow = flexTlStmt.get(comm, state, district, market);
+            if (flexTlRow && flexTlRow.data) {
+                const flexTlData = JSON.parse(flexTlRow.data);
+                if (flexTlData && Array.isArray(flexTlData.records) && flexTlData.records.length > 0 && !flexTlData.isFallbackMode) {
+                    let recs = flexTlData.records;
+                    if (dr === "7d" && recs.length > 7) {
+                        recs = recs.slice(-7);
+                    } else if (dr === "14d" && recs.length > 14) {
+                        recs = recs.slice(-14);
+                    }
+                    const slicedTl = {
+                        ...flexTlData,
+                        records: recs,
+                        count: recs.length,
+                        fromPersistentStorage: true,
+                        dataSource: "sqlite_cache"
+                    };
+                    writeToPersistentDb(cacheKey, slicedTl, params);
+                    return slicedTl;
+                }
+            }
         }
     } catch (err) {
         // Fall back gracefully to python execution if database is locked or error occurs
     }
     return null;
 }
+
 
 /**
  * Stores query result directly into durable SQLite storage.
@@ -223,7 +303,7 @@ function fetchHistoricalPrices(params = {}) {
     }
 
     // 2. L2 Persistent SQLite Cache Hit (survives restarts, 0.5ms)
-    const fromPersistent = getFromPersistentDb(cacheKey);
+    const fromPersistent = getFromPersistentDb(cacheKey, params);
     if (fromPersistent) {
         cleanOldMemoryCache();
         QUERY_CACHE.set(cacheKey, fromPersistent);

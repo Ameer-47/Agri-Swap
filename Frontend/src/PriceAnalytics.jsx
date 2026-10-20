@@ -820,7 +820,9 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
       if (controller.signal.aborted) return;
 
       if (data && (data.success || data.isFallbackMode)) {
-        TIMELINE_CACHE.set(cacheKey, data);
+        if (Array.isArray(data.records) && data.records.length > 0) {
+          TIMELINE_CACHE.set(cacheKey, data);
+        }
         setTimelineRecords(Array.isArray(data.records) ? data.records : []);
         setTimelineStats({
           currentPrice: typeof data.currentPrice === "number" ? data.currentPrice : null,
@@ -892,7 +894,9 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
       if (controller.signal.aborted) return;
 
       if (data && (data.success || data.isFallbackMode)) {
-        LOCATION_CACHE.set(cacheKey, data);
+        if (Array.isArray(data.records) && data.records.length > 0) {
+          LOCATION_CACHE.set(cacheKey, data);
+        }
         setTableRecords(Array.isArray(data.records) ? data.records : []);
         setTotalTableRecords(typeof data.total === "number" ? data.total : (Array.isArray(data.records) ? data.records.length : 0));
       } else {
@@ -1553,7 +1557,7 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
                 value={selectedCommodity}
                 onChange={(e) => {
                   setSelectedCommodity(e.target.value);
-                  setCurrentPage(1);
+                  handleResetFilters();
                 }}
               >
                 <option value="All">All Commodities ({availableCommodities.length > 0 ? availableCommodities.length : "All"})</option>
@@ -2590,8 +2594,8 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
                 </tr>
               </thead>
               <tbody>
-                {tableRecords.map((row) => (
-                  <tr key={row.id}>
+                {tableRecords.map((row, idx) => (
+                  <tr key={row.id ? `${row.id}-${row.commodity || selectedCommodity}-${idx}` : `${row.commodity || selectedCommodity}-${row.market || "mkt"}-${row.date || "dt"}-${idx}`}>
                     <td>
                       <span className="pa-table-commodity-cell">
                         <span className="commodity-dot" />

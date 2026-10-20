@@ -146,6 +146,23 @@ def run_backfill(force=False, commodity_filter=None):
                                 VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, datetime('now'), datetime('now'))
                             """, (tb_key, data_json, comm, state, "All", "All", dr, res.get("count", 0)))
                             inserted_count += 1
+
+                            # Pre-populate limit=6 entry (frontend default) for 0ms direct hits
+                            if isinstance(res.get("records"), list):
+                                res_6 = dict(res)
+                                res_6["records"] = res["records"][:6]
+                                res_6["limit"] = 6
+                                res_6["count"] = len(res_6["records"])
+                                total_records = res.get("total", len(res["records"]))
+                                res_6["totalPages"] = max(1, (total_records + 5) // 6)
+                                tb_params_6 = dict(table_params, limit=6)
+                                tb_key_6 = get_normalized_cache_key(tb_params_6)
+                                cursor.execute("""
+                                    INSERT OR REPLACE INTO historical_query_cache 
+                                    (cache_key, data, commodity, state, district, market, date_range, is_timeline, record_count, created_at, updated_at)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?, datetime('now'), datetime('now'))
+                                """, (tb_key_6, json.dumps(res_6), comm, state, "All", "All", dr, res_6["count"]))
+                                inserted_count += 1
                     except Exception as e:
                         error_count += 1
                         print(f"  [ERROR] Backfilling table {comm} {state} {dr}: {e}")

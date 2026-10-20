@@ -153,15 +153,92 @@ def execute_query(params, con_db=None, bypass_cache=False):
                 db_conn = init_db()
                 own_con = True
             cursor = db_conn.cursor()
+            # 1. Exact match
             cursor.execute("SELECT data FROM historical_query_cache WHERE cache_key = ?", (cache_key,))
             row = cursor.fetchone()
+
+            # 2. Case-insensitive key match
+            if not row:
+                cursor.execute("SELECT data FROM historical_query_cache WHERE cache_key = ? COLLATE NOCASE", (cache_key,))
+                row = cursor.fetchone()
+
             if row:
                 cached_data = json.loads(row[0])
-                cached_data["fromPersistentStorage"] = True
-                cached_data["dataSource"] = "sqlite_cache"
-                if own_con:
-                    db_conn.close()
-                return cached_data
+                if not cached_data.get("isFallbackMode"):
+                    cached_data["fromPersistentStorage"] = True
+                    cached_data["dataSource"] = "sqlite_cache"
+                    if own_con:
+                        db_conn.close()
+                    return cached_data
+
+            # 3. Flexible resolution when Parquet dataset is not available or query has different limit/dateRange
+            is_tl = bool(params.get("timeline") in [True, "true", "True", 1, "1"])
+            try:
+                page = max(1, int(params.get("page", 1) or 1))
+            except (ValueError, TypeError):
+                page = 1
+            comm = str(params.get("commodity", "All") or "All").strip()
+            state = str(params.get("state", "All") or "All").strip()
+            district = str(params.get("district", "All") or "All").strip()
+            market = str(params.get("market", "All") or "All").strip()
+
+            if not is_tl and page == 1:
+                try:
+                    requested_limit = min(100, max(1, int(params.get("limit", 10) or 10)))
+                except (ValueError, TypeError):
+                    requested_limit = 10
+
+                cursor.execute("""
+                    SELECT data FROM historical_query_cache 
+                    WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 0
+                    ORDER BY length(data) DESC LIMIT 1
+                """, (comm, state, district, market))
+                flex_row = cursor.fetchone()
+                if flex_row:
+                    flex_data = json.loads(flex_row[0])
+                    if flex_data and isinstance(flex_data.get("records"), list) and len(flex_data["records"]) > 0 and not flex_data.get("isFallbackMode"):
+                        sliced_recs = flex_data["records"][:requested_limit]
+                        total_cnt = flex_data.get("total") if isinstance(flex_data.get("total"), int) and flex_data["total"] > 0 else len(flex_data["records"])
+                        sliced_payload = dict(flex_data)
+                        sliced_payload.update({
+                            "records": sliced_recs,
+                            "count": len(sliced_recs),
+                            "page": 1,
+                            "limit": requested_limit,
+                            "total": total_cnt,
+                            "totalPages": max(1, (total_cnt + requested_limit - 1) // requested_limit),
+                            "fromPersistentStorage": True,
+                            "dataSource": "sqlite_cache"
+                        })
+                        if own_con:
+                            db_conn.close()
+                        return sliced_payload
+            elif is_tl:
+                dr = str(params.get("dateRange", "30d") or "30d").strip().lower()
+                cursor.execute("""
+                    SELECT data FROM historical_query_cache 
+                    WHERE commodity LIKE ? AND state = ? AND district = ? AND market = ? AND is_timeline = 1
+                    ORDER BY length(data) DESC LIMIT 1
+                """, (comm, state, district, market))
+                flex_tl_row = cursor.fetchone()
+                if flex_tl_row:
+                    flex_tl_data = json.loads(flex_tl_row[0])
+                    if flex_tl_data and isinstance(flex_tl_data.get("records"), list) and len(flex_tl_data["records"]) > 0 and not flex_tl_data.get("isFallbackMode"):
+                        recs = flex_tl_data["records"]
+                        if dr == "7d" and len(recs) > 7:
+                            recs = recs[-7:]
+                        elif dr == "14d" and len(recs) > 14:
+                            recs = recs[-14:]
+                        sliced_tl = dict(flex_tl_data)
+                        sliced_tl.update({
+                            "records": recs,
+                            "count": len(recs),
+                            "fromPersistentStorage": True,
+                            "dataSource": "sqlite_cache"
+                        })
+                        if own_con:
+                            db_conn.close()
+                        return sliced_tl
         except Exception as err:
             sys.stderr.write(f"[WARN] Error reading from SQLite cache: {err}\n")
         finally:
