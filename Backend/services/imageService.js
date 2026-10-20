@@ -203,8 +203,13 @@ if (process.env.LAZY_VISION_WORKER !== "true" && process.env.DISABLE_PERSISTENT_
  * Falls back to standalone CLI if persistent worker is unavailable.
  */
 async function predictFoodImage(imagePath) {
-    // If worker process is not alive and not starting and auto-restart is allowed, attempt starting it
-    if (!workerProcess && !isStarting && !autoRestartDisabled && process.env.DISABLE_PERSISTENT_VISION !== "true") {
+    // If worker process is not alive and not starting, attempt starting or recovering it
+    if (!workerProcess && !isStarting && process.env.DISABLE_PERSISTENT_VISION !== "true") {
+        if (autoRestartDisabled) {
+            console.log("🌱 [AGRI-SWAP] User requested food prediction: recovering persistent vision worker...");
+            autoRestartDisabled = false;
+            restartTimestamps.length = 0;
+        }
         startVisionWorker();
     }
 

@@ -94,7 +94,10 @@ except Exception as e:
     sys.exit(1)
 
 # Persistent inference loop
-for line in sys.stdin:
+while True:
+    line = sys.stdin.readline()
+    if not line:
+        break
     line = line.strip()
     if not line:
         continue

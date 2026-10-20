@@ -97,6 +97,7 @@ function getFromPersistentDb(cacheKey, params = {}) {
 
                 // Strict filter assurance: never leak mixed-state or mismatched location records
                 if (reqState !== "All" && Array.isArray(parsed.records)) {
+                    const originalLength = parsed.records.length;
                     parsed.records = parsed.records.filter(r => isStateMatch(r.state, reqState));
                     if (reqDist !== "All") {
                         parsed.records = parsed.records.filter(r => r.district && r.district.toLowerCase() === reqDist.toLowerCase());
@@ -105,8 +106,12 @@ function getFromPersistentDb(cacheKey, params = {}) {
                         parsed.records = parsed.records.filter(r => r.market && r.market.toLowerCase() === reqMkt.toLowerCase());
                     }
                     parsed.count = parsed.records.length;
-                    parsed.total = parsed.records.length;
-                    parsed.totalPages = Math.max(1, Math.ceil(parsed.records.length / (parsed.limit || 10)));
+                    // Preserve true total count if records already matched the requested state/location;
+                    // only adjust if filtering actively removed non-matching records.
+                    if (parsed.records.length < originalLength || typeof parsed.total !== "number" || parsed.total === 0) {
+                        parsed.total = parsed.records.length;
+                    }
+                    parsed.totalPages = Math.max(1, Math.ceil(parsed.total / (parsed.limit || 10)));
                 }
                 parsed.fromPersistentStorage = true;
                 parsed.dataSource = "sqlite_cache";
@@ -146,7 +151,7 @@ function getFromPersistentDb(cacheKey, params = {}) {
                     }
 
                     const slicedRecords = filteredRecords.slice(0, requestedLimit);
-                    const totalCount = filteredRecords.length;
+                    const totalCount = typeof flexData.total === "number" && flexData.total > 0 ? flexData.total : filteredRecords.length;
                     const slicedPayload = {
                         ...flexData,
                         records: slicedRecords,

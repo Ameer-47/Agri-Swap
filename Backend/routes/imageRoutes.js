@@ -15,7 +15,10 @@ const ALLOWED_MIME_TYPES = new Set([
     "image/jpeg",
     "image/png",
     "image/webp",
-    "image/jpg"
+    "image/jpg",
+    "image/pjpeg",
+    "image/x-png",
+    "image/jfif"
 ]);
 
 const ALLOWED_EXTENSIONS = new Set([
@@ -31,8 +34,11 @@ const upload = multer({
         fileSize: 10 * 1024 * 1024 // 10 MB limit
     },
     fileFilter: (req, file, cb) => {
-        const ext = path.extname(file.originalname).toLowerCase();
-        if (ALLOWED_MIME_TYPES.has(file.mimetype) && ALLOWED_EXTENSIONS.has(ext)) {
+        const ext = path.extname(file.originalname || "").toLowerCase();
+        const mime = (file.mimetype || "").toLowerCase();
+        const isMimeImage = ALLOWED_MIME_TYPES.has(mime) || mime.startsWith("image/");
+        const isExtImage = ALLOWED_EXTENSIONS.has(ext);
+        if (isMimeImage || isExtImage) {
             cb(null, true);
         } else {
             cb(new Error("Invalid file format. Only JPEG, PNG, and WebP images are allowed."));

@@ -327,6 +327,8 @@ function App() {
     setPrediction(null);
     setError("");
     setInputError("");
+    // Clear stale active food so preview and state stay consistent before prediction arrives
+    setActiveFood(null);
   };
 
   const clearImage = () => {
@@ -336,6 +338,7 @@ function App() {
       setImagePreviewUrl(null);
     }
     setPrediction(null);
+    setActiveFood(null);
   };
 
   // Option A: Image Prediction via API (ResNet50)
@@ -370,8 +373,12 @@ function App() {
 
       // Only automatically lock into active state if prediction is valid produce and confident (>= 70%)
       if (data && data.isValidProduce && data.food && data.isConfident !== false) {
-        setActiveFood(data.food);
-        setSelectedCommodity(data.food);
+        const formattedFood = data.food.charAt(0).toUpperCase() + data.food.slice(1);
+        setActiveFood(formattedFood);
+        setSelectedCommodity(formattedFood);
+      } else {
+        // Clear activeFood so stale previous selections are not shown for unknown or non-food items
+        setActiveFood(null);
       }
     } catch (err) {
       setError(err.message || "Unable to connect to the backend image recognition service.");
@@ -1046,17 +1053,17 @@ function App() {
                       )}
                     </div>
                   </div>
-                ) : prediction.rejectionReason === "unknown_produce" ? (
+                ) : (prediction.rejectionReason === "unknown_produce" || prediction.status === "unknown_produce") ? (
                   <div className="prediction-result-panel" style={{ borderColor: "rgba(16, 185, 129, 0.45)", background: "rgba(10, 30, 22, 0.75)" }}>
                     <div className="prediction-header" style={{ alignItems: "flex-start" }}>
                       <span className="result-check" style={{ background: "rgba(16, 185, 129, 0.2)", borderColor: "rgba(52, 211, 153, 0.5)", color: "#34d399", fontSize: "16px", flexShrink: 0 }}>🍃</span>
                       <div style={{ flex: 1 }}>
-                        <span className="result-label" style={{ color: "#6ee7b7" }}>Produce Detected (Unsupported or Ambiguous)</span>
-                        <strong className="result-food-name" style={{ color: "#a7f3d0", fontSize: "16px", lineHeight: 1.45, display: "block", marginTop: "4px" }}>
-                          Unable to identify this produce
+                        <span className="result-label" style={{ color: "#6ee7b7" }}>Produce Status</span>
+                        <strong className="result-food-name" style={{ color: "#a7f3d0", fontSize: "18px", lineHeight: 1.45, display: "block", marginTop: "4px" }}>
+                          Unknown produce
                         </strong>
                         <p style={{ margin: "6px 0 0", fontSize: "13px", color: "#cbd5e1" }}>
-                          This image appears to contain produce, but it is not in our 36 supported fruit & vegetable catalog or cannot be identified reliably. Please select a supported item below or search in Option B:
+                          This image appears to contain produce, but it is not in our 36 supported fruit &amp; vegetable catalog or cannot be identified reliably. Please select a supported item below or search in Option B:
                         </p>
                       </div>
                       {prediction.inferenceTimeMs && (
@@ -1068,33 +1075,36 @@ function App() {
 
                     {prediction.topCandidates && prediction.topCandidates.length > 0 && (
                       <div className="prediction-actions" style={{ marginTop: "12px" }}>
-                        {prediction.topCandidates.map((cand) => (
-                          <button
-                            key={cand.food}
-                            type="button"
-                            className="action-chip"
-                            style={{
-                              background: "rgba(16, 185, 129, 0.15)",
-                              borderColor: "rgba(52, 211, 153, 0.45)",
-                              color: "#a7f3d0",
-                              fontWeight: 700
-                            }}
-                            onClick={() => {
-                              setActiveFood(cand.food);
-                              setSelectedCommodity(cand.food);
-                              setPrediction({
-                                ...prediction,
-                                food: cand.food,
-                                confidence: cand.confidence,
-                                isValidProduce: true,
-                                isSupportedProduce: true,
-                                isConfident: true
-                              });
-                            }}
-                          >
-                            Select Supported: {cand.food}
-                          </button>
-                        ))}
+                        {prediction.topCandidates.map((cand) => {
+                          const capCand = cand.food.charAt(0).toUpperCase() + cand.food.slice(1);
+                          return (
+                            <button
+                              key={cand.food}
+                              type="button"
+                              className="action-chip"
+                              style={{
+                                background: "rgba(16, 185, 129, 0.15)",
+                                borderColor: "rgba(52, 211, 153, 0.45)",
+                                color: "#a7f3d0",
+                                fontWeight: 700
+                              }}
+                              onClick={() => {
+                                setActiveFood(capCand);
+                                setSelectedCommodity(capCand);
+                                setPrediction({
+                                  ...prediction,
+                                  food: capCand,
+                                  confidence: cand.confidence,
+                                  isValidProduce: true,
+                                  isSupportedProduce: true,
+                                  isConfident: true
+                                });
+                              }}
+                            >
+                              Select Supported: {capCand}
+                            </button>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
@@ -1123,7 +1133,7 @@ function App() {
                     <div>
                       <span className="result-label" style={{ color: "#fde047" }}>Uncertain Identification</span>
                       <strong className="result-food-name" style={{ color: "#fef08a" }}>
-                        Please Confirm Food
+                        {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Please Confirm Food"}
                       </strong>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -1145,31 +1155,34 @@ function App() {
                   </p>
 
                   <div className="prediction-actions">
-                    {prediction.topCandidates && prediction.topCandidates.map((cand) => (
-                      <button
-                        key={cand.food}
-                        type="button"
-                        className="action-chip"
-                        style={{
-                          background: "rgba(245, 158, 11, 0.15)",
-                          borderColor: "rgba(245, 158, 11, 0.45)",
-                          color: "#fef08a",
-                          fontWeight: 700
-                        }}
-                        onClick={() => {
-                          setActiveFood(cand.food);
-                          setSelectedCommodity(cand.food);
-                          setPrediction({
-                            ...prediction,
-                            food: cand.food,
-                            confidence: cand.confidence,
-                            isConfident: true
-                          });
-                        }}
-                      >
-                        ✓ Select {cand.food} ({Math.round(cand.confidence * 100)}%)
-                      </button>
-                    ))}
+                    {prediction.topCandidates && prediction.topCandidates.map((cand) => {
+                      const capCand = cand.food.charAt(0).toUpperCase() + cand.food.slice(1);
+                      return (
+                        <button
+                          key={cand.food}
+                          type="button"
+                          className="action-chip"
+                          style={{
+                            background: "rgba(245, 158, 11, 0.15)",
+                            borderColor: "rgba(245, 158, 11, 0.45)",
+                            color: "#fef08a",
+                            fontWeight: 700
+                          }}
+                          onClick={() => {
+                            setActiveFood(capCand);
+                            setSelectedCommodity(capCand);
+                            setPrediction({
+                              ...prediction,
+                              food: capCand,
+                              confidence: cand.confidence,
+                              isConfident: true
+                            });
+                          }}
+                        >
+                          ✓ Select {capCand} ({Math.round(cand.confidence * 100)}%)
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               ) : (
@@ -1178,7 +1191,9 @@ function App() {
                     <span className="result-check"><IconSparkles /></span>
                     <div>
                       <span className="result-label">Identified Produce</span>
-                      <strong className="result-food-name">{prediction.food || "Unknown Produce"}</strong>
+                      <strong className="result-food-name">
+                        {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Unknown Produce"}
+                      </strong>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
                       <span className="confidence-pill">
@@ -1197,24 +1212,26 @@ function App() {
                   <div className="prediction-actions">
                     <button
                       className="action-chip"
-                      onClick={() => inspectCommodityPrices(prediction.food)}
+                      onClick={() => inspectCommodityPrices(prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Tomato")}
                     >
-                      Check {prediction.food} Market Prices →
+                      Check {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Produce"} Market Prices →
                     </button>
                     <button
                       className="action-chip"
                       onClick={() => {
-                        setActiveFood(prediction.food);
-                        setSelectedCommodity(prediction.food);
+                        const foodName = prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Tomato";
+                        setActiveFood(foodName);
+                        setSelectedCommodity(foodName);
                         setActivePage("Food Substitution");
                       }}
                     >
-                      Find Substitutes for {prediction.food} →
+                      Find Substitutes for {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Produce"} →
                     </button>
                     <button
                       className="action-chip"
                       onClick={() => {
-                        addQuickStaple(prediction.food, 1, "kg", "Produce");
+                        const foodName = prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Tomato";
+                        addQuickStaple(foodName, 1, "kg", "Produce");
                         setActivePage("My Food Basket");
                       }}
                     >
@@ -1224,7 +1241,8 @@ function App() {
                       className="action-chip"
                       style={{ background: "rgba(245, 158, 11, 0.12)", color: "#fde047", borderColor: "rgba(245, 158, 11, 0.35)", fontWeight: 600 }}
                       onClick={() => {
-                        addQuickStaple(prediction.food, 1, "kg", "Produce");
+                        const foodName = prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Tomato";
+                        addQuickStaple(foodName, 1, "kg", "Produce");
                         setActivePage("Price Shock Impact");
                       }}
                     >
