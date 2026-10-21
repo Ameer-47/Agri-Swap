@@ -10,18 +10,48 @@ const path = require("path");
  */
 
 const DEFAULT_LOCAL_VISION_URL = "http://127.0.0.1:5001";
+const DEFAULT_PRODUCTION_VISION_URL = "https://agri-swap-vision.onrender.com";
 const DEFAULT_TIMEOUT_MS = 35000; // 35s allows for cloud cold-boot spinup on Render free tier
 
+/**
+ * Normalizes and sanitizes vision service URL.
+ * Automatically removes trailing slashes and any appended '/predict' or '/predict/'
+ * so base URL resolution (/predict, /health) works regardless of how the URL is entered.
+ */
+function normalizeVisionUrl(rawUrl) {
+    if (!rawUrl || typeof rawUrl !== "string") return null;
+    let url = rawUrl.trim();
+    if (!url) return null;
+    // Strip trailing slashes
+    url = url.replace(/\/+$/, "");
+    // If the endpoint path /predict was included in the env var, strip it to get the base URL
+    url = url.replace(/\/predict\/?$/i, "");
+    url = url.replace(/\/+$/, "");
+    return url || null;
+}
+
 function getInferenceUrl() {
-    const rawUrl = process.env.VISION_INFERENCE_URL;
-    if (rawUrl && rawUrl.trim()) {
-        return rawUrl.trim().replace(/\/+$/, "");
+    // 1. Check primary environment variable and common alias names
+    const rawUrl = process.env.VISION_INFERENCE_URL ||
+                   process.env.VISION_URL ||
+                   process.env.VISION_SERVICE_URL ||
+                   process.env.VISION_ENDPOINT ||
+                   process.env.VISION_INFERENCE_ENDPOINT ||
+                   process.env.IMAGE_INFERENCE_URL ||
+                   process.env.IMAGE_SERVICE_URL;
+
+    const normalized = normalizeVisionUrl(rawUrl);
+    if (normalized) {
+        return normalized;
     }
-    // In local development, fall back to localhost vision service
-    if (process.env.NODE_ENV !== "production") {
-        return DEFAULT_LOCAL_VISION_URL;
+
+    // 2. In production, fall back to known deployed vision microservice if env var is missing or un-synced
+    if (process.env.NODE_ENV === "production") {
+        return DEFAULT_PRODUCTION_VISION_URL;
     }
-    return null;
+
+    // 3. In local development, fall back to localhost vision service
+    return DEFAULT_LOCAL_VISION_URL;
 }
 
 function getTimeoutMs() {
@@ -157,8 +187,9 @@ async function checkVisionHealth() {
         return { online: false, reason: "VISION_INFERENCE_URL is not set" };
     }
 
+    const timeoutMs = Math.min(getTimeoutMs(), 15000);
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 3000);
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
         const res = await fetch(`${inferenceUrl}/health`, {

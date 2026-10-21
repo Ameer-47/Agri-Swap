@@ -37,10 +37,9 @@ services:
       - key: CORS_ORIGIN
         value: "*"
       # Configurable vision microservice endpoint.
-      # In Render dashboard, set this to your deployed vision service URL:
-      # e.g., https://agri-swap-vision.onrender.com
+      # Connects backend to dedicated ResNet50 vision microservice on Render.
       - key: VISION_INFERENCE_URL
-        sync: false
+        value: https://agri-swap-vision.onrender.com
       - key: VISION_TIMEOUT_MS
         value: "35000"
 
