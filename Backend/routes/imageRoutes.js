@@ -29,7 +29,7 @@ const ALLOWED_EXTENSIONS = new Set([
 ]);
 
 const upload = multer({
-    dest: uploadDir,
+    storage: multer.memoryStorage(),
     limits: {
         fileSize: 10 * 1024 * 1024 // 10 MB limit
     },
@@ -78,17 +78,15 @@ router.post("/", (req, res, next) => {
         next();
     });
 }, async (req, res) => {
-    if (!req.file) {
+    if (!req.file || !req.file.buffer) {
         return res.status(400).json({
             success: false,
             message: "Image file is required"
         });
     }
 
-    const imagePath = path.resolve(req.file.path);
-
     try {
-        const result = await predictFoodImage(imagePath);
+        const result = await predictFoodImage(req.file.buffer, req.file.originalname, req.file.mimetype);
         if (!result.success) {
             const isServiceIssue = (
                 result.status === "inference_unavailable" ||
@@ -111,9 +109,6 @@ router.post("/", (req, res, next) => {
             message: "Food prediction failed. Please try another image or select your food from Option B.",
             error: process.env.NODE_ENV === "production" ? "Model inference failure" : error.message
         });
-    } finally {
-        // Clean up temporary uploaded file from disk
-        fs.unlink(imagePath, () => {});
     }
 });
 

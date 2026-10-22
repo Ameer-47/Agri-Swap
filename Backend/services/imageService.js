@@ -221,7 +221,7 @@ async function postInferenceAttempt(fileBuffer, fileName, mimeType, inferenceUrl
  * @param {string} imagePath - Absolute path to temporary uploaded file on disk.
  * @returns {Promise<object>} Prediction outcome or friendly error descriptor.
  */
-async function predictFoodImage(imagePath) {
+async function predictFoodImage(imageInput, customFileName, customMimeType) {
     const inferenceUrl = getInferenceUrl();
 
     if (!inferenceUrl) {
@@ -234,20 +234,40 @@ async function predictFoodImage(imagePath) {
         };
     }
 
-    if (!fs.existsSync(imagePath)) {
+    let fileBuffer;
+    let fileName = customFileName || "upload.jpg";
+    let mimeType = customMimeType || "image/jpeg";
+
+    if (Buffer.isBuffer(imageInput)) {
+        fileBuffer = imageInput;
+    } else if (imageInput && Buffer.isBuffer(imageInput.buffer)) {
+        fileBuffer = imageInput.buffer;
+        fileName = imageInput.originalname || fileName;
+        mimeType = imageInput.mimetype || mimeType;
+    } else if (typeof imageInput === "string") {
+        if (!fs.existsSync(imageInput)) {
+            return {
+                success: false,
+                status: "invalid_file",
+                httpStatus: 400,
+                message: "Uploaded image file could not be found on server disk.",
+                error: "File not found: " + imageInput
+            };
+        }
+        fileBuffer = fs.readFileSync(imageInput);
+        fileName = path.basename(imageInput);
+        const fileExt = path.extname(imageInput).toLowerCase();
+        mimeType = fileExt === ".png" ? "image/png" : (fileExt === ".webp" ? "image/webp" : "image/jpeg");
+    } else {
         return {
             success: false,
             status: "invalid_file",
             httpStatus: 400,
-            message: "Uploaded image file could not be found on server disk.",
-            error: "File not found: " + imagePath
+            message: "Invalid image input provided.",
+            error: "Expected Buffer or file path string."
         };
     }
 
-    const fileBuffer = fs.readFileSync(imagePath);
-    const fileName = path.basename(imagePath);
-    const fileExt = path.extname(imagePath).toLowerCase();
-    const mimeType = fileExt === ".png" ? "image/png" : (fileExt === ".webp" ? "image/webp" : "image/jpeg");
     const timeoutMs = getTimeoutMs();
 
     // Attempt 1: Initial prediction

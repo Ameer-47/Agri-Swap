@@ -110,8 +110,9 @@ def initialize_models():
                                 "No TFLite interpreter runtime found. Please install tflite-runtime or tensorflow."
                             )
 
-            print(f"[VISION SERVICE] Using {MODEL_ENGINE} for ResNet50 TFLite inference...", flush=True)
-            PRODUCE_MODEL = Interpreter(model_path=MODEL_PATH)
+            num_threads = min(4, os.cpu_count() or 2)
+            print(f"[VISION SERVICE] Using {MODEL_ENGINE} ({num_threads} threads) for ResNet50 TFLite inference...", flush=True)
+            PRODUCE_MODEL = Interpreter(model_path=MODEL_PATH, num_threads=num_threads)
             PRODUCE_MODEL.allocate_tensors()
         else:
             # Fallback for full Keras model if explicitly configured
@@ -132,7 +133,7 @@ def initialize_models():
 
 
 def run_prediction_on_bytes(image_bytes, original_filename="uploaded.jpg"):
-    """Runs food validation & ResNet50 classification on image bytes."""
+    """Runs food validation & ResNet50 classification on image bytes in-memory."""
     if not IS_READY:
         if not initialize_models():
             return {
@@ -142,32 +143,20 @@ def run_prediction_on_bytes(image_bytes, original_filename="uploaded.jpg"):
                 "error": INIT_ERROR
             }
 
+    import io
     from ML.image_recognition.food_validator import validate_and_classify_food, resnet50_preprocess
 
-    # Save to temp file for robust PIL/Exif handling
-    suffix = os.path.splitext(original_filename)[1] or ".jpg"
-    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
-        tmp.write(image_bytes)
-        tmp_path = tmp.name
-
-    try:
-        t0 = time.time()
-        result = validate_and_classify_food(
-            image_path=tmp_path,
-            produce_model=PRODUCE_MODEL,
-            produce_classes=CLASS_NAMES,
-            imagenet_model=None,
-            preprocess_produce_fn=resnet50_preprocess
-        )
-        elapsed_ms = round((time.time() - t0) * 1000, 2)
-        result["inferenceTimeMs"] = elapsed_ms
-        return result
-    finally:
-        try:
-            if os.path.exists(tmp_path):
-                os.remove(tmp_path)
-        except Exception:
-            pass
+    t0 = time.time()
+    result = validate_and_classify_food(
+        image_path=io.BytesIO(image_bytes),
+        produce_model=PRODUCE_MODEL,
+        produce_classes=CLASS_NAMES,
+        imagenet_model=None,
+        preprocess_produce_fn=resnet50_preprocess
+    )
+    elapsed_ms = round((time.time() - t0) * 1000, 2)
+    result["inferenceTimeMs"] = elapsed_ms
+    return result
 
 
 class VisionHTTPRequestHandler(BaseHTTPRequestHandler):

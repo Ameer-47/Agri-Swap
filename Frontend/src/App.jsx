@@ -360,8 +360,44 @@ function App() {
     setPrediction(null);
 
     try {
+      // Optimize upload payload: if image exceeds 800KB or 1024px, downscale before network transmission
+      let uploadFile = selectedImage;
+      if (selectedImage.size > 800 * 1024 && typeof createImageBitmap === "function") {
+        try {
+          const imgBitmap = await createImageBitmap(selectedImage);
+          const maxDim = 1024;
+          let { width, height } = imgBitmap;
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+            const offscreenCanvas = document.createElement("canvas");
+            offscreenCanvas.width = width;
+            offscreenCanvas.height = height;
+            const ctx = offscreenCanvas.getContext("2d");
+            if (ctx) {
+              ctx.drawImage(imgBitmap, 0, 0, width, height);
+              const blob = await new Promise((res) => offscreenCanvas.toBlob(res, "image/jpeg", 0.90));
+              if (blob && blob.size < selectedImage.size) {
+                uploadFile = new File([blob], selectedImage.name.replace(/\.[^/.]+$/, ".jpg"), {
+                  type: "image/jpeg",
+                  lastModified: Date.now()
+                });
+              }
+            }
+          }
+        } catch {
+          // Graceful fallback to raw selectedImage if client canvas decode fails
+          uploadFile = selectedImage;
+        }
+      }
+
       const formData = new FormData();
-      formData.append("image", selectedImage);
+      formData.append("image", uploadFile);
 
       const response = await fetch(buildApiUrl("/api/images"), {
         method: "POST",
