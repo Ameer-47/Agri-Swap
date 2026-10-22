@@ -90,7 +90,17 @@ router.post("/", (req, res, next) => {
     try {
         const result = await predictFoodImage(imagePath);
         if (!result.success) {
-            const httpStatus = (result.status === "inference_unavailable" || result.status === "inference_timeout" || result.status === "service_not_configured") ? 503 : 422;
+            const isServiceIssue = (
+                result.status === "inference_unavailable" ||
+                result.status === "inference_timeout" ||
+                result.status === "service_waking" ||
+                result.status === "invalid_response" ||
+                result.status === "service_not_configured"
+            );
+            const httpStatus = result.httpStatus || (isServiceIssue ? 503 : 422);
+            if (isServiceIssue) {
+                res.set("Retry-After", "5");
+            }
             return res.status(httpStatus).json(result);
         }
         res.json(result);

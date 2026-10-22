@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image, ImageOps
 
 # Messages for validation feedback
-MSG_NOT_FOOD = "Uploaded image does not appear to be an agricultural food or produce. Please upload a clear photo of a supported fruit or vegetable."
+MSG_NOT_FOOD = "Non-Food Image Detected — Please upload a fruit or vegetable image."
 MSG_UNCLEAR = "Image is unclear, blurred, or corrupt. Please upload a well-lit, focused image of produce."
 MSG_UNKNOWN_PRODUCE = "Unable to identify this produce — this item may be an unsupported fruit/vegetable or unclear. Please select from our supported produce list or enter the name manually."
 
@@ -142,10 +142,23 @@ def validate_and_classify_food(
     # Layer 2: Synthetic UI / Chart / Document Heuristics
     arr_rgb_224 = np.array(img_rgb.resize((224, 224)), dtype=np.float32)
     white_ratio = float(np.mean(np.all(arr_rgb_224 > 220, axis=-1)))
+    light_ratio = float(np.mean(np.all(arr_rgb_224 > 195, axis=-1)))
     black_ratio = float(np.mean(np.all(arr_rgb_224 < 25, axis=-1)))
 
-    # Reject predominantly empty/blank documents or dark screen captures
-    if (white_ratio > 0.85 or black_ratio > 0.85):
+    # Document / Presentation / White-paper / Chart heuristic
+    max_c = np.max(arr_rgb_224, axis=-1)
+    min_c = np.min(arr_rgb_224, axis=-1)
+    saturation = (max_c - min_c) / (max_c + 1e-5)
+    mean_saturation = float(np.mean(saturation))
+    neutral_ratio = float(np.mean((max_c - min_c) < 32))
+
+    is_blank_doc = (white_ratio > 0.85 or black_ratio > 0.85)
+    is_text_paper = (white_ratio > 0.50 and mean_saturation < 0.22)
+    is_chart_or_slide = (white_ratio > 0.35 and neutral_ratio > 0.55 and mean_saturation < 0.28)
+    is_poster_doc = (light_ratio > 0.60 and neutral_ratio > 0.48 and mean_saturation < 0.25)
+
+    # Reject predominantly empty/blank documents, pure text papers, slides, or charts upfront
+    if is_blank_doc or is_text_paper or is_chart_or_slide or is_poster_doc:
         return {
             "success": True,
             "status": "not_food",
@@ -208,14 +221,24 @@ def validate_and_classify_food(
         except Exception:
             pass
 
+    # Reject non-confident images that exhibit document, poster, slide, or chart characteristics
+    if confidence < 0.70 and ((white_ratio > 0.30 or light_ratio > 0.45) and (neutral_ratio > 0.50 or mean_saturation < 0.32)):
+        return {
+            "success": True,
+            "status": "not_food",
+            "isValidProduce": False,
+            "isSupportedProduce": False,
+            "rejectionReason": "not_food",
+            "message": MSG_NOT_FOOD,
+            "food": None,
+            "confidence": None,
+            "isConfident": False
+        }
+
     # --- OUTCOME 1: HIGH-CONFIDENCE SUPPORTED PRODUCE ---
     # Confident single-produce identification:
-    # 1. High confidence (>= 70% with margin >= 14%)
-    # 2. Dominant margin (>= 58% confidence with margin >= 35%)
-    is_confident_supported = (
-        (confidence >= 0.70 and margin >= 0.14) or
-        (confidence >= 0.58 and margin >= 0.35)
-    )
+    # Requires high confidence (>= 70%) and clear margin (>= 14%)
+    is_confident_supported = (confidence >= 0.70 and margin >= 0.14)
 
     if is_confident_supported:
         return {
@@ -232,15 +255,15 @@ def validate_and_classify_food(
         }
 
     # --- OUTCOME 2: MODERATE CONFIDENCE (PRODUCE DETECTED, CONFIRMATION NEEDED) ---
-    # Top confidence is between 35% and 70%: item is produce, but model offers top options
+    # Top confidence is between 35% and 70%: item may be produce, but requires user confirmation
     if confidence >= 0.35 and margin >= 0.08:
         return {
             "success": True,
-            "status": "supported_produce",
+            "status": "uncertain_produce",
             "isValidProduce": True,
             "isSupportedProduce": True,
             "rejectionReason": None,
-            "message": None,
+            "message": "Confidence is below 70%. Food not identified clearly.",
             "food": predicted_food,
             "confidence": float(confidence),
             "isConfident": False,
@@ -249,7 +272,7 @@ def validate_and_classify_food(
 
     # --- OUTCOME 3: UNKNOWN OR OUT-OF-DISTRIBUTION PRODUCE ---
     # Low confidence (< 35%) or flat spread across classes:
-    # Return 'Unknown produce' cleanly without crashing or making false positive claims.
+    # Return 'Unknown produce' cleanly without candidate recommendations.
     return {
         "success": True,
         "status": "unknown_produce",
@@ -260,5 +283,5 @@ def validate_and_classify_food(
         "food": "Unknown produce",
         "confidence": None,
         "isConfident": False,
-        "topCandidates": top_candidates
+        "topCandidates": []
     }

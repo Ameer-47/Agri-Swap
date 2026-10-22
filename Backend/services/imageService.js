@@ -1,5 +1,11 @@
 const fs = require("fs");
 const path = require("path");
+const dns = require("dns");
+
+// Optimize DNS lookup to prioritize IPv4 over synthetic IPv6 / NAT64 prefixes
+if (typeof dns.setDefaultResultOrder === "function") {
+    dns.setDefaultResultOrder("ipv4first");
+}
 
 /**
  * AGRI-SWAP Decoupled Vision Client
@@ -12,6 +18,7 @@ const path = require("path");
 const DEFAULT_LOCAL_VISION_URL = "http://127.0.0.1:5001";
 const DEFAULT_PRODUCTION_VISION_URL = "https://agri-swap-vision.onrender.com";
 const DEFAULT_TIMEOUT_MS = 35000; // 35s allows for cloud cold-boot spinup on Render free tier
+const RETRYABLE_HTTP_STATUSES = new Set([502, 503, 504, 520, 521, 522, 523, 524]);
 
 /**
  * Normalizes and sanitizes vision service URL.
@@ -61,41 +68,33 @@ function getTimeoutMs() {
 }
 
 /**
- * Predicts food from an uploaded image file by forwarding it to the vision service.
- * @param {string} imagePath - Absolute path to temporary uploaded file on disk.
- * @returns {Promise<object>} Prediction outcome or friendly error descriptor.
+ * Safely parses response text as JSON, inspecting Content-Type and format first.
  */
-async function predictFoodImage(imagePath) {
-    const inferenceUrl = getInferenceUrl();
+function parseResponseSafely(responseText, response) {
+    const contentType = (response.headers.get("content-type") || "").toLowerCase();
+    const isJsonHeader = contentType.includes("application/json");
+    const trimmed = (responseText || "").trim();
+    const looksLikeJson = trimmed.startsWith("{") || trimmed.startsWith("[");
 
-    if (!inferenceUrl) {
-        return {
-            success: false,
-            status: "service_not_configured",
-            message: "Vision inference service is not configured. Please set the VISION_INFERENCE_URL environment variable or select your food manually in Option B.",
-            error: "VISION_INFERENCE_URL environment variable is not defined."
-        };
+    if (isJsonHeader || looksLikeJson) {
+        try {
+            const data = JSON.parse(responseText);
+            return { isJson: true, data };
+        } catch {
+            // Malformed JSON despite header
+        }
     }
+    return { isJson: false, rawText: responseText };
+}
 
-    if (!fs.existsSync(imagePath)) {
-        return {
-            success: false,
-            status: "invalid_file",
-            message: "Uploaded image file could not be found on server disk.",
-            error: "File not found: " + imagePath
-        };
-    }
-
-    const timeoutMs = getTimeoutMs();
+/**
+ * Executes a single HTTP POST inference attempt with safety checks.
+ */
+async function postInferenceAttempt(fileBuffer, fileName, mimeType, inferenceUrl, timeoutMs) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
-        const fileBuffer = fs.readFileSync(imagePath);
-        const fileName = path.basename(imagePath);
-        const fileExt = path.extname(imagePath).toLowerCase();
-        const mimeType = fileExt === ".png" ? "image/png" : (fileExt === ".webp" ? "image/webp" : "image/jpeg");
-
         const blob = new Blob([fileBuffer], { type: mimeType });
         const formData = new FormData();
         formData.append("image", blob, fileName);
@@ -110,59 +109,170 @@ async function predictFoodImage(imagePath) {
         clearTimeout(timeoutId);
 
         const responseText = await response.text();
-        let parsed;
-        try {
-            parsed = JSON.parse(responseText);
-        } catch (e) {
+
+        // 1. Check for transient gateway/proxy errors (e.g., Render container spinning up)
+        if (RETRYABLE_HTTP_STATUSES.has(response.status)) {
             return {
                 success: false,
-                status: "invalid_response",
-                message: "Vision service returned a non-JSON response. Please try again.",
-                error: responseText.slice(0, 200)
+                retryable: true,
+                status: "service_waking",
+                httpStatus: response.status,
+                message: "The food image recognition service is currently waking up on cloud servers. Please try again in a few moments, or choose your food in Option B.",
+                error: `HTTP ${response.status} (${response.statusText || 'Gateway Error'})`
             };
         }
 
-        if (!response.ok) {
+        // 2. Safe parsing of response body
+        const parsed = parseResponseSafely(responseText, response);
+
+        if (parsed.isJson) {
+            if (!response.ok) {
+                return {
+                    success: false,
+                    retryable: false,
+                    status: parsed.data.status || "inference_failed",
+                    httpStatus: response.status,
+                    message: parsed.data.message || `Vision service error (HTTP ${response.status}). Please try another image.`,
+                    error: parsed.data.error || `HTTP ${response.status}`
+                };
+            }
+            const resultData = { ...parsed.data };
+            if (resultData.status === "not_food" || resultData.rejectionReason === "not_food") {
+                resultData.status = "not_food";
+                resultData.rejectionReason = "not_food";
+                resultData.isValidProduce = false;
+                resultData.isSupportedProduce = false;
+                resultData.isConfident = false;
+                resultData.food = null;
+                resultData.confidence = null;
+                resultData.topCandidates = [];
+                resultData.message = resultData.message || "Non-Food Image Detected — Please upload a fruit or vegetable image.";
+            } else if (resultData.status === "unknown_produce" || resultData.rejectionReason === "unknown_produce") {
+                resultData.topCandidates = [];
+            } else if (Number.isFinite(Number(resultData.confidence)) && Number(resultData.confidence) < 0.70) {
+                resultData.isConfident = false;
+            }
             return {
-                success: false,
-                status: parsed.status || "inference_failed",
-                message: parsed.message || `Vision service error (HTTP ${response.status}). Please try another image.`,
-                error: parsed.error || `HTTP ${response.status}`
+                success: true,
+                ...resultData
             };
         }
 
-        return parsed;
+        // 3. Upstream returned non-JSON (e.g. HTML proxy error page)
+        const isServerErr = response.status >= 500;
+        return {
+            success: false,
+            retryable: isServerErr,
+            status: isServerErr ? "service_waking" : "invalid_response",
+            httpStatus: isServerErr ? response.status : 503,
+            message: "The image recognition service is currently waking up or unavailable. Please try again shortly or select your food from Option B.",
+            error: `Non-JSON response (HTTP ${response.status})`
+        };
 
     } catch (err) {
         clearTimeout(timeoutId);
 
-        const isTimeout = err.name === "AbortError" || err.message?.includes("aborted") || err.code === "UND_ERR_CONNECT_TIMEOUT";
+        const isTimeout = err.name === "AbortError" ||
+                          err.message?.includes("aborted") ||
+                          err.code === "UND_ERR_CONNECT_TIMEOUT" ||
+                          err.cause?.code === "UND_ERR_CONNECT_TIMEOUT";
+
         if (isTimeout) {
             return {
                 success: false,
+                retryable: true,
                 status: "inference_timeout",
+                httpStatus: 504,
                 message: `Image recognition timed out after ${Math.round(timeoutMs / 1000)}s. The vision service may still be waking up — please try again in a few seconds, or select your food in Option B.`,
                 error: `Inference timeout (${timeoutMs}ms)`
             };
         }
 
-        const isConnectionError = err.code === "ECONNREFUSED" || err.message?.includes("fetch failed") || err.code === "ENOTFOUND";
+        const isConnectionError = err.code === "ECONNREFUSED" ||
+                                  err.code === "ECONNRESET" ||
+                                  err.code === "ENOTFOUND" ||
+                                  err.message?.includes("fetch failed");
+
         if (isConnectionError) {
             return {
                 success: false,
+                retryable: true,
                 status: "inference_unavailable",
-                message: "The dedicated image recognition service is currently waking up or unreachable. Please try again in 20-30 seconds, or select your food manually in Option B.",
-                error: err.message
+                httpStatus: 503,
+                message: "The dedicated image recognition service is currently waking up or unreachable. Please try again in 15-20 seconds, or select your food manually in Option B.",
+                error: err.message || (err.cause && err.cause.message)
             };
         }
 
         return {
             success: false,
+            retryable: false,
             status: "inference_error",
+            httpStatus: 500,
             message: "An unexpected error occurred while communicating with the image recognition service.",
             error: err.message
         };
     }
+}
+
+/**
+ * Predicts food from an uploaded image file by forwarding it to the vision service.
+ * Includes bounded single-shot retry for transient cloud container wake-ups.
+ * @param {string} imagePath - Absolute path to temporary uploaded file on disk.
+ * @returns {Promise<object>} Prediction outcome or friendly error descriptor.
+ */
+async function predictFoodImage(imagePath) {
+    const inferenceUrl = getInferenceUrl();
+
+    if (!inferenceUrl) {
+        return {
+            success: false,
+            status: "service_not_configured",
+            httpStatus: 503,
+            message: "Vision inference service is not configured. Please set the VISION_INFERENCE_URL environment variable or select your food manually in Option B.",
+            error: "VISION_INFERENCE_URL environment variable is not defined."
+        };
+    }
+
+    if (!fs.existsSync(imagePath)) {
+        return {
+            success: false,
+            status: "invalid_file",
+            httpStatus: 400,
+            message: "Uploaded image file could not be found on server disk.",
+            error: "File not found: " + imagePath
+        };
+    }
+
+    const fileBuffer = fs.readFileSync(imagePath);
+    const fileName = path.basename(imagePath);
+    const fileExt = path.extname(imagePath).toLowerCase();
+    const mimeType = fileExt === ".png" ? "image/png" : (fileExt === ".webp" ? "image/webp" : "image/jpeg");
+    const timeoutMs = getTimeoutMs();
+
+    // Attempt 1: Initial prediction
+    const attempt1 = await postInferenceAttempt(fileBuffer, fileName, mimeType, inferenceUrl, timeoutMs);
+    if (attempt1.success) {
+        return attempt1;
+    }
+
+    // Bounded retry: exactly 1 retry for transient/waking errors after a short backoff (2.5s)
+    if (attempt1.retryable) {
+        console.warn(`[Vision Service] Inference attempt 1 failed (${attempt1.status}: ${attempt1.error}). Retrying once after 2500ms backoff...`);
+        await new Promise((resolve) => setTimeout(resolve, 2500));
+
+        // Attempt 2: Bounded 1-shot retry
+        const attempt2 = await postInferenceAttempt(fileBuffer, fileName, mimeType, inferenceUrl, timeoutMs);
+        if (attempt2.success) {
+            console.log("[Vision Service] Inference retry attempt 2 succeeded.");
+            return attempt2;
+        }
+        console.warn(`[Vision Service] Inference retry attempt 2 failed (${attempt2.status}: ${attempt2.error}). Returning safe error.`);
+        return attempt2;
+    }
+
+    // Non-retryable error (e.g. invalid file, 400 bad request) returned immediately
+    return attempt1;
 }
 
 /**
@@ -180,6 +290,8 @@ function getVisionStatus() {
 
 /**
  * Probes the health of the remote vision microservice with a short timeout.
+ * Note: A healthy probe does not guarantee immediate inference availability if
+ * the container is still finishing internal cold-start initialization.
  */
 async function checkVisionHealth() {
     const inferenceUrl = getInferenceUrl();
@@ -199,7 +311,11 @@ async function checkVisionHealth() {
         clearTimeout(timeout);
         if (res.ok) {
             const data = await res.json().catch(() => ({}));
-            return { online: true, ...data };
+            return {
+                online: true,
+                ...data,
+                inferenceReadiness: "Note: Cold-start container wake-up may take up to 20s on first inference request."
+            };
         }
         return { online: false, status: res.status };
     } catch (err) {
@@ -219,3 +335,4 @@ module.exports = {
     checkVisionHealth,
     startVisionWorker
 };
+

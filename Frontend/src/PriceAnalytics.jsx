@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import "./PriceAnalytics.css";
 import { getApiEndpoints } from "./apiConfig";
 
@@ -493,6 +493,131 @@ function getCommodityIcon(name) {
   return "🌾";
 }
 
+// Bounded, internally scrollable dropdown component displaying ~12 options at a time
+function CustomDropdown({
+  id,
+  value,
+  onChange,
+  options = [],
+  disabled = false,
+  className = "",
+  placeholder = "Select...",
+  alignRight = false,
+  ariaLabel
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && listRef.current) {
+      const activeEl = listRef.current.querySelector(".custom-dropdown-item.active");
+      if (activeEl) {
+        activeEl.scrollIntoView({ block: "nearest" });
+      }
+    }
+  }, [isOpen]);
+
+  const selectedOption = options.find((opt) => String(opt.value) === String(value));
+  const displayLabel = selectedOption ? selectedOption.label : placeholder;
+
+  const handleSelect = (val) => {
+    if (disabled) return;
+    onChange(val);
+    setIsOpen(false);
+  };
+
+  const handleToggle = () => {
+    if (disabled) return;
+    setIsOpen((prev) => !prev);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className={`custom-dropdown-container ${className} ${isOpen ? "is-open" : ""} ${disabled ? "is-disabled" : ""}`}
+    >
+      <button
+        id={id}
+        type="button"
+        className="custom-dropdown-trigger"
+        onClick={handleToggle}
+        disabled={disabled}
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-label={ariaLabel || id}
+      >
+        <span className="custom-dropdown-label">{displayLabel}</span>
+        <span className="custom-dropdown-chevron" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
+      </button>
+
+      {isOpen && (
+        <div
+          ref={listRef}
+          className={`custom-dropdown-menu ${alignRight ? "align-right" : ""}`}
+          role="listbox"
+        >
+          {options.map((opt) => {
+            const isSelected = String(opt.value) === String(value);
+            return (
+              <div
+                key={opt.value}
+                className={`custom-dropdown-item ${isSelected ? "active" : ""}`}
+                role="option"
+                aria-selected={isSelected}
+                onClick={() => handleSelect(opt.value)}
+                title={opt.label}
+              >
+                {opt.label}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Hidden select for accessibility & DOM synchronization */}
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{ display: "none" }}
+      >
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } = {}) {
   // 1. Search & Filter States
   const [selectedCommodity, setSelectedCommodity] = useState(initialCommodity || "Tomato");
@@ -640,6 +765,113 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
     setFilterMarket(newMarket);
     setCurrentPage(1);
   };
+
+  // Ensure dropdown opens downwards and is not clipped by viewport boundaries
+  const handleDropdownFocus = (e) => {
+    const select = e.currentTarget;
+    if (!select) return;
+    const rect = select.getBoundingClientRect();
+    const topbarOffset = 70; // Clearance for sticky topbar
+    const minSpaceBelow = 320; // Clearance needed below so native dropdown opens downward
+    const spaceBelow = window.innerHeight - rect.bottom;
+
+    if (spaceBelow < minSpaceBelow) {
+      const scrollAmount = minSpaceBelow - spaceBelow;
+      window.scrollBy({ top: scrollAmount, behavior: "instant" });
+    } else if (rect.top < topbarOffset) {
+      window.scrollBy({ top: rect.top - topbarOffset - 10, behavior: "instant" });
+    }
+  };
+
+  // Dismiss open dropdowns if user scrolls the page to prevent floating/detached popups
+  useEffect(() => {
+    const handleScroll = () => {
+      if (document.activeElement && document.activeElement.tagName === "SELECT") {
+        document.activeElement.blur();
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Memoized Options for Dropdowns (without category headings in Commodity dropdown)
+  const commodityOptions = useMemo(() => {
+    const list = [
+      {
+        value: "All",
+        label: `All Commodities (${availableCommodities.length > 0 ? availableCommodities.length : "All"})`
+      }
+    ];
+    // Model Commodities directly in list without category headings
+    Object.keys(COMMODITIES_DATA).forEach((cName) => {
+      list.push({
+        value: cName,
+        label: `${cName} (${COMMODITIES_DATA[cName].unit})`
+      });
+    });
+    // Cleaned Dataset Commodities directly in list without category headings
+    if (availableCommodities.length > 0) {
+      availableCommodities
+        .filter((cName) => !Object.keys(COMMODITIES_DATA).includes(cName))
+        .forEach((cName) => {
+          list.push({
+            value: cName,
+            label: cName
+          });
+        });
+    }
+    return list;
+  }, [availableCommodities]);
+
+  const stateOptions = useMemo(() => {
+    const list = [
+      {
+        value: "All",
+        label: `All States (${availableStates.length > 0 ? availableStates.length : "Loading..."})`
+      }
+    ];
+    availableStates.forEach((st) => {
+      list.push({ value: st, label: st });
+    });
+    return list;
+  }, [availableStates]);
+
+  const districtOptions = useMemo(() => {
+    const defaultLabel = filterState === "All"
+      ? "All Districts (Select State first)"
+      : isLoadingLocations
+      ? "Loading districts..."
+      : `All Districts in ${filterState} (${availableDistricts.length})`;
+
+    const list = [{ value: "All", label: defaultLabel }];
+    availableDistricts.forEach((dst) => {
+      list.push({ value: dst, label: dst });
+    });
+    return list;
+  }, [filterState, isLoadingLocations, availableDistricts]);
+
+  const marketOptions = useMemo(() => {
+    const defaultLabel = filterState === "All"
+      ? "All Markets (Select State first)"
+      : isLoadingLocations
+      ? "Loading markets..."
+      : filterDistrict !== "All"
+      ? `All Markets in ${filterDistrict} (${availableMarkets.length})`
+      : `All Markets in ${filterState} (${availableMarkets.length})`;
+
+    const list = [{ value: "All", label: defaultLabel }];
+    availableMarkets.forEach((mkt) => {
+      list.push({ value: mkt, label: mkt });
+    });
+    return list;
+  }, [filterState, filterDistrict, isLoadingLocations, availableMarkets]);
+
+  const dateRangeOptions = useMemo(() => [
+    { value: "7d", label: "Last 7 Days" },
+    { value: "14d", label: "Last 14 Days" },
+    { value: "30d", label: "Last 30 Days (Full)" },
+    { value: "all", label: "All Available Records" }
+  ], []);
 
   // 2. LSTM Prediction States
   const [predictionPeriod, setPredictionPeriod] = useState("7d"); // "7d" or "30d"
@@ -1567,34 +1799,16 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
               Commodity {availableCommodities.length > 0 && <span className="pa-filter-badge">({availableCommodities.length})</span>}
             </label>
             <div className="pa-select-wrapper">
-              <select
+              <CustomDropdown
                 id="commodity-select"
                 value={selectedCommodity}
-                onChange={(e) => {
-                  setSelectedCommodity(e.target.value);
+                onChange={(val) => {
+                  setSelectedCommodity(val);
                   handleResetFilters();
                 }}
-              >
-                <option value="All">All Commodities ({availableCommodities.length > 0 ? availableCommodities.length : "All"})</option>
-                <optgroup label="Model Commodities">
-                  {Object.keys(COMMODITIES_DATA).map((cName) => (
-                    <option key={`core-${cName}`} value={cName}>
-                      {cName} ({COMMODITIES_DATA[cName].unit})
-                    </option>
-                  ))}
-                </optgroup>
-                {availableCommodities.length > 0 && (
-                  <optgroup label="Cleaned Dataset Commodities">
-                    {availableCommodities
-                      .filter((cName) => !Object.keys(COMMODITIES_DATA).includes(cName))
-                      .map((cName) => (
-                        <option key={`dataset-${cName}`} value={cName}>
-                          {cName}
-                        </option>
-                      ))}
-                  </optgroup>
-                )}
-              </select>
+                options={commodityOptions}
+                placeholder="Choose commodity..."
+              />
             </div>
           </div>
 
@@ -1604,18 +1818,13 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
               State {availableStates.length > 0 && <span className="pa-filter-badge">({availableStates.length})</span>}
             </label>
             <div className="pa-select-wrapper">
-              <select
+              <CustomDropdown
                 id="state-filter"
                 value={filterState}
-                onChange={(e) => handleStateChange(e.target.value)}
-              >
-                <option value="All">All States ({availableStates.length > 0 ? availableStates.length : "Loading..."})</option>
-                {availableStates.map((st) => (
-                  <option key={st} value={st}>
-                    {st}
-                  </option>
-                ))}
-              </select>
+                onChange={(val) => handleStateChange(val)}
+                options={stateOptions}
+                placeholder="Select state..."
+              />
             </div>
           </div>
 
@@ -1625,25 +1834,14 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
               District {filterState !== "All" && <span className="pa-filter-badge">({availableDistricts.length})</span>}
             </label>
             <div className="pa-select-wrapper">
-              <select
+              <CustomDropdown
                 id="district-filter"
                 value={filterDistrict}
                 disabled={filterState === "All" || isLoadingLocations}
-                onChange={(e) => handleDistrictChange(e.target.value)}
-              >
-                <option value="All">
-                  {filterState === "All"
-                    ? "All Districts (Select State first)"
-                    : isLoadingLocations
-                    ? "Loading districts..."
-                    : `All Districts in ${filterState} (${availableDistricts.length})`}
-                </option>
-                {availableDistricts.map((dst) => (
-                  <option key={dst} value={dst}>
-                    {dst}
-                  </option>
-                ))}
-              </select>
+                onChange={(val) => handleDistrictChange(val)}
+                options={districtOptions}
+                placeholder="Select district..."
+              />
             </div>
           </div>
 
@@ -1653,27 +1851,14 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
               Market Mandi {filterState !== "All" && <span className="pa-filter-badge">({availableMarkets.length})</span>}
             </label>
             <div className="pa-select-wrapper">
-              <select
+              <CustomDropdown
                 id="market-filter"
                 value={filterMarket}
                 disabled={filterState === "All" || isLoadingLocations}
-                onChange={(e) => handleMarketChange(e.target.value)}
-              >
-                <option value="All">
-                  {filterState === "All"
-                    ? "All Markets (Select State first)"
-                    : isLoadingLocations
-                    ? "Loading markets..."
-                    : filterDistrict !== "All"
-                    ? `All Markets in ${filterDistrict} (${availableMarkets.length})`
-                    : `All Markets in ${filterState} (${availableMarkets.length})`}
-                </option>
-                {availableMarkets.map((mkt) => (
-                  <option key={mkt} value={mkt}>
-                    {mkt}
-                  </option>
-                ))}
-              </select>
+                onChange={(val) => handleMarketChange(val)}
+                options={marketOptions}
+                placeholder="Select market..."
+              />
             </div>
           </div>
 
@@ -1681,19 +1866,16 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
           <div className="pa-filter-item">
             <label htmlFor="date-range-filter">Date Range</label>
             <div className="pa-select-wrapper">
-              <select
+              <CustomDropdown
                 id="date-range-filter"
                 value={dateRange}
-                onChange={(e) => {
-                  setDateRange(e.target.value);
+                onChange={(val) => {
+                  setDateRange(val);
                   setCurrentPage(1);
                 }}
-              >
-                <option value="7d">Last 7 Days</option>
-                <option value="14d">Last 14 Days</option>
-                <option value="30d">Last 30 Days (Full)</option>
-                <option value="all">All Available Records</option>
-              </select>
+                options={dateRangeOptions}
+                alignRight={true}
+              />
             </div>
           </div>
 
@@ -2582,54 +2764,71 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
             <table className="pa-data-table">
               <thead>
                 <tr>
-                  <th onClick={() => handleSort("commodity")}>
+                  <th className="pa-col-commodity" onClick={() => handleSort("commodity")}>
                     Commodity {sortField === "commodity" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("date")}>
+                  <th className="pa-col-date" onClick={() => handleSort("date")}>
                     Date {sortField === "date" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("state")}>
+                  <th className="pa-col-state" onClick={() => handleSort("state")}>
                     State {sortField === "state" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("district")}>
+                  <th className="pa-col-district" onClick={() => handleSort("district")}>
                     District {sortField === "district" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("market")}>
+                  <th className="pa-col-market" onClick={() => handleSort("market")}>
                     Market {sortField === "market" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("min")}>
+                  <th className="pa-col-min" onClick={() => handleSort("min")}>
                     Min (₹/Qtl) {sortField === "min" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("max")}>
+                  <th className="pa-col-max" onClick={() => handleSort("max")}>
                     Max (₹/Qtl) {sortField === "max" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
-                  <th onClick={() => handleSort("modal")}>
+                  <th className="pa-col-modal" onClick={() => handleSort("modal")}>
                     Modal (₹/Qtl) {sortField === "modal" && (sortOrder === "asc" ? "▲" : "▼")}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {tableRecords.map((row, idx) => (
-                  <tr key={row.id ? `${row.id}-${row.commodity || selectedCommodity}-${idx}` : `${row.commodity || selectedCommodity}-${row.market || "mkt"}-${row.date || "dt"}-${idx}`}>
-                    <td>
-                      <span className="pa-table-commodity-cell">
-                        <span className="commodity-dot" />
-                        <strong>{row.commodity || selectedCommodity}</strong>
-                      </span>
-                    </td>
-                    <td>{row.date || "—"}</td>
-                    <td>{row.state || "—"}</td>
-                    <td>{row.district || "—"}</td>
-                    <td>
-                      <span className="pa-table-market-badge">{row.market || "—"}</span>
-                    </td>
-                    <td className="pa-price-cell">₹{Number(row.min || 0).toLocaleString("en-IN")}</td>
-                    <td className="pa-price-cell">₹{Number(row.max || 0).toLocaleString("en-IN")}</td>
-                    <td className="pa-price-cell pa-modal-highlight">
-                      <strong>₹{Number(row.modal || 0).toLocaleString("en-IN")}</strong>
-                    </td>
-                  </tr>
-                ))}
+                {tableRecords.map((row, idx) => {
+                  const commodityName = row.commodity || selectedCommodity;
+                  const dateVal = row.date || "—";
+                  const stateVal = row.state || "—";
+                  const districtVal = row.district || "—";
+                  const marketVal = row.market || "—";
+                  const minPriceStr = `₹${Number(row.min || 0).toLocaleString("en-IN")}`;
+                  const maxPriceStr = `₹${Number(row.max || 0).toLocaleString("en-IN")}`;
+                  const modalPriceStr = `₹${Number(row.modal || 0).toLocaleString("en-IN")}`;
+
+                  return (
+                    <tr key={row.id ? `${row.id}-${commodityName}-${idx}` : `${commodityName}-${marketVal}-${dateVal}-${idx}`}>
+                      <td className="pa-col-commodity" title={commodityName}>
+                        <span className="pa-table-commodity-cell">
+                          <span className="commodity-dot" />
+                          <strong>{commodityName}</strong>
+                        </span>
+                      </td>
+                      <td className="pa-col-date" title={dateVal}>
+                        <span className="pa-cell-truncate">{dateVal}</span>
+                      </td>
+                      <td className="pa-col-state" title={stateVal}>
+                        <span className="pa-cell-truncate">{stateVal}</span>
+                      </td>
+                      <td className="pa-col-district" title={districtVal}>
+                        <span className="pa-cell-truncate">{districtVal}</span>
+                      </td>
+                      <td className="pa-col-market" title={marketVal}>
+                        <span className="pa-table-market-badge">{marketVal}</span>
+                      </td>
+                      <td className="pa-price-cell pa-col-min" title={minPriceStr}>{minPriceStr}</td>
+                      <td className="pa-price-cell pa-col-max" title={maxPriceStr}>{maxPriceStr}</td>
+                      <td className="pa-price-cell pa-modal-highlight pa-col-modal" title={modalPriceStr}>
+                        <strong>{modalPriceStr}</strong>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -2658,6 +2857,8 @@ function PriceAnalyticsMain({ initialCommodity = "Tomato", onNavigateToShock } =
                 <span>Per Page:</span>
                 <select
                   value={pageSize}
+                  onMouseDown={handleDropdownFocus}
+                  onFocus={handleDropdownFocus}
                   onChange={(e) => {
                     setPageSize(Number(e.target.value));
                     setCurrentPage(1);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import "./FoodSubstitution.css";
 import { getApiEndpoints } from "./apiConfig";
 
@@ -60,6 +60,73 @@ function IconArrowRight() {
   );
 }
 
+const COMMODITY_ICONS = {
+  Tomato: "🍅",
+  Onion: "🧅",
+  Potato: "🥔",
+  Rice: "🌾",
+  Wheat: "🌾",
+  Apple: "🍎",
+  Banana: "🍌",
+  Maize: "🌽",
+  Mustard: "🌱",
+  "Bengal Gram (Gram)(Whole)": "🫘",
+  "Bengal Gram": "🫘",
+  Gram: "🫘",
+  Soyabean: "🌱",
+  Soybean: "🌱",
+  Cotton: "☁️",
+  Garlic: "🧄",
+  Ginger: "🫚",
+  Grapes: "🍇",
+  Lemon: "🍋",
+  Mango: "🥭",
+  Orange: "🍊",
+  Papaya: "🍈",
+  Pineapple: "🍍",
+  Pomegranate: "🫐",
+  Carrot: "🥕",
+  Brinjal: "🍆",
+  Cabbage: "🥬",
+  Cauliflower: "🥦",
+  Chilli: "🌶️",
+  "Green Chilli": "🌶️",
+  Turmeric: "🫚",
+  Pumpkin: "🎃",
+  Plum: "🫐",
+  "Bhindi(Ladies Finger)": "🥒",
+  Bhindi: "🥒",
+  "Ladies Finger": "🥒",
+  Beetroot: "🍠",
+  Cucumber: "🥒",
+  Spinach: "🥬",
+  Watermelon: "🍉",
+  Peas: "🫛",
+  "Green Peas": "🫛",
+  Radish: "🥕",
+  Raddish: "🥕",
+  Capsicum: "🫑",
+  "Bell Pepper": "🫑"
+};
+
+function getFoodIcon(name) {
+  if (!name || typeof name !== "string") return "🥗";
+  const trimmed = name.trim();
+  const cap = trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+  if (COMMODITY_ICONS[cap]) return COMMODITY_ICONS[cap];
+  const lower = trimmed.toLowerCase();
+  for (const [k, v] of Object.entries(COMMODITY_ICONS)) {
+    if (lower.includes(k.toLowerCase()) || k.toLowerCase().includes(lower)) return v;
+  }
+  return "🥗";
+}
+
+function capitalizeFood(name) {
+  if (!name || typeof name !== "string") return "";
+  const trimmed = name.trim();
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+}
+
 const POPULAR_STAPLES = [
   "Tomato", "Potato", "Onion", "Spinach", "Pumpkin",
   "Cabbage", "Carrot", "Green Beans", "Cauliflower", "Brinjal"
@@ -71,26 +138,26 @@ function simplifyReason(reason) {
   let str = reason;
 
   // Simplify nutrient similarity
-  str = str.replace(/High nutrient similarity \((\d+)%\) with comparable macronutrient profile/gi, "Similar nutrients ($1%) to keep your meal healthy");
-  str = str.replace(/High nutrient similarity/gi, "Similar nutrients");
+  str = str.replace(/High nutrient similarity \((\d+)%\) with comparable macronutrient profile/gi, "Healthy nutrient match ($1%)");
+  str = str.replace(/High nutrient similarity/gi, "Healthy nutrient match");
   str = str.replace(/with comparable macronutrient profile/gi, "with healthy nutrients");
-  str = str.replace(/Moderate nutritional alignment \((\d+)%\)/gi, "Decent nutrition match ($1%)");
-  str = str.replace(/Moderate nutritional alignment/gi, "Decent nutrition match");
+  str = str.replace(/Moderate nutritional alignment \((\d+)%\)/gi, "Decent nutrient match ($1%)");
+  str = str.replace(/Moderate nutritional alignment/gi, "Decent nutrient match");
 
   // Simplify cooking role
-  str = str.replace(/Compatible cooking role \(([^)]+)\) in ([^)]+) recipes with ([\d.]+)x ratio/gi, "Works in similar dishes ($1) in $2 cooking using $3x the amount");
-  str = str.replace(/Compatible cooking role/gi, "Works in similar dishes");
+  str = str.replace(/Compatible cooking role \(([^)]+)\) in ([^)]+) recipes with ([\d.]+)x ratio/gi, "Cooks similarly in $2 dishes ($3x ratio)");
+  str = str.replace(/Compatible cooking role/gi, "Cooks similarly in recipes");
 
   // Simplify estimated savings
-  str = str.replace(/Estimated savings of Rs\.\s*([\d.]+)\s*\(([\d.]+)% lower cost for ([^)]+)\)/gi, "Estimated money saved: ₹$1 ($2% cheaper for $3)");
-  str = str.replace(/Estimated savings/gi, "Estimated money saved");
+  str = str.replace(/Estimated savings of Rs\.\s*([\d.]+)\s*\(([\d.]+)% lower cost for ([^)]+)\)/gi, "Saves ₹$1 ($2% less for $3)");
+  str = str.replace(/Estimated savings/gi, "Money saved");
 
   // Simplify market price suitability
-  str = str.replace(/Favorable market price suitability index \((\d+)%\)/gi, "Budget-friendly price match ($1%)");
+  str = str.replace(/Favorable market price suitability index \((\d+)%\)/gi, "Budget-friendly price ($1% match)");
 
   // Simplify market availability
-  str = str.replace(/High availability across APMC mandis nationwide/gi, "Easy to find in many markets");
-  str = str.replace(/Moderate seasonal market availability/gi, "Available in seasonal markets");
+  str = str.replace(/High availability across APMC mandis nationwide/gi, "Widely available in local mandis");
+  str = str.replace(/Moderate seasonal market availability/gi, "Available in seasonal mandis");
 
   return str;
 }
@@ -191,6 +258,126 @@ let CACHED_AVAILABLE_FOODS = null;
 const SUB_DATA_CACHE = new Map();
 const SUB_IN_FLIGHT = new Map();
 
+// Bounded, internally scrollable dropdown component displaying ~12 options at a time
+function CustomDropdown({
+  id,
+  value,
+  onChange,
+  options = [],
+  disabled = false,
+  className = "",
+  placeholder = "Select...",
+  ariaLabel
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && listRef.current) {
+      const activeEl = listRef.current.querySelector(".custom-dropdown-item.active");
+      if (activeEl) {
+        activeEl.scrollIntoView({ block: "nearest" });
+      }
+    }
+  }, [isOpen]);
+
+  const selectedOption = options.find((opt) => String(opt.value) === String(value));
+  const displayLabel = selectedOption ? selectedOption.label : placeholder;
+
+  const handleSelect = (val) => {
+    if (disabled) return;
+    onChange(val);
+    setIsOpen(false);
+  };
+
+  const handleToggle = () => {
+    if (disabled) return;
+    setIsOpen((prev) => !prev);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className={`sub-custom-dropdown-container ${className} ${isOpen ? "is-open" : ""} ${disabled ? "is-disabled" : ""}`}
+    >
+      <button
+        id={id}
+        type="button"
+        className="sub-custom-dropdown-trigger"
+        onClick={handleToggle}
+        disabled={disabled}
+        role="combobox"
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-label={ariaLabel || id}
+      >
+        <span className="sub-custom-dropdown-label">{displayLabel}</span>
+        <span className="sub-custom-dropdown-chevron" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
+      </button>
+
+      {isOpen && (
+        <div ref={listRef} className="sub-custom-dropdown-menu" role="listbox">
+          {options.map((opt) => {
+            const isSelected = String(opt.value) === String(value);
+            return (
+              <div
+                key={opt.value}
+                className={`sub-custom-dropdown-item ${isSelected ? "active" : ""}`}
+                role="option"
+                aria-selected={isSelected}
+                onClick={() => handleSelect(opt.value)}
+                title={opt.label}
+              >
+                {opt.label}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Hidden select for accessibility & DOM synchronization */}
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        tabIndex={-1}
+        aria-hidden="true"
+        style={{ display: "none" }}
+      >
+        {options.map((opt) => (
+          <option key={opt.value} value={opt.value}>
+            {opt.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
 export default function FoodSubstitution({
   onAddToBasket,
   onNavigateToPrices,
@@ -204,8 +391,50 @@ export default function FoodSubstitution({
   const [unit, setUnit] = useState("kg");
   const [preference, setPreference] = useState("balanced");
 
+  // Ensure dropdown opens downwards and is not clipped by viewport boundaries
+  const handleDropdownFocus = (e) => {
+    const select = e.currentTarget;
+    if (!select) return;
+    const rect = select.getBoundingClientRect();
+    const topbarOffset = 70; // Clearance for sticky topbar
+    const minSpaceBelow = 320; // Clearance needed below so native dropdown opens downward
+    const spaceBelow = window.innerHeight - rect.bottom;
+
+    if (spaceBelow < minSpaceBelow) {
+      const scrollAmount = minSpaceBelow - spaceBelow;
+      window.scrollBy({ top: scrollAmount, behavior: "instant" });
+    } else if (rect.top < topbarOffset) {
+      window.scrollBy({ top: rect.top - topbarOffset - 10, behavior: "instant" });
+    }
+  };
+
+  // Dismiss open dropdowns if user scrolls the page to prevent floating/detached popups
+  useEffect(() => {
+    const handleScroll = () => {
+      if (document.activeElement && document.activeElement.tagName === "SELECT") {
+        document.activeElement.blur();
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Data & Loading State
   const [availableFoods, setAvailableFoods] = useState(() => CACHED_AVAILABLE_FOODS || []);
+
+  // Memoized options for food selection dropdown
+  const foodOptions = useMemo(() => {
+    if (availableFoods && availableFoods.length > 0) {
+      return availableFoods.map((f) => ({
+        value: f.name,
+        label: `${f.name} (${f.foodRole} • ${f.alternativeCount} swaps)`
+      }));
+    }
+    return POPULAR_STAPLES.map((name) => ({
+      value: name,
+      label: name
+    }));
+  }, [availableFoods]);
   const [resultData, setResultData] = useState(() => {
     const defaultKey = `${(initialFood || "Tomato").toLowerCase()}_3_kg_balanced`;
     return SUB_DATA_CACHE.get(defaultKey) || null;
@@ -469,24 +698,13 @@ export default function FoodSubstitution({
           {/* Food Selection */}
           <div className="input-field-group">
             <label htmlFor="food-select">Choose a Food</label>
-            <select
+            <CustomDropdown
               id="food-select"
-              className="input-select-styled"
               value={selectedFood}
-              onChange={(e) => setSelectedFood(e.target.value)}
-            >
-              {availableFoods.length > 0 ? (
-                availableFoods.map((f) => (
-                  <option key={f.name} value={f.name}>
-                    {f.name} ({f.foodRole} • {f.alternativeCount} swaps)
-                  </option>
-                ))
-              ) : (
-                POPULAR_STAPLES.map((name) => (
-                  <option key={name} value={name}>{name}</option>
-                ))
-              )}
-            </select>
+              onChange={(val) => setSelectedFood(val)}
+              options={foodOptions}
+              placeholder="Choose a food..."
+            />
           </div>
 
           {/* Consumption Quantity */}
@@ -511,6 +729,8 @@ export default function FoodSubstitution({
               id="consumption-unit"
               className="input-select-styled"
               value={unit}
+              onMouseDown={handleDropdownFocus}
+              onFocus={handleDropdownFocus}
               onChange={(e) => setUnit(e.target.value)}
             >
               <option value="kg">kg (Kilograms)</option>
@@ -589,11 +809,11 @@ export default function FoodSubstitution({
         <div className="original-food-snapshot-card">
           <div className="snapshot-header">
             <div className="snapshot-title-group">
-              <div className="snapshot-avatar">
-                {resultData.originalFood.name.charAt(0)}
+              <div className="snapshot-avatar" title={capitalizeFood(resultData.originalFood.name)}>
+                {getFoodIcon(resultData.originalFood.name)}
               </div>
               <div className="snapshot-name-wrap">
-                <h4>{resultData.originalFood.name} (Current Food)</h4>
+                <h4>{capitalizeFood(resultData.originalFood.name)} (Current Food)</h4>
                 <span>The food you want to replace</span>
               </div>
             </div>
@@ -698,6 +918,8 @@ export default function FoodSubstitution({
                 <select
                   className="toolbar-select"
                   value={sortBy}
+                  onMouseDown={handleDropdownFocus}
+                  onFocus={handleDropdownFocus}
                   onChange={(e) => setSortBy(e.target.value)}
                 >
                   <option value="score">Best Overall Match</option>
@@ -712,6 +934,8 @@ export default function FoodSubstitution({
                 <select
                   className="toolbar-select"
                   value={availabilityFilter}
+                  onMouseDown={handleDropdownFocus}
+                  onFocus={handleDropdownFocus}
                   onChange={(e) => setAvailabilityFilter(e.target.value)}
                 >
                   <option value="all">All Foods</option>
@@ -779,7 +1003,7 @@ export default function FoodSubstitution({
                             {(alt.availability || "").toLowerCase() === "high" ? "Easy to Find" : "In Markets"}
                           </span>
                         </div>
-                        <h3>{alt.alternative}</h3>
+                        <h3>{capitalizeFood(alt.alternative)}</h3>
                         <span className="alt-role-pill">
                           {alt.foodRole || "Produce"} • {alt.cuisine || "Indian"} Cooking
                         </span>
@@ -794,18 +1018,18 @@ export default function FoodSubstitution({
                     <div className="sub-pair-strip">
                       <div className="pair-block">
                         <span className="pair-meta-label">Current</span>
-                        <strong className="pair-item-name">{resultData.originalFood?.name}</strong>
+                        <strong className="pair-item-name">{capitalizeFood(resultData.originalFood?.name)}</strong>
                         <span className="pair-qty-text">{resultData.originalFood?.quantity} {resultData.originalFood?.unit}</span>
                       </div>
 
                       <div className="pair-swap-arrow">
                         <IconArrowRight />
-                        <span className="ratio-badge">Use {alt.substitutionRatio}x amount</span>
+                        <span className="ratio-badge">Use {alt.substitutionRatio}x ratio</span>
                       </div>
 
                       <div className="pair-block text-right">
                         <span className="pair-meta-label">Swap with</span>
-                        <strong className="pair-item-name highlight-alt">{alt.alternative}</strong>
+                        <strong className="pair-item-name highlight-alt">{capitalizeFood(alt.alternative)}</strong>
                         <span className="pair-qty-text">{alt.recommendedQuantity} {alt.unit}</span>
                       </div>
                     </div>
@@ -814,11 +1038,11 @@ export default function FoodSubstitution({
                     <div className={`savings-callout-banner ${hasSavings ? "is-savings" : "is-neutral"}`}>
                       <div className="savings-label-col">
                         <span className="savings-label">
-                          {hasSavings ? "Estimated Money Saved" : "Estimated Cost"}
+                          {hasSavings ? "Estimated Savings" : "Estimated Cost"}
                         </span>
                         <span className="savings-cost-sub">
                           {alt.alternativeTotalCost !== null
-                            ? `Est. Cost: ₹${alt.alternativeTotalCost} (Market rate: ₹${alt.alternativePricePerKg}/kg)`
+                            ? `Est. Cost: ₹${alt.alternativeTotalCost} (Rate: ₹${alt.alternativePricePerKg}/kg)`
                             : "Local market price not recorded"}
                         </span>
                       </div>
@@ -883,7 +1107,7 @@ export default function FoodSubstitution({
                     {Array.isArray(alt.whyRecommended) && alt.whyRecommended.length > 0 && (
                       <div className="why-recommended-box">
                         <div className="why-header">
-                          <IconCheck /> Why This Is a Good Choice:
+                          <IconCheck /> Why Recommended:
                         </div>
                         <ul className="why-list">
                           {alt.whyRecommended.map((reason, rIdx) => (
@@ -973,7 +1197,7 @@ export default function FoodSubstitution({
               <div className="modal-summary-grid">
                 <div className="modal-food-box modal-box-orig">
                   <span className="modal-box-tag">Current Food</span>
-                  <h4 className="modal-box-title">{resultData.originalFood?.name}</h4>
+                  <h4 className="modal-box-title">{capitalizeFood(resultData.originalFood?.name)}</h4>
                   <div className="modal-box-rate">
                     Quantity: <strong>{resultData.originalFood?.quantity} {resultData.originalFood?.unit}</strong>
                   </div>
@@ -987,7 +1211,7 @@ export default function FoodSubstitution({
 
                 <div className="modal-food-box modal-box-alt alt-highlight">
                   <span className="modal-box-tag">Recommended Swap</span>
-                  <h4 className="modal-box-title">{comparingAlt.alternative}</h4>
+                  <h4 className="modal-box-title">{capitalizeFood(comparingAlt.alternative)}</h4>
                   <div className="modal-box-rate">
                     Quantity: <strong>{comparingAlt.recommendedQuantity} {comparingAlt.unit}</strong> (use {comparingAlt.substitutionRatio}x amount)
                   </div>
@@ -1006,7 +1230,7 @@ export default function FoodSubstitution({
                   <div className="savings-label-col">
                     <span className="savings-label">Estimated Money Saved</span>
                     <span className="savings-cost-sub">
-                      Swapping {resultData.originalFood?.quantity} {resultData.originalFood?.unit} of {resultData.originalFood?.name} with {comparingAlt.recommendedQuantity} {comparingAlt.unit} of {comparingAlt.alternative}
+                      Swapping {resultData.originalFood?.quantity} {resultData.originalFood?.unit} of {capitalizeFood(resultData.originalFood?.name)} with {comparingAlt.recommendedQuantity} {comparingAlt.unit} of {capitalizeFood(comparingAlt.alternative)}
                     </span>
                   </div>
                   <div className="savings-amount-badge">
@@ -1021,8 +1245,8 @@ export default function FoodSubstitution({
                   <thead>
                     <tr>
                       <th>Nutrient (per 100g)</th>
-                      <th>{resultData.originalFood?.name} (Current)</th>
-                      <th>{comparingAlt.alternative} (Swap)</th>
+                      <th>{capitalizeFood(resultData.originalFood?.name)} (Current)</th>
+                      <th>{capitalizeFood(comparingAlt.alternative)} (Swap)</th>
                       <th>Difference</th>
                     </tr>
                   </thead>

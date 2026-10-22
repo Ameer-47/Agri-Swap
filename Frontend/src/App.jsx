@@ -235,6 +235,7 @@ function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
   const [prediction, setPrediction] = useState(null);
+  const [imageError, setImageError] = useState("");
 
   // Option B: Manual Food Name Input
   const [typedFood, setTypedFood] = useState("");
@@ -326,6 +327,7 @@ function App() {
     setImagePreviewUrl(URL.createObjectURL(file));
     setPrediction(null);
     setError("");
+    setImageError("");
     setInputError("");
     // Clear stale active food so preview and state stay consistent before prediction arrives
     setActiveFood(null);
@@ -338,13 +340,14 @@ function App() {
       setImagePreviewUrl(null);
     }
     setPrediction(null);
+    setImageError("");
     setActiveFood(null);
   };
 
   // Option A: Image Prediction via API (ResNet50)
   const identifyFood = async () => {
     if (!selectedImage) {
-      setError("Please select a food image first.");
+      setImageError("Please select a food photo first.");
       return;
     }
     if (loading === "image") {
@@ -353,6 +356,7 @@ function App() {
 
     setLoading("image");
     setError("");
+    setImageError("");
     setPrediction(null);
 
     try {
@@ -364,28 +368,59 @@ function App() {
         body: formData
       });
 
-      if (!response.ok) {
-        const errJson = await response.json().catch(() => ({}));
-        throw new Error(errJson.message || errJson.error || "Food identification failed. Please ensure the backend service is reachable.");
+      const responseText = await response.text();
+      let data = null;
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        // Upstream returned non-JSON HTML (e.g. cloud host cold-start or gateway error)
       }
 
-      const data = await response.json();
-      if (data && data.success === false) {
+      if (!response.ok) {
+        let msg = data?.message || data?.error;
+        if (!msg || msg.toLowerCase().includes("non-json")) {
+          if (response.status === 502 || response.status === 503 || response.status === 504) {
+            msg = "The image recognition service is currently waking up on cloud servers (free tier). Please try again in a few moments, or select your food from Option B.";
+          } else {
+            msg = "Food identification service is currently busy or restarting. Please try again or select your food manually in Option B.";
+          }
+        }
+        throw new Error(msg);
+      }
+
+      if (!data) {
+        throw new Error("The image recognition service is waking up on cloud servers. Please try again in a moment, or select your food from Option B.");
+      }
+
+      if (data.success === false) {
         throw new Error(data.message || data.error || "Food identification failed.");
       }
+
       setPrediction(data);
 
       // Only automatically lock into active state if prediction is valid produce and confident (>= 70%)
-      if (data && data.isValidProduce && data.food && data.isConfident !== false) {
+      const isHighConfidence = data &&
+                               data.isValidProduce &&
+                               data.food &&
+                               data.isConfident !== false &&
+                               (data.confidence === null || Number(data.confidence) >= 0.70);
+      if (isHighConfidence) {
         const formattedFood = data.food.charAt(0).toUpperCase() + data.food.slice(1);
         setActiveFood(formattedFood);
         setSelectedCommodity(formattedFood);
       } else {
-        // Clear activeFood so stale previous selections are not shown for unknown or non-food items
+        // Clear activeFood so stale previous selections are not shown for unknown, low-confidence, or non-food items
         setActiveFood(null);
       }
     } catch (err) {
-      setError(err.message || "Unable to connect to the backend image recognition service.");
+      let friendlyMessage = err.message || "";
+      const lower = friendlyMessage.toLowerCase();
+      if (!friendlyMessage || lower.includes("fetch failed") || lower.includes("networkerror") || lower.includes("failed to fetch")) {
+        friendlyMessage = "The image recognition service is currently waking up or unreachable. Please try again in a few moments, or select your food from Option B.";
+      } else if (lower.includes("non-json")) {
+        friendlyMessage = "The image recognition service is restarting on cloud servers. Please wait a moment and try again, or use Option B.";
+      }
+      setImageError(friendlyMessage);
     } finally {
       setLoading("");
     }
@@ -1038,37 +1073,96 @@ function App() {
               <IconArrowRight />
             </button>
 
-            {prediction && (
-              prediction.isValidProduce === false ? (
-                prediction.rejectionReason === "not_food" ? (
-                  <div className="prediction-result-panel" style={{ borderColor: "rgba(239, 68, 68, 0.45)", background: "rgba(45, 15, 15, 0.72)" }}>
-                    <div className="prediction-header" style={{ alignItems: "flex-start" }}>
-                      <span className="result-check" style={{ background: "rgba(239, 68, 68, 0.2)", borderColor: "rgba(239, 68, 68, 0.5)", color: "#fca5a5", fontSize: "16px", flexShrink: 0 }}>✕</span>
-                      <div style={{ flex: 1 }}>
-                        <span className="result-label" style={{ color: "#fca5a5" }}>Non-Food Image Detected</span>
-                        <strong className="result-food-name" style={{ color: "#fecaca", fontSize: "15px", lineHeight: 1.45, display: "block", marginTop: "4px" }}>
-                          Not a valid fruit or vegetable image. Please upload a clear fruit or vegetable photo.
-                        </strong>
-                      </div>
-                      {prediction.inferenceTimeMs && (
-                        <span className="detection-speed-badge" title="Image validation speed">
-                          ⚡ {Math.round(prediction.inferenceTimeMs)}ms
-                        </span>
-                      )}
+            {imageError && (
+              <div className="prediction-result-panel" style={{ borderColor: "rgba(239, 68, 68, 0.45)", background: "rgba(45, 15, 15, 0.72)", marginTop: "12px" }}>
+                <div className="prediction-header" style={{ alignItems: "flex-start" }}>
+                  <span className="result-check" style={{ background: "rgba(239, 68, 68, 0.2)", borderColor: "rgba(239, 68, 68, 0.5)", color: "#fca5a5", fontSize: "16px", flexShrink: 0 }}>⚠</span>
+                  <div style={{ flex: 1 }}>
+                    <span className="result-label" style={{ color: "#fca5a5" }}>Identification Notice</span>
+                    <strong className="result-food-name" style={{ color: "#fecaca", fontSize: "14px", lineHeight: 1.45, display: "block", marginTop: "4px" }}>
+                      {imageError}
+                    </strong>
+                    <div style={{ display: "flex", gap: "8px", marginTop: "10px", flexWrap: "wrap" }}>
+                      <button
+                        type="button"
+                        className="action-chip"
+                        style={{ background: "rgba(34, 197, 94, 0.2)", borderColor: "rgba(74, 222, 128, 0.5)", color: "#4ade80", fontWeight: 600 }}
+                        onClick={identifyFood}
+                        disabled={loading === "image"}
+                      >
+                        🔄 Try Again
+                      </button>
+                      <button
+                        type="button"
+                        className="action-chip"
+                        style={{ background: "rgba(245, 158, 11, 0.18)", borderColor: "rgba(245, 158, 11, 0.45)", color: "#fde047" }}
+                        onClick={() => {
+                          const inputEl = document.querySelector(".card-option-b input");
+                          if (inputEl) {
+                            inputEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                            inputEl.focus();
+                          }
+                        }}
+                      >
+                        Type Name in Option B →
+                      </button>
                     </div>
                   </div>
-                ) : (prediction.rejectionReason === "unknown_produce" || prediction.status === "unknown_produce") ? (
-                  <div className="prediction-result-panel" style={{ borderColor: "rgba(16, 185, 129, 0.45)", background: "rgba(10, 30, 22, 0.75)" }}>
-                    <div className="prediction-header" style={{ alignItems: "flex-start" }}>
-                      <span className="result-check" style={{ background: "rgba(16, 185, 129, 0.2)", borderColor: "rgba(52, 211, 153, 0.5)", color: "#34d399", fontSize: "16px", flexShrink: 0 }}>🍃</span>
-                      <div style={{ flex: 1 }}>
-                        <span className="result-label" style={{ color: "#6ee7b7" }}>Produce Status</span>
-                        <strong className="result-food-name" style={{ color: "#a7f3d0", fontSize: "18px", lineHeight: 1.45, display: "block", marginTop: "4px" }}>
-                          Unknown produce
+                </div>
+              </div>
+            )}
+
+            {prediction && (
+              (prediction.status === "not_food" || prediction.rejectionReason === "not_food") ? (
+                <div className="prediction-result-panel" style={{ borderColor: "rgba(239, 68, 68, 0.45)", background: "rgba(45, 15, 15, 0.72)" }}>
+                  <div className="prediction-header">
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0, flex: 1 }}>
+                      <span className="result-check" style={{ background: "rgba(239, 68, 68, 0.2)", borderColor: "rgba(239, 68, 68, 0.5)", color: "#fca5a5", fontSize: "16px", flexShrink: 0 }}>✕</span>
+                      <div className="prediction-header-title">
+                        <span className="result-label" style={{ color: "#fca5a5" }}>Non-Food Image Detected</span>
+                        <strong className="result-food-name" style={{ color: "#fecaca", fontSize: "16px", lineHeight: 1.35 }}>
+                          Please upload a fruit or vegetable image
                         </strong>
-                        <p style={{ margin: "6px 0 0", fontSize: "13px", color: "#cbd5e1" }}>
-                          This image appears to contain produce, but it is not in our 36 supported fruit &amp; vegetable catalog or cannot be identified reliably. Please select a supported item below or search in Option B:
-                        </p>
+                      </div>
+                    </div>
+                    {prediction.inferenceTimeMs && (
+                      <span className="detection-speed-badge" title="Image validation speed">
+                        ⚡ {Math.round(prediction.inferenceTimeMs)}ms
+                      </span>
+                    )}
+                  </div>
+                  <p className="prediction-explanation" style={{ color: "#fecaca" }}>
+                    {prediction.message || "Non-Food Image Detected — Please upload a fruit or vegetable image."}
+                  </p>
+                  <div className="prediction-actions" style={{ marginTop: "14px" }}>
+                    <button
+                      type="button"
+                      className="action-chip"
+                      style={{ background: "rgba(245, 158, 11, 0.18)", borderColor: "rgba(245, 158, 11, 0.45)", color: "#fde047", fontWeight: 600 }}
+                      onClick={() => {
+                        const inputEl = document.querySelector(".card-option-b input");
+                        if (inputEl) {
+                          inputEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                          inputEl.focus();
+                        }
+                      }}
+                    >
+                      Type Food Name in Option B Instead →
+                    </button>
+                  </div>
+                </div>
+              ) : prediction.isValidProduce === false ? (
+                (prediction.rejectionReason === "unknown_produce" || prediction.status === "unknown_produce") ? (
+                  <div className="prediction-result-panel" style={{ borderColor: "rgba(16, 185, 129, 0.45)", background: "rgba(10, 30, 22, 0.75)" }}>
+                    <div className="prediction-header">
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0, flex: 1 }}>
+                        <span className="result-check" style={{ background: "rgba(16, 185, 129, 0.2)", borderColor: "rgba(52, 211, 153, 0.5)", color: "#34d399", fontSize: "16px", flexShrink: 0 }}>🍃</span>
+                        <div className="prediction-header-title">
+                          <span className="result-label" style={{ color: "#6ee7b7" }}>Produce Status</span>
+                          <strong className="result-food-name" style={{ color: "#a7f3d0", fontSize: "17px", lineHeight: 1.35 }}>
+                            Unknown Produce
+                          </strong>
+                        </div>
                       </div>
                       {prediction.inferenceTimeMs && (
                         <span className="detection-speed-badge" title="Vision validation speed">
@@ -1076,9 +1170,12 @@ function App() {
                         </span>
                       )}
                     </div>
+                    <p className="prediction-explanation" style={{ color: "#cbd5e1" }}>
+                      This image appears to contain produce, but it is not in our 36 supported fruit &amp; vegetable catalog or cannot be identified reliably. Please select a supported candidate below or search in Option B:
+                    </p>
 
                     {prediction.topCandidates && prediction.topCandidates.length > 0 && (
-                      <div className="prediction-actions" style={{ marginTop: "12px" }}>
+                      <div className="prediction-actions" style={{ marginTop: "14px" }}>
                         {prediction.topCandidates.map((cand) => {
                           const capCand = cand.food.charAt(0).toUpperCase() + cand.food.slice(1);
                           return (
@@ -1114,13 +1211,15 @@ function App() {
                   </div>
                 ) : (
                   <div className="prediction-result-panel" style={{ borderColor: "rgba(245, 158, 11, 0.45)", background: "rgba(35, 25, 10, 0.72)" }}>
-                    <div className="prediction-header" style={{ alignItems: "flex-start" }}>
-                      <span className="result-check" style={{ background: "rgba(245, 158, 11, 0.2)", borderColor: "rgba(245, 158, 11, 0.5)", color: "#fde047", fontSize: "16px", flexShrink: 0 }}>⚠</span>
-                      <div style={{ flex: 1 }}>
-                        <span className="result-label" style={{ color: "#fde047" }}>Unidentified Image</span>
-                        <strong className="result-food-name" style={{ color: "#fef08a", fontSize: "15px", lineHeight: 1.45, display: "block", marginTop: "4px" }}>
-                          Unable to identify — please upload a clear fruit or vegetable image
-                        </strong>
+                    <div className="prediction-header">
+                      <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0, flex: 1 }}>
+                        <span className="result-check" style={{ background: "rgba(245, 158, 11, 0.2)", borderColor: "rgba(245, 158, 11, 0.5)", color: "#fde047", fontSize: "16px", flexShrink: 0 }}>⚠</span>
+                        <div className="prediction-header-title">
+                          <span className="result-label" style={{ color: "#fde047" }}>Unidentified Image</span>
+                          <strong className="result-food-name" style={{ color: "#fef08a", fontSize: "16px", lineHeight: 1.35 }}>
+                            Unable to Identify Produce
+                          </strong>
+                        </div>
                       </div>
                       {prediction.inferenceTimeMs && (
                         <span className="detection-speed-badge" title="Image validation speed">
@@ -1128,19 +1227,40 @@ function App() {
                         </span>
                       )}
                     </div>
+                    <p className="prediction-explanation" style={{ color: "#cbd5e1" }}>
+                      {prediction.message || "Unable to identify — please upload a clear, focused, well-lit photo of a supported fruit or vegetable, or select your food in Option B."}
+                    </p>
+                    <div className="prediction-actions" style={{ marginTop: "14px" }}>
+                      <button
+                        type="button"
+                        className="action-chip"
+                        style={{ background: "rgba(245, 158, 11, 0.18)", borderColor: "rgba(245, 158, 11, 0.45)", color: "#fde047", fontWeight: 600 }}
+                        onClick={() => {
+                          const inputEl = document.querySelector(".card-option-b input");
+                          if (inputEl) {
+                            inputEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                            inputEl.focus();
+                          }
+                        }}
+                      >
+                        Type Food Name in Option B Instead →
+                      </button>
+                    </div>
                   </div>
                 )
-              ) : prediction.isConfident === false ? (
+              ) : (prediction.isConfident === false || (Number.isFinite(Number(prediction.confidence)) && Number(prediction.confidence) < 0.70)) ? (
                 <div className="prediction-result-panel" style={{ borderColor: "rgba(245, 158, 11, 0.45)", background: "rgba(30, 26, 15, 0.7)" }}>
                   <div className="prediction-header">
-                    <span className="result-check" style={{ background: "rgba(245, 158, 11, 0.2)", color: "#fde047" }}>⚠</span>
-                    <div>
-                      <span className="result-label" style={{ color: "#fde047" }}>Uncertain Identification</span>
-                      <strong className="result-food-name" style={{ color: "#fef08a" }}>
-                        {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Please Confirm Food"}
-                      </strong>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0, flex: 1 }}>
+                      <span className="result-check" style={{ background: "rgba(245, 158, 11, 0.2)", color: "#fde047", flexShrink: 0 }}>⚠</span>
+                      <div className="prediction-header-title">
+                        <span className="result-label" style={{ color: "#fde047" }}>Low Confidence Match</span>
+                        <strong className="result-food-name" style={{ color: "#fef08a", fontSize: "16px", lineHeight: 1.35 }}>
+                          Food not identified clearly
+                        </strong>
+                      </div>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px", flexShrink: 0 }}>
                       <span className="confidence-pill" style={{ background: "rgba(245, 158, 11, 0.16)", borderColor: "rgba(245, 158, 11, 0.4)", color: "#fde047" }}>
                         {Number.isFinite(Number(prediction.confidence))
                           ? `${(Number(prediction.confidence) * 100).toFixed(1)}% Match`
@@ -1154,8 +1274,12 @@ function App() {
                     </div>
                   </div>
 
-                  <p style={{ margin: "4px 0 12px", fontSize: "13px", color: "#cbd5e1" }}>
-                    Produce detection confidence is below 70%. Please select the matching food from the likely candidates, or type the name in Option B:
+                  <p className="prediction-explanation" style={{ color: "#cbd5e1" }}>
+                    Produce detection confidence {Number.isFinite(Number(prediction.confidence)) ? `(${(Number(prediction.confidence) * 100).toFixed(1)}%) ` : ""}is below our 70% reliability threshold. This image may be a non-food item (such as a document or poster), or an unsupported or unclear fruit or vegetable.
+                  </p>
+
+                  <p style={{ margin: "14px 0 8px", fontSize: "12.5px", color: "#94a3b8" }}>
+                    If this image is food, confirm the closest match below, or type the name in Option B:
                   </p>
 
                   <div className="prediction-actions">
@@ -1170,7 +1294,7 @@ function App() {
                             background: "rgba(245, 158, 11, 0.15)",
                             borderColor: "rgba(245, 158, 11, 0.45)",
                             color: "#fef08a",
-                            fontWeight: 700
+                            fontWeight: 600
                           }}
                           onClick={() => {
                             setActiveFood(capCand);
@@ -1179,27 +1303,50 @@ function App() {
                               ...prediction,
                               food: capCand,
                               confidence: cand.confidence,
+                              isValidProduce: true,
+                              isSupportedProduce: true,
                               isConfident: true
                             });
                           }}
                         >
-                          ✓ Select {capCand} ({Math.round(cand.confidence * 100)}%)
+                          Confirm {capCand} ({Math.round(cand.confidence * 100)}%)
                         </button>
                       );
                     })}
+                    <button
+                      type="button"
+                      className="action-chip"
+                      style={{
+                        background: "rgba(34, 197, 94, 0.18)",
+                        borderColor: "rgba(74, 222, 128, 0.45)",
+                        color: "#4ade80",
+                        fontWeight: 700
+                      }}
+                      onClick={() => {
+                        const inputEl = document.querySelector(".card-option-b input");
+                        if (inputEl) {
+                          inputEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                          inputEl.focus();
+                        }
+                      }}
+                    >
+                      Type Food Name in Option B →
+                    </button>
                   </div>
                 </div>
               ) : (
                 <div className="prediction-result-panel">
                   <div className="prediction-header">
-                    <span className="result-check"><IconSparkles /></span>
-                    <div>
-                      <span className="result-label">Identified Produce</span>
-                      <strong className="result-food-name">
-                        {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Unknown Produce"}
-                      </strong>
+                    <div style={{ display: "flex", alignItems: "center", gap: "12px", minWidth: 0, flex: 1 }}>
+                      <span className="result-check"><IconSparkles /></span>
+                      <div className="prediction-header-title">
+                        <span className="result-label">Identified Produce</span>
+                        <strong className="result-food-name">
+                          {prediction.food ? (prediction.food.charAt(0).toUpperCase() + prediction.food.slice(1)) : "Unknown Produce"}
+                        </strong>
+                      </div>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "6px", flexShrink: 0 }}>
                       <span className="confidence-pill">
                         {Number.isFinite(Number(prediction.confidence))
                           ? `${(Number(prediction.confidence) * 100).toFixed(1)}% Match`
@@ -1393,6 +1540,114 @@ function App() {
                   </button>
                 </div>
               </div>
+            )}
+
+            {!activeFood && prediction && (
+              prediction.status === "not_food" ||
+              prediction.rejectionReason === "not_food" ||
+              prediction.status === "unknown_produce" ||
+              prediction.rejectionReason === "unknown_produce" ||
+              prediction.status === "uncertain_produce" ||
+              prediction.rejectionReason === "uncertain_produce" ||
+              prediction.status === "unclear" ||
+              prediction.rejectionReason === "unclear" ||
+              prediction.isValidProduce === false ||
+              prediction.isConfident === false ||
+              (Number.isFinite(Number(prediction.confidence)) && Number(prediction.confidence) < 0.70)
+            ) && !(
+              prediction.isValidProduce === true &&
+              prediction.isConfident === true &&
+              Number(prediction.confidence) >= 0.70 &&
+              prediction.status === "supported_produce"
+            ) && (
+              (() => {
+                const isNotFood = prediction.status === "not_food" || prediction.rejectionReason === "not_food";
+                const isUnknown = prediction.status === "unknown_produce" || prediction.rejectionReason === "unknown_produce";
+                const isUnclear = prediction.status === "unclear" || prediction.rejectionReason === "unclear";
+
+                let statusLabel = "Low Confidence Match";
+                let statusBadgeStyle = { background: "rgba(245, 158, 11, 0.2)", borderColor: "rgba(245, 158, 11, 0.5)", color: "#fde047" };
+                let summaryText = "Produce match confidence is below our 70% threshold. Lighting, angles, or complex background may affect identification.";
+
+                if (isNotFood) {
+                  statusLabel = "Non-Food Detected";
+                  statusBadgeStyle = { background: "rgba(239, 68, 68, 0.2)", borderColor: "rgba(239, 68, 68, 0.5)", color: "#fca5a5" };
+                  summaryText = "The uploaded image appears to be a document, paper, poster, slide, chart, or non-food object.";
+                } else if (isUnknown) {
+                  statusLabel = "Unsupported Produce";
+                  statusBadgeStyle = { background: "rgba(16, 185, 129, 0.2)", borderColor: "rgba(52, 211, 153, 0.5)", color: "#6ee7b7" };
+                  summaryText = "This item appears to be produce, but is not currently recognized in our 36 supported fruit and vegetable catalog.";
+                } else if (isUnclear) {
+                  statusLabel = "Unclear Photo";
+                  statusBadgeStyle = { background: "rgba(245, 158, 11, 0.2)", borderColor: "rgba(245, 158, 11, 0.5)", color: "#fde047" };
+                  summaryText = "The photo is blurry, low-resolution, or dimly lit, making confident produce identification impossible.";
+                } else if (Number.isFinite(Number(prediction.confidence))) {
+                  statusLabel = `Low Confidence (${Math.round(prediction.confidence * 100)}%)`;
+                }
+
+                return (
+                  <div className="image-analysis-tips-panel">
+                    <div className="analysis-panel-header">
+                      <div className="analysis-header-title">
+                        <span className="panel-title-icon">🔍</span>
+                        <span>Image Analysis &amp; Tips</span>
+                      </div>
+                      <span className="analysis-status-badge" style={statusBadgeStyle}>
+                        {statusLabel}
+                      </span>
+                    </div>
+
+                    <div className="analysis-summary-box">
+                      {summaryText}
+                    </div>
+
+                    <div className="analysis-tips-grid">
+                      <div className="analysis-tip-item">
+                        <span className="tip-bullet-icon">🎯</span>
+                        <div className="tip-text-wrap">
+                          <strong>Clear Focus</strong>
+                          <span>Keep camera steady and produce sharp in frame.</span>
+                        </div>
+                      </div>
+                      <div className="analysis-tip-item">
+                        <span className="tip-bullet-icon">☀️</span>
+                        <div className="tip-text-wrap">
+                          <strong>Good Lighting</strong>
+                          <span>Use bright, natural light without heavy shadows.</span>
+                        </div>
+                      </div>
+                      <div className="analysis-tip-item">
+                        <span className="tip-bullet-icon">🥦</span>
+                        <div className="tip-text-wrap">
+                          <strong>One Food Item</strong>
+                          <span>Center a single fruit or vegetable per photo.</span>
+                        </div>
+                      </div>
+                      <div className="analysis-tip-item">
+                        <span className="tip-bullet-icon">🪵</span>
+                        <div className="tip-text-wrap">
+                          <strong>Less Clutter</strong>
+                          <span>Use a plain surface or background for best accuracy.</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="analysis-notice-bar">
+                      <span className="notice-icon">⚠️</span>
+                      <span className="notice-text">
+                        Suggested food matches in Option A are possible candidates only, not confirmed identifications.
+                      </span>
+                    </div>
+
+                    <div className="analysis-option-b-hint">
+                      <span className="hint-icon">💡</span>
+                      <span className="hint-text">
+                        <strong>Manual Entry Tip:</strong> Skip photo upload anytime by typing the commodity name in the search box above.
+                      </span>
+                    </div>
+                  </div>
+                );
+              })()
             )}
           </article>
         </div>

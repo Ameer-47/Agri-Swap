@@ -270,8 +270,8 @@ function PriceShockImpact({
   // Horizon selection: 7 or 30 days (supported by LSTM)
   const [horizon, setHorizon] = useState(7);
 
-  // Substitution preference
-  const [subPreference, setSubPreference] = useState("balanced");
+  // Substitution preference (defaults to balanced)
+  const [subPreference] = useState("balanced");
 
   // View switch: "overview" (Impact Cards) vs "substitution" (Whole-Basket Savings Matrix)
   const [activeTab, setActiveTab] = useState("overview");
@@ -902,41 +902,6 @@ function PriceShockImpact({
           <h2>Food Price Impact</h2>
           <p>See how food price changes affect your monthly budget.</p>
         </div>
-
-        <div className="shock-header-actions">
-          <button
-            type="button"
-            className="btn-secondary-link btn-nav-dashboard"
-            onClick={() => onNavigate && onNavigate("Dashboard")}
-            title="Return to AGRI-SWAP Dashboard"
-          >
-            🏠 Dashboard
-          </button>
-          <button
-            type="button"
-            className="btn-secondary-link btn-nav-basket"
-            onClick={() => onNavigate && onNavigate("My Food Basket")}
-            title="Edit quantities and items in your food basket"
-          >
-            <IconBasket /> Manage Basket ({basket.length})
-          </button>
-          <button
-            type="button"
-            className="btn-secondary-link btn-nav-sub"
-            onClick={() => onNavigate && onNavigate("Food Substitution")}
-            title="Explore substitution science and nutrition profiles"
-          >
-            <IconSwap /> Food Substitution
-          </button>
-          <button
-            type="button"
-            className="btn-secondary-link btn-nav-prices"
-            onClick={() => onNavigate && onNavigate("Price Analytics")}
-            title="View market prices & time series"
-          >
-            📊 Price Analytics
-          </button>
-        </div>
       </div>
 
       {/* 2. Controls Panel */}
@@ -963,24 +928,6 @@ function PriceShockImpact({
                 Next 30 Days
               </button>
             </div>
-          </div>
-
-          {/* Substitution Preference Selector */}
-          <div className="control-item control-item-preference">
-            <label htmlFor="sub-pref-select">
-              What matters most?
-            </label>
-            <select
-              id="sub-pref-select"
-              className="control-select-styled"
-              value={subPreference}
-              onChange={(e) => setSubPreference(e.target.value)}
-            >
-              <option value="balanced">Balanced (Nutrition & Price)</option>
-              <option value="price">Save Most Money (Price First)</option>
-              <option value="nutrition">Best Nutrition (Health First)</option>
-              <option value="cooking">Cooking & Taste Match</option>
-            </select>
           </div>
         </div>
       </div>
