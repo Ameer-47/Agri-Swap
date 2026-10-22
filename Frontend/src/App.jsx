@@ -1,9 +1,11 @@
-import { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback } from "react";
+import { useState, useEffect, useLayoutEffect, useMemo, useRef, useCallback, lazy, Suspense } from "react";
 import "./App.css";
-import PriceAnalytics from "./PriceAnalytics";
-import FoodSubstitution from "./FoodSubstitution";
-import PriceShockImpact from "./PriceShockImpact";
 import { buildApiUrl } from "./apiConfig";
+
+// Lazy-loaded major route pages for code splitting & faster initial page load
+const PriceAnalytics = lazy(() => import("./PriceAnalytics"));
+const FoodSubstitution = lazy(() => import("./FoodSubstitution"));
+const PriceShockImpact = lazy(() => import("./PriceShockImpact"));
 
 // Clean, Modern SVG Icons
 function IconShock() {
@@ -102,6 +104,21 @@ function IconSparkles() {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z" />
     </svg>
+  );
+}
+
+// Loading fallback component matching AGRI-SWAP visual theme for code-split pages
+function PageLoadingFallback({ pageName = "page" }) {
+  return (
+    <div className="page-lazy-fallback-container" role="status" aria-live="polite">
+      <div className="page-lazy-fallback-card">
+        <div className="page-lazy-spinner" />
+        <div className="page-lazy-text-block">
+          <h3 className="page-lazy-title">Loading {pageName}...</h3>
+          <p className="page-lazy-subtext">Preparing insights and analytics</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -2559,14 +2576,16 @@ function App() {
               className="page-view-container"
               style={{ display: activePage === "Price Shock Impact" ? "block" : "none" }}
             >
-              <PriceShockImpact
-                basket={basket}
-                monthlyBudget={monthlyBudget}
-                isActive={activePage === "Price Shock Impact"}
-                onNavigate={setActivePage}
-                onNavigateToSubstitution={handleNavigateToSubstitutionFromShock}
-                onNavigateToPrices={handleNavigateToPricesFromShock}
-              />
+              <Suspense fallback={<PageLoadingFallback pageName="Price Shock Impact" />}>
+                <PriceShockImpact
+                  basket={basket}
+                  monthlyBudget={monthlyBudget}
+                  isActive={activePage === "Price Shock Impact"}
+                  onNavigate={setActivePage}
+                  onNavigateToSubstitution={handleNavigateToSubstitutionFromShock}
+                  onNavigateToPrices={handleNavigateToPricesFromShock}
+                />
+              </Suspense>
             </div>
           )}
 
@@ -2575,21 +2594,23 @@ function App() {
               className="page-view-container"
               style={{ display: activePage === "Food Substitution" ? "block" : "none" }}
             >
-              <FoodSubstitution
-                initialFood={activeFood || selectedCommodity || "Tomato"}
-                onAddToBasket={(item) => {
-                  addQuickStaple(item.name, item.quantity, item.unit, item.monthlyUsage);
-                }}
-                onNavigateToPrices={(commodityName) => {
-                  setSelectedCommodity(commodityName);
-                  getPrices(commodityName);
-                  setActivePage("Price Analytics");
-                }}
-                onNavigateToShock={(commodityName) => {
-                  if (commodityName) setSelectedCommodity(commodityName);
-                  setActivePage("Price Shock Impact");
-                }}
-              />
+              <Suspense fallback={<PageLoadingFallback pageName="Food Substitution" />}>
+                <FoodSubstitution
+                  initialFood={activeFood || selectedCommodity || "Tomato"}
+                  onAddToBasket={(item) => {
+                    addQuickStaple(item.name, item.quantity, item.unit, item.monthlyUsage);
+                  }}
+                  onNavigateToPrices={(commodityName) => {
+                    setSelectedCommodity(commodityName);
+                    getPrices(commodityName);
+                    setActivePage("Price Analytics");
+                  }}
+                  onNavigateToShock={(commodityName) => {
+                    if (commodityName) setSelectedCommodity(commodityName);
+                    setActivePage("Price Shock Impact");
+                  }}
+                />
+              </Suspense>
             </div>
           )}
 
@@ -2598,13 +2619,15 @@ function App() {
               className="page-view-container"
               style={{ display: activePage === "Price Analytics" ? "block" : "none" }}
             >
-              <PriceAnalytics
-                initialCommodity={selectedCommodity || "Tomato"}
-                onNavigateToShock={(commodityName) => {
-                  if (commodityName) setSelectedCommodity(commodityName);
-                  setActivePage("Price Shock Impact");
-                }}
-              />
+              <Suspense fallback={<PageLoadingFallback pageName="Price Analytics" />}>
+                <PriceAnalytics
+                  initialCommodity={selectedCommodity || "Tomato"}
+                  onNavigateToShock={(commodityName) => {
+                    if (commodityName) setSelectedCommodity(commodityName);
+                    setActivePage("Price Shock Impact");
+                  }}
+                />
+              </Suspense>
             </div>
           )}
 

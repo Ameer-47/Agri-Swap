@@ -5831,3 +5831,70 @@ button:disabled {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   PAGE CODE-SPLITTING LAZY LOADING FALLBACK
+   ========================================================================== */
+.page-lazy-fallback-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  width: 100%;
+  padding: 48px 24px;
+  box-sizing: border-box;
+}
+
+.page-lazy-fallback-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+  padding: 42px 48px;
+  max-width: 440px;
+  width: 100%;
+  background: rgba(13, 30, 68, 0.78);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: var(--radius-xl, 18px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 28px rgba(16, 185, 129, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.page-lazy-spinner {
+  width: 38px;
+  height: 38px;
+  border: 3.5px solid rgba(16, 185, 129, 0.2);
+  border-top-color: var(--emerald-light, #34d399);
+  border-right-color: var(--teal-light, #2dd4bf);
+  border-radius: 50%;
+  animation: pageLazySpin 0.85s linear infinite;
+}
+
+@keyframes pageLazySpin {
+  to { transform: rotate(360deg); }
+}
+
+.page-lazy-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.page-lazy-title {
+  margin: 0;
+  font-family: var(--font-display, "Inter", sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.01em;
+}
+
+.page-lazy-subtext {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-dim, #94a3b8);
+  font-weight: 500;
+}
