@@ -135,7 +135,7 @@ const USER_RECS_CACHE = new Map();
 
 function scaleSubstitution(baseData, newQty, unit) {
     if (!baseData || !baseData.success) return baseData;
-    const origPrice = baseData.originalFood?.estimatedPricePerKg;
+    const origPrice = baseData.originalFood?.pricePerKg ?? baseData.originalFood?.estimatedPricePerKg;
     const origTotal = (origPrice !== null && origPrice !== undefined) ? Math.round(origPrice * newQty * 10) / 10 : null;
 
     const scaledAlts = (baseData.alternatives || []).map((alt) => {
@@ -175,6 +175,7 @@ function scaleSubstitution(baseData, newQty, unit) {
         originalFood: {
             ...baseData.originalFood,
             quantity: newQty,
+            totalCost: origTotal,
             totalEstimatedCost: origTotal
         },
         alternatives: scaledAlts
